@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-10-2022 a las 10:20:17
+-- Tiempo de generación: 25-10-2022 a las 10:38:25
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -77,12 +77,12 @@ CREATE TABLE `generos` (
 --
 
 INSERT INTO `generos` (`IdGenero`, `Nombre`) VALUES
-('T', 'Terror'),
+('B', 'Bélico'),
 ('CF', 'Ciencia Ficción'),
 ('FM', 'Fantasía medieval'),
-('NN', 'Novela Negra'),
 ('NH', 'Novela Histórica'),
-('B', 'Bélico');
+('NN', 'Novela Negra'),
+('T', 'Terror');
 
 -- --------------------------------------------------------
 
@@ -108,6 +108,7 @@ CREATE TABLE `producto` (
   `IdProducto` int(11) NOT NULL,
   `Nombre` varchar(90) NOT NULL,
   `Descripcion` varchar(1024) NOT NULL,
+  `Genero` varchar(2) NOT NULL,
   `Autor` varchar(90) NOT NULL,
   `Editorial` varchar(255) NOT NULL,
   `Paginas` int(4) NOT NULL,
@@ -136,6 +137,12 @@ ALTER TABLE `clientes`
   ADD PRIMARY KEY (`IdCliente`);
 
 --
+-- Indices de la tabla `generos`
+--
+ALTER TABLE `generos`
+  ADD PRIMARY KEY (`IdGenero`);
+
+--
 -- Indices de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
@@ -146,7 +153,8 @@ ALTER TABLE `pedidos`
 -- Indices de la tabla `producto`
 --
 ALTER TABLE `producto`
-  ADD PRIMARY KEY (`IdProducto`);
+  ADD PRIMARY KEY (`IdProducto`),
+  ADD KEY `Genero` (`Genero`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -162,13 +170,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `IdCliente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IdCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `IdPedido` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IdPedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
@@ -184,7 +192,13 @@ ALTER TABLE `producto`
 -- Filtros para la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  ADD CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`IdCliente`) REFERENCES `clientes` (`IDCliente`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`IdCliente`) REFERENCES `clientes` (`IDCliente`);
+
+--
+-- Filtros para la tabla `producto`
+--
+ALTER TABLE `producto`
+  ADD CONSTRAINT `Genero` FOREIGN KEY (`Genero`) REFERENCES `generos` (`IdGenero`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
