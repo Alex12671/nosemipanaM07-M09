@@ -1,12 +1,10 @@
 <?php
 
-function AutoLoad($ClassName){
-
-    include "controllers/$ClassName.php";
-
+function autocargar($nombreClase){
+    include "controllers/$nombreClase.php";
 }
-
-spl_autoload_register("AutoLoad");
+spl_autoload_register("autocargar");
 
 
 ?>
+
