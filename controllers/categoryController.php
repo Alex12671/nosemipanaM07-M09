@@ -1,6 +1,6 @@
 <?php
 
-public class productController{
+public class categoryController{
 
     public function getCategories(){
         require_once "models/category.php";
