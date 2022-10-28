@@ -5,7 +5,7 @@
     }else{
         echo "<h1> Nombre o contraseña incorrectos </h1>";
         ?>
-                <meta http-equiv="refresh" content="1000; url= https://localhost/libreria/logAdmin.php">
+                <meta http-equiv="refresh" content="3; url=index.php?controller=admin&action=logAdmin">
                 <?php
     }
 ?>

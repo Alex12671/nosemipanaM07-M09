@@ -1,13 +1,13 @@
 <?php
 require_once("database.php");
 class Admin extends Database {
-    private $nombre;
-    private $email;
-    private $password;
+    private   $username;
+    private   $email;
+    private   $password;
     protected $rows;
 
     function getNombre() {
-        return $this->nombre;
+        return $this->username;
     }
 
     function getEmail() {
@@ -18,8 +18,8 @@ class Admin extends Database {
         return $this->password;
     }
 
-    function setNombre($nombre) {
-        $this->nombre = $nombre;
+    function setUsername($username) {
+        $this->username = $username;
     }
     function setEmail($email) {
         $this->email = $email;
@@ -29,16 +29,13 @@ class Admin extends Database {
         $this->password = $password;
     }
     
-    function validar($nombre, $password){
-        $passwordEncriptada = md5($password);
-        $sql = "SELECT * FROM admin where Nombre='$nombre' and Password= '$passwordEncriptada'";
-        echo "$sql";
-        $rows = $this->db->query($sql);
-        $numeroEntradas = $rows->rowCount();
-        echo $numeroEntradas;
+    function validateAdmin($username, $password){
+        $sql = "SELECT * FROM admin where Nombre='$username' and Password= '".md5($password)."'";
+        $result = $this->db->query($sql);
+        $rows = $result->rowCount();
         session_start();
-        if ($rows !=0) {
-            $_SESSION["Administrador"]= $nombre;
+        if ($rows == 1) {
+            $_SESSION["Administrador"]= $username;
         }
         return $rows;
     }

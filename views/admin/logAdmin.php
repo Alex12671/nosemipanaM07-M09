@@ -8,7 +8,7 @@
     <title>Login</title>
 </head>
 <body>
-    <form action='index.php?controller=admin&action=validar' method='POST'>
+    <form action='index.php?controller=admin&action=validateAdmin' method='POST'>
         <label>Usuario</label>
         <input type='text' name='nombre'>
         <label>Password</label>
