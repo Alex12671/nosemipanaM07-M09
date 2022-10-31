@@ -1,7 +1,4 @@
 <!--Controlador frontal: fichero que se encarga de cargarlo absolutamente todo -->
-<?php
-    session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

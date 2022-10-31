@@ -33,13 +33,7 @@ class Admin extends Database {
         $sql = "SELECT * FROM admin where Nombre='$username' and Password= '".md5($password)."'";
         $result = $this->db->query($sql);
         $rows = $result->rowCount();
-        if ($rows == 1) {
-            $_SESSION["Administrador"]= $username;
-            return true;
-        }
-        else {
-            return false;
-        }
+        return $rows;
     }
 }
 
