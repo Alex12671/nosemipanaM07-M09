@@ -1,5 +1,4 @@
 <?php
-//formulario para modificar el estado de los pedidos.
     echo "<p> ID del pedido". $_GET['id'] . "</p>";
     $id=$_GET['id'];
     echo "<form action='index.php?controller=order&action=statusModification' method='POST'>";

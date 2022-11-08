@@ -3,12 +3,13 @@
 class productController{
 
     public function showProducts() {
+        require_once "views/products/ShowProducts.php";
+
         require_once "models/product.php"; 
         $product = new Product();
-        
+
         $show = $product->ShowProducts();
         
-        require_once "views/products/ShowProducts.php";
     }
 
     public function AddProduct(){
