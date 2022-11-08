@@ -33,7 +33,18 @@ class Admin extends Database {
         $sql = "SELECT * FROM admin where Nombre='$username' and Password= '".md5($password)."'";
         $result = $this->db->query($sql);
         $rows = $result->rowCount();
-        return $rows;
+        if($rows == 1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+        
+    }
+
+    //función vacía para mostrar el enlace al menú principal del administrador
+    public function logAdmin(){
+        
     }
 }
 

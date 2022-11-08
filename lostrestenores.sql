@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-10-2022 a las 11:36:16
--- Versión del servidor: 10.4.22-MariaDB
--- Versión de PHP: 8.1.2
+-- Tiempo de generación: 02-11-2022 a las 08:49:52
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `lostrestenores`
 --
+CREATE DATABASE IF NOT EXISTS `lostrestenores` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `lostrestenores`;
 
 -- --------------------------------------------------------
 
@@ -27,6 +29,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `admin`
 --
 
+DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
   `IdAdmin` int(11) NOT NULL,
   `Nombre` varchar(90) NOT NULL,
@@ -47,6 +50,7 @@ INSERT INTO `admin` (`IdAdmin`, `Nombre`, `Email`, `Password`) VALUES
 -- Estructura de tabla para la tabla `clientes`
 --
 
+DROP TABLE IF EXISTS `clientes`;
 CREATE TABLE `clientes` (
   `IdCliente` int(11) NOT NULL,
   `Password` varchar(255) NOT NULL,
@@ -70,10 +74,11 @@ CREATE TABLE `clientes` (
 -- Estructura de tabla para la tabla `generos`
 --
 
+DROP TABLE IF EXISTS `generos`;
 CREATE TABLE `generos` (
   `IdGenero` varchar(2) NOT NULL,
   `Nombre` varchar(90) NOT NULL,
-  `Activo` int(1) NOT NULL DEFAULT 1
+  `Activo` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -96,6 +101,7 @@ INSERT INTO `generos` (`IdGenero`, `Nombre`, `Activo`) VALUES
 -- Estructura de tabla para la tabla `linea_pedido`
 --
 
+DROP TABLE IF EXISTS `linea_pedido`;
 CREATE TABLE `linea_pedido` (
   `IdProducto` int(11) NOT NULL,
   `IdCliente` int(11) NOT NULL,
@@ -109,6 +115,7 @@ CREATE TABLE `linea_pedido` (
 -- Estructura de tabla para la tabla `pedidos`
 --
 
+DROP TABLE IF EXISTS `pedidos`;
 CREATE TABLE `pedidos` (
   `IdPedido` int(11) NOT NULL,
   `Precio_sin_IVA` float NOT NULL,
@@ -122,6 +129,7 @@ CREATE TABLE `pedidos` (
 -- Estructura de tabla para la tabla `producto`
 --
 
+DROP TABLE IF EXISTS `producto`;
 CREATE TABLE `producto` (
   `IdProducto` int(11) NOT NULL,
   `Nombre` varchar(90) NOT NULL,

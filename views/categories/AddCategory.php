@@ -3,3 +3,4 @@
     <label>Nombre</label>    <input type='text' name='Nombre'><br>
     <input type='submit' name='enviar'>
 </form>
+

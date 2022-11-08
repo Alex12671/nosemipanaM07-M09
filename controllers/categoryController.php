@@ -3,14 +3,12 @@
 class categoryController{
 
     public function showCategories() {
-        require_once "views/categories/ShowCategories.php";
-
         require_once "models/category.php";       
         $category = new Category();
 
-        $show = $category->showCategories();
-        
-        
+        $show= $category->showCategories();
+
+        require_once "views/categories/ShowCategories.php";
     }
 
     public function getCategoriesAdd(){
