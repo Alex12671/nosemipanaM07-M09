@@ -51,29 +51,19 @@ class Category extends Database {
         $result = $this->db->query($sql);
     }
 
-    function ShowCategories() {
+    public function ShowCategories() {
         $sql = "SELECT * FROM generos";
         $result = $this->db->query($sql);
-        $cont= 0;
-        echo "<table cellspacing = 0>";
-        while ($array = $result->fetchAll(PDO::FETCH_ASSOC)) {
-            foreach($array as $data) {
-                echo "<tr>";
-                foreach($data as $field_name => $value) {
-                    echo "<td>$value</td>";
-                }
-                echo "<td><a href= 'index.php?controller=category&action=ShowEditCategoryForm&id=".$data['IdGenero']."&name=".$data['Nombre']."'> Editar Genero </a></td>";
-                if($data['Activo']==1){
-                    echo "<td><a href= 'index.php?controller=category&action=Desactivate&id=".$data['IdGenero']."'> Desactivar </a></td>"; 
-                }else{
-                    echo "<td><a href= 'index.php?controller=category&action=Activate&id=".$data['IdGenero']."'> Activar </a></td>"; 
-                }
-                echo "</tr>";
-                $cont+= 1;
-            }
-        }
-        echo "</table>";
+        return $result;
+
     }
+
+    public function MenuCategories() {
+        $sql = "SELECT IdGenero,Nombre FROM generos";
+        $result = $this->db->query($sql);
+        return $result;
+    }
+    
 }
 
 ?>

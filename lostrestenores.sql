@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-10-2022 a las 11:36:16
--- Versión del servidor: 10.4.22-MariaDB
--- Versión de PHP: 8.1.2
+-- Tiempo de generación: 10-11-2022 a las 08:12:31
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `lostrestenores`
 --
+CREATE DATABASE IF NOT EXISTS `lostrestenores` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `lostrestenores`;
 
 -- --------------------------------------------------------
 
@@ -64,6 +66,14 @@ CREATE TABLE `clientes` (
   `Provincia` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `clientes`
+--
+
+INSERT INTO `clientes` (`IdCliente`, `Password`, `Nombre`, `Apellido1`, `Apellido2`, `DNI`, `Email`, `Telefono`, `Calle`, `Número`, `CP`, `Piso`, `Ciudad`, `Provincia`) VALUES
+(1, '12345', 'juan', 'perez', 'perez', '3', 'juan@juan.com', 111111111, 'ezta', 25, 8999, '1', 'una', 'otra'),
+(2, '12345', 'pedro', 'gomez ', 'gomez', '4', 'pedro@pedro', 22222222, 'otra', 1, 8777, '2', 'dos', 'aquella');
+
 -- --------------------------------------------------------
 
 --
@@ -73,7 +83,7 @@ CREATE TABLE `clientes` (
 CREATE TABLE `generos` (
   `IdGenero` varchar(2) NOT NULL,
   `Nombre` varchar(90) NOT NULL,
-  `Activo` int(1) NOT NULL DEFAULT 1
+  `Activo` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -84,8 +94,6 @@ INSERT INTO `generos` (`IdGenero`, `Nombre`, `Activo`) VALUES
 ('B', 'Bélico', 1),
 ('CF', 'Ciencia Ficción', 1),
 ('FM', 'Fantasía medieval', 1),
-('GL', 'GILIPOLLASSS', 0),
-('JS', 'JOSE', 1),
 ('NH', 'Novela Histórica', 1),
 ('NN', 'Novela Negra', 1),
 ('T', 'Terror', 1);
@@ -97,6 +105,7 @@ INSERT INTO `generos` (`IdGenero`, `Nombre`, `Activo`) VALUES
 --
 
 CREATE TABLE `linea_pedido` (
+  `ID_Linea_pedido` int(11) NOT NULL,
   `IdProducto` int(11) NOT NULL,
   `IdCliente` int(11) NOT NULL,
   `IdPedido` int(11) NOT NULL,
@@ -143,7 +152,10 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`IdProducto`, `Nombre`, `Descripcion`, `Genero`, `Autor`, `Editorial`, `Paginas`, `Imagenlibro`, `Precio`, `Fecha_Entrada`, `Cantidad`, `Liquidacion`, `Activo`) VALUES
-(4, 'a', 'a', 'GL', 'a', 'a', 1, 'views/img/4-FW961HMUEAEKxTj.jpg', 1, '2022-11-02', 1, 0, 1);
+(3, 'La comunidad del anillo', 'La obra de Tolkien, difundida en millones de ejemplares, traducida a docenas de lenguas... una coherente mitología de una autenticidad universal creada en pleno siglo XX», Le Monde En la adormecida e idílica Comarca, un joven hobbit recibe un encargo: custodiar el Anillo Único y emprender el viaje para su destrucción en la Grieta del Destino. Acompañado por magos, hombres, elfos y enanos, atravesará la Tierra Media y se internará en las sombras de Mordor, perseguido siempre por las huestes de Sauron, el Señor Oscuro, dispuesto a recuperar su creación para establecer el dominio definitivo del Mal. La obra de Tolkien, difundida en millones de ejemplares, traducida a docenas de lenguas... una coherente mitología de una autenticidad universal creada en pleno siglo XX», Le Monde En la adormecida e idílica Comarca, un joven hobbit recibe un encargo: custodiar el Anillo Único y emprender el viaje para su destrucción en la Grieta del Destino. Acompañado por magos, hombres, elfos y enanos, atravesará la Tierra Media y', 'FM', 'J.R.R. Tolkien', 'Minotauro', 576, 'views/img/3-SDLA1.jpg', 10.4, '2022-11-02', 100, 0, 0),
+(4, 'Las dos torres', 'Ningún escritor del género ha aprovechado tanto como Tolkien las propiedades características de la Misión, el viaje heróico, el Objeto Numinoso, satisfaciendo nuestro sentido de la realidad histórica y social? Tolkien ha triunfado donde fracasó Milton.» ?W.H. Auden «La invención de los pueblos extraños, incidentes curiosos u hechos maravillosos es en este segundo volumen de la trilogía tan exuberante y convincente como siempre. A medida que avanza la historia, el mundo del Anillo crece en dimensión y misterio, poblado por figuras curiosas, terroríficas, adorables o divertidas. La historia misma es soberbia.» ?The Observer', 'FM', 'J.R.R. Tolkien', 'Minotauro', 408, 'views/img/4-SDLA2.jpg', 10.4, '2022-11-03', 100, 0, 0),
+(5, 'Las dos torres', 'Ningún escritor del género ha aprovechado tanto como Tolkien las propiedades características de la Misión, el viaje heróico, el Objeto Numinoso, satisfaciendo nuestro sentido de la realidad histórica y social? Tolkien ha triunfado donde fracasó Milton.» ?W.H. Auden «La invención de los pueblos extraños, incidentes curiosos u hechos maravillosos es en este segundo volumen de la trilogía tan exuberante y convincente como siempre. A medida que avanza la historia, el mundo del Anillo crece en dimensión y misterio, poblado por figuras curiosas, terroríficas, adorables o divertidas. La historia misma es soberbia.» ?The Observer', 'FM', 'J.R.R. Tolkien', 'Minotauro', 408, 'views/img/5-SLDA3.jpg', 10.4, '2022-11-03', 100, 0, 0),
+(6, 'a', 'a', 'B', 'a', 'a', 23, 'views/img/-SDLA1.jpg', 23, '2022-12-02', 234, 0, 0);
 
 --
 -- Índices para tablas volcadas
@@ -171,9 +183,10 @@ ALTER TABLE `generos`
 -- Indices de la tabla `linea_pedido`
 --
 ALTER TABLE `linea_pedido`
-  ADD KEY `IdProducto` (`IdProducto`,`IdCliente`,`IdPedido`),
+  ADD PRIMARY KEY (`ID_Linea_pedido`),
   ADD KEY `IdCliente` (`IdCliente`),
-  ADD KEY `IdPedido` (`IdPedido`);
+  ADD KEY `IdPedido` (`IdPedido`),
+  ADD KEY `IdProducto` (`IdProducto`);
 
 --
 -- Indices de la tabla `pedidos`
@@ -202,19 +215,25 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `IdCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `IdCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `linea_pedido`
+--
+ALTER TABLE `linea_pedido`
+  MODIFY `ID_Linea_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `IdPedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `IdPedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `IdProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `IdProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
@@ -224,9 +243,9 @@ ALTER TABLE `producto`
 -- Filtros para la tabla `linea_pedido`
 --
 ALTER TABLE `linea_pedido`
-  ADD CONSTRAINT `linea_pedido_ibfk_1` FOREIGN KEY (`IdCliente`) REFERENCES `clientes` (`IdCliente`),
-  ADD CONSTRAINT `linea_pedido_ibfk_2` FOREIGN KEY (`IdPedido`) REFERENCES `pedidos` (`IdPedido`),
-  ADD CONSTRAINT `linea_pedido_ibfk_3` FOREIGN KEY (`IdProducto`) REFERENCES `producto` (`IdProducto`);
+  ADD CONSTRAINT `IdCliente` FOREIGN KEY (`IdCliente`) REFERENCES `clientes` (`IdCliente`),
+  ADD CONSTRAINT `IdPedido` FOREIGN KEY (`IdPedido`) REFERENCES `pedidos` (`IdPedido`),
+  ADD CONSTRAINT `IdProducto` FOREIGN KEY (`IdProducto`) REFERENCES `producto` (`IdProducto`);
 
 --
 -- Filtros para la tabla `producto`

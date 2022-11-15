@@ -139,11 +139,11 @@ class Product extends Database {
         $result = $this->db->query($sql);
     }
 
-    function AddProduct($name, $decription, $category, $author, $editorial, $pages, $img, $price, $startingDate, $quantity){
+    function AddProduct($id, $name, $decription, $category, $author, $editorial, $pages, $img, $price, $startingDate, $quantity){
         if (is_uploaded_file ($_FILES['Imagenlibro']['tmp_name']))
         {
             $nombreDirectorio = "views/img/";
-            $idUnico = $name;
+            $idUnico = $id;
             $nombreFichero = $idUnico . "-" . $_FILES['Imagenlibro']['name'];
             $directorio= $nombreDirectorio . $nombreFichero;
             move_uploaded_file ($_FILES['Imagenlibro']['tmp_name'], $nombreDirectorio . $nombreFichero);
@@ -178,30 +178,21 @@ class Product extends Database {
     function ShowProducts() {
         $sql = "SELECT * FROM producto";
         $result = $this->db->query($sql);
-        echo "<table cellspacing = 0>";
-        while ($array = $result->fetchAll(PDO::FETCH_ASSOC)) {
-            foreach($array as $data) {
-                echo "<tr>";
-                foreach($data as $field_name => $value) {
-                    if($field_name == "Imagenlibro") {
-                        echo "<td><img src=$value></img></td>";
-                    }
-                    else {
-                        echo "<td>$value</td>";
-                    }
-                    
-                }
-                echo "<td><a href= 'index.php?controller=category&action=getCategoriesEdit&id=".$data['IdProducto']."&name=".$data['Nombre']."&desc=".$data['Descripcion']."&category=".$data['Genero']."&author=".$data['Autor']."&editorial=".$data['Editorial']."&pages=".$data['Paginas']."&price=".$data['Precio']."&date=".$data['Fecha_Entrada']."&date=".$data['Fecha_Entrada']."&quantity=".$data['Cantidad']."'> Editar Producto </a></td>";
-                echo "<td><a href= 'index.php?controller=product&action=getEditImgForm&id=".$data['IdProducto']."'> Editar Imagen </a></td>";
-                if($data['Activo']==1){
-                    echo "<td><a href= 'index.php?controller=product&action=Desactivate&id=".$data['IdProducto']."'> Desactivar </a></td>"; 
-                }else{
-                    echo "<td><a href= 'index.php?controller=product&action=Activate&id=".$data['IdProducto']."'> Activar </a></td>"; 
-                }
-                echo "</tr>";
-            }
-        }
-        echo "</table>";
+        var_dump($result);
+        return $result;
+        
+    }
+
+    function showMain() {
+        $sql = "SELECT IdProducto, nombre, Imagenlibro, Precio FROM producto ORDER BY Fecha_Entrada DESC LIMIT 12";
+        $result = $this->db->query($sql);
+        return $result;
+    }
+
+    function ShowProductsByCategory($genre) {
+        $sql = "SELECT * FROM producto WHERE Genero = '$genre'";
+        $result = $this->db->query($sql);
+        return $result;
     }
 }
 
