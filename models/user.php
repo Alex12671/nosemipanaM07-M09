@@ -279,10 +279,23 @@ class User extends Database {
 
     public function RegisterClient($name,$surname1,$surname2,$passwd,$dni,$email,$tlf,$calle,$numero,$cp,$piso,$ciudad,$provincia) {
         $sql = "INSERT INTO  clientes
-        VALUES (DEFAULT,'".$name."', '".$surname1."', '".$surname2."', '".$passwd."', '".$dni."', '".$email."', '".$tlf."', '".$calle."', '".$numero."', '".$cp."', '".$piso."','".$ciudad."','".$provincia."','1') ";
+        VALUES (DEFAULT,'".md5($passwd)."', '".$name."', '".$surname1."', '".$surname2."', '".$dni."', '".$email."', '".$tlf."', '".$calle."', '".$numero."', '".$cp."', '".$piso."','".$ciudad."','".$provincia."','1') ";
         $result = $this->db->query($sql);
         $rows = $result->rowCount();
         return $rows;
+    }
+
+    public function validateUser($username, $password){
+        $sql = "SELECT * FROM clientes where Nombre='$username' and Password= '".md5($password)."'";
+        $result = $this->db->query($sql);
+        $rows = $result->rowCount();
+        if($rows == 1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+        
     }
 }
 ?>

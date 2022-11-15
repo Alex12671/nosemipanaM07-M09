@@ -194,6 +194,12 @@ class Product extends Database {
         $result = $this->db->query($sql);
         return $result;
     }
+
+    function ShowProductsByName($name) {
+        $sql = "SELECT * FROM producto WHERE Nombre LIKE '%$name%'";
+        $result = $this->db->query($sql);
+        return $result;
+    }
 }
 
 ?>
