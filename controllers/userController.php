@@ -19,5 +19,30 @@ class userController {
             }
         }
     }
+
+    public function ValidateUserCredentials(){
+        require_once "models/user.php";
+        $user = new User();
+        
+        if ($user->validateUser($_POST["nombre"], $_POST["password"])){
+            if ($user){
+                $_SESSION['rol']  = "comprador";
+                $_SESSION['name'] = $_POST['nombre'];
+                ?> <meta http-equiv="refresh" content="0; url=index.php"> <?php
+            }
+    
+        }
+        else{
+            echo "<h1> Nombre o contraseña incorrectos </h1>";
+            ?>
+                <meta http-equiv="refresh" content="2; url=index.php?controller=user&action=logUser">
+            <?php
+        }
+        
+    }
+
+    public function logUser(){
+        require_once "views/users/logUser.php";
+    }
 }
 ?>
