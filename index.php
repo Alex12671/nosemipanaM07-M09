@@ -11,6 +11,7 @@
     <title>Document</title>
 </head>
 <body>
+    <script src="codi.js"></script>
 <?php 
 require_once "autoload.php";
 require_once "views/general/cabecera.html";
