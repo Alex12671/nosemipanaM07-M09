@@ -23,11 +23,13 @@ class userController {
     public function ValidateUserCredentials(){
         require_once "models/user.php";
         $user = new User();
-        
-        if ($user->validateUser($_POST["nombre"], $_POST["password"])){
+        $resultado= $user->validateUser($_POST["nombre"], $_POST["password"]);
+        $result= $resultado[0]->fetchAll(PDO::FETCH_ASSOC);
+        if ($resultado[1]){
             if ($user){
                 $_SESSION['rol']  = "comprador";
                 $_SESSION['name'] = $_POST['nombre'];
+                $_SESSION['id'] = $result[0]['IdCliente'];
                 ?> <meta http-equiv="refresh" content="0; url=index.php"> <?php
             }
     
@@ -43,6 +45,13 @@ class userController {
 
     public function logUser(){
         require_once "views/users/logUser.php";
+    }
+    
+    public function ShowUserOrders(){
+        require_once "models/user.php";
+        $user = new User();
+        $result = $user->ShowUserOrders($_SESSION['id']);
+        require_once "views/users/ShowUserOrders.php";
     }
 }
 ?>
