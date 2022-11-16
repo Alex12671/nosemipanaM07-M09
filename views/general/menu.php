@@ -19,8 +19,9 @@
             <li>Mi cuenta UwU
                 <ul class="filterCategories" >
                     <?php
-                        echo "<li> <a href= 'index.php?controller=user&action=logUser' >Datos de mi cuenta</a></li>"; 
-                        echo "<li> <a href= 'index.php?controller=user&action=logUser' >Ver mis pedidos</a></li>"; 
+                        echo "<li> <a href= 'index.php?controller=user&action=ShowUserProfile' >Datos de mi cuenta</a></li>"; 
+                        echo "<li> <a href= 'index.php?controller=user&action=logUser' >Ver mis pedidos</a></li>";
+                        echo "<li> <a href= 'views/general/sortir.php' >Cerrar sesión</a></li>";  
                     ?>
                 </ul>
             </li>
