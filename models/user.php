@@ -286,16 +286,24 @@ class User extends Database {
     }
 
     public function validateUser($username, $password){
-        $sql = "SELECT * FROM clientes where Nombre='$username' and Password= '".md5($password)."'";
+        $sql = "SELECT IdCliente FROM clientes where Nombre='$username' and Password= '".md5($password)."'";
         $result = $this->db->query($sql);
         $rows = $result->rowCount();
+        $array= [$result];
         if($rows == 1) {
-            return true;
+            $array= [$result,true];
+            return $array;
         }
         else {
-            return false;
+            $array= [$result,false];
+            return $array;
         }
-        
+    }
+
+    public function ShowUserOrders($id){
+        $sql = "SELECT * FROM pedidos where IdCliente='$id'";
+        $result = $this->db->query($sql);
+        return $result;
     }
 }
 ?>
