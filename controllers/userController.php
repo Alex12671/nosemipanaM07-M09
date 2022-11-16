@@ -46,12 +46,43 @@ class userController {
     public function logUser(){
         require_once "views/users/logUser.php";
     }
-    
+
     public function ShowUserOrders(){
         require_once "models/user.php";
         $user = new User();
         $result = $user->ShowUserOrders($_SESSION['id']);
         require_once "views/users/ShowUserOrders.php";
+    }
+
+    public function ShowUserProfile() {
+        require_once "models/user.php";
+        $user = new User();
+        $result = $user->SelectUserProfile($_SESSION['id']);
+        $array = $result->fetch(PDO::FETCH_ASSOC);
+        require_once "views/users/userProfile.php";
+    }
+
+
+    public function ModifyUserProfile() {
+        require_once "models/user.php";
+        $user = new User();
+        $result = $user->SelectUserProfile($_SESSION['id']);
+        $editProfileArray = $result->fetch(PDO::FETCH_ASSOC);
+        require_once "views/users/userProfile.php";
+    }
+
+    //ToDo: claramente esta función no está terminada XD
+    public function EditUserProfile() {
+        foreach($_POST as $field_name => $value) {
+
+            if($value != "") {
+    
+                $query = "UPDATE alumnes SET $field_name = '$value' WHERE Email = '$email'";   
+                mysqli_query($conn,$query);
+    
+            }
+        
+        }
     }
 }
 ?>
