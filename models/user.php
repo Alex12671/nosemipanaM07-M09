@@ -309,5 +309,13 @@ class User extends Database {
         $array = $result->fetchAll(PDO::FETCH_ASSOC);
         return $array;
     }
+
+    public function SelectUserProfile($id) {
+        $sql = "SELECT * FROM clientes where IdCliente='$id'";
+        $result = $this->db->query($sql);
+        return $result;
+    }
+
+    public function EditUserProfile
 }
 ?>
