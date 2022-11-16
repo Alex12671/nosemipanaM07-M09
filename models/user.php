@@ -316,6 +316,14 @@ class User extends Database {
         return $result;
     }
 
-    public function EditUserProfile
+    public function EditUserProfile($id) {
+    
+        if($_POST['Password'] == "") {
+            $query = "UPDATE clientes SET $ = '' WHERE IdCliente = '$id'";   
+            mysqli_query($conn,$query);  
+        }
+        
+        
+    }
 }
 ?>
