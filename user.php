@@ -286,21 +286,45 @@ class User extends Database {
     }
 
     public function validateUser($username, $password){
-        $sql = "SELECT * FROM clientes where Nombre='$username' and Password= '".md5($password)."'";
+        $sql = "SELECT IdCliente FROM clientes where Nombre='$username' and Password= '".md5($password)."'";
         $result = $this->db->query($sql);
         $rows = $result->rowCount();
+        $array= [$result];
         if($rows == 1) {
-            return true;
+            $array= [$result,true];
+            return $array;
         }
         else {
-            return false;
+            $array= [$result,false];
+            return $array;
         }
     }
 
-    public function ShowUserCategories($username){
-        $sql = "SELECT * FROM generos where Nombre='$username'";
+    public function ShowUserOrders($id){
+        $sql = "SELECT producto.Nombre, producto.Precio, pedidos.Precio_sin_IVA, pedidos.Precio_IVA, linea_pedido.Cantidad, pedidos.Estado_Pedido
+        FROM linea_pedido INNER JOIN pedidos ON linea_pedido.IdPedido = pedidos.IdPedido 
+        INNER JOIN producto ON linea_pedido.IdProducto = producto.IdProducto WHERE IdCliente=$id
+        ORDER BY linea_pedido.Id_Linea_Pedido DESC";
         $result = $this->db->query($sql);
-        $rows = $result->rowCount();
+        $array = $result->fetchAll(PDO::FETCH_ASSOC);
+        return $array;
+    }
+
+    public function SelectUserProfile($id) {
+        $sql = "SELECT * FROM clientes where IdCliente='$id'";
+        $result = $this->db->query($sql);
+        return $result;
+    }
+
+    public function EditUserProfile($id,$name,$surname1,$surname2,$password,$dni,$email,$tlf,$calle,$num,$cp,$piso,$ciudad,$provincia) {
+    
+        if($_POST['Password'] == "") {
+            $sql = "UPDATE clientes SET Nombre= '".$name."', Apellido1= '".$surname1."',Apellido2= '".$surname2."',DNI= '".$dni."',
+        Email= '".$email."',Telefono= '".$tlf."',Calle= '".$calle."',Número= '".$num."', 
+        CP= '".$cp."', Piso= '".$piso."', Ciudad = '".$ciudad."', Provincia = '".$provincia."' WHERE IdCliente= '".$id."'";
+        $result = $this->db->query($sql);
+        }
+        
     }
 }
 ?>

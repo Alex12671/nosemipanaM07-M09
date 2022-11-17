@@ -23,11 +23,13 @@ class userController {
     public function ValidateUserCredentials(){
         require_once "models/user.php";
         $user = new User();
-        
-        if ($user->validateUser($_POST["nombre"], $_POST["password"])){
+        $resultado= $user->validateUser($_POST["nombre"], $_POST["password"]);
+        $result= $resultado[0]->fetchAll(PDO::FETCH_ASSOC);
+        if ($resultado[1]){
             if ($user){
                 $_SESSION['rol']  = "comprador";
                 $_SESSION['name'] = $_POST['nombre'];
+                $_SESSION['id'] = $result[0]['IdCliente'];
                 ?> <meta http-equiv="refresh" content="0; url=index.php"> <?php
             }
     
@@ -44,12 +46,37 @@ class userController {
     public function logUser(){
         require_once "views/users/logUser.php";
     }
-    
-    public function ShowUserCategories(){
+
+    public function ShowUserOrders(){
         require_once "models/user.php";
         $user = new User();
-        $rows = $user->ShowUserCategories($_SESSION['name']);
-        require_once "views/users/showCategoriesUser.php";
+        $result = $user->ShowUserOrders($_SESSION['id']);
+        require_once "views/users/ShowUserOrders.php";
+    }
+
+    public function ShowUserProfile() {
+        require_once "models/user.php";
+        $user = new User();
+        $result = $user->SelectUserProfile($_SESSION['id']);
+        $array = $result->fetch(PDO::FETCH_ASSOC);
+        require_once "views/users/userProfile.php";
+    }
+
+
+    public function ModifyUserProfile() {
+        require_once "models/user.php";
+        $user = new User();
+        $result = $user->SelectUserProfile($_SESSION['id']);
+        $editProfileArray = $result->fetch(PDO::FETCH_ASSOC);
+        require_once "views/users/editProfile.php";
+    }
+
+    //ToDo: claramente esta función no está terminada XD
+    public function EditUserProfile() {
+        require_once "models/user.php";
+        $user = new User();
+        $rows = $user->EditUserProfile($_SESSION['id'],$_POST['Nombre'],$_POST['Apellidos1'],$_POST['Apellidos2'],$_POST['Password'],$_POST['DNI'],$_POST['Email'],$_POST['Telefono'],$_POST['Calle'],$_POST['Número'],$_POST['CP'],$_POST['Piso'],$_POST['Ciudad'],$_POST['Provincia']);
+        require_once "views/users/editProfile.php";
     }
 }
 ?>
