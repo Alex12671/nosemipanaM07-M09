@@ -316,13 +316,20 @@ class User extends Database {
         return $result;
     }
 
-    public function EditUserProfile($id) {
+    public function EditUserProfile($id,$name,$surname1,$surname2,$password,$dni,$email,$tlf,$calle,$num,$cp,$piso,$ciudad,$provincia) {
     
         if($_POST['Password'] == "") {
-            $query = "UPDATE clientes SET $ = '' WHERE IdCliente = '$id'";   
-            mysqli_query($conn,$query);  
+            $sql = "UPDATE clientes SET Nombre= '".$name."', Apellido1= '".$surname1."',Apellido2= '".$surname2."',DNI= '".$dni."',
+            Email= '".$email."',Telefono= '".$tlf."',Calle= '".$calle."',Número= '".$num."', 
+            CP= '".$cp."', Piso= '".$piso."', Ciudad = '".$ciudad."', Provincia = '".$provincia."' WHERE IdCliente= '".$id."'";
+            $result = $this->db->query($sql);
         }
-        
+        else {
+            $sql = "UPDATE clientes SET Nombre= '".$name."', Apellido1= '".$surname1."',Apellido2= '".$surname2."',Password= '".md5($password)."',DNI= '".$dni."',
+            Email= '".$email."',Telefono= '".$tlf."',Calle= '".$calle."',Número= '".$num."', 
+            CP= '".$cp."', Piso= '".$piso."', Ciudad = '".$ciudad."', Provincia = '".$provincia."' WHERE IdCliente= '".$id."'";
+            $result = $this->db->query($sql);
+        }
         
     }
 }

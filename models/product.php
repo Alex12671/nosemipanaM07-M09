@@ -200,6 +200,12 @@ class Product extends Database {
         $result = $this->db->query($sql);
         return $result;
     }
+
+    function ShowSelectedProduct($id) {
+        $sql = "SELECT * FROM producto WHERE IdProducto = '$id'";
+        $result = $this->db->query($sql);
+        return $result;
+    }
 }
 
 ?>
