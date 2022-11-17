@@ -109,5 +109,12 @@ class productController{
         $filter = $product->ShowProductsByName($_POST['bookFilter']);
         require_once "views/products/productFilter.php";
     }
+
+    public function ShowProductDetails() {
+        require_once "models/product.php";
+        $product = new Product();
+        $details = $product->ShowSelectedProduct($_GET['idProduct']);
+        require_once "views/products/productDetails.php";
+    }
 }
 ?>
