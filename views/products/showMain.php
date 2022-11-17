@@ -4,6 +4,7 @@ while ($array = $show->fetchAll(PDO::FETCH_ASSOC)) {
             echo "<img class='productImage' src=".$data['Imagenlibro']."></img>";
             echo "<h2>".$data['nombre']."</h2>";
             echo "<h2>".$data['Precio']."</h2>"; 
+            echo "<h2><a href='index.php?controller=product&action=ShowProductDetails&idProduct=".$data['IdProducto']."' >Ver ficha</a></h2>";
     }
 }
 
