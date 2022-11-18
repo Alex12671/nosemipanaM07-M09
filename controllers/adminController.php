@@ -6,7 +6,12 @@ class adminController{
         $admin = new Admin();
         
         if ($admin->validateAdmin($_POST["nombre"], $_POST["password"])){
-            require_once "views/admin/panelAdmin.php";
+            if ($admin){
+                $_SESSION['rol']  = "admin";
+                $_SESSION['name'] = $_POST['nombre'];
+                ?> <meta http-equiv="refresh" content="0; url=index.php"> <?php
+            }
+    
         }
         else{
             echo "<h1> Nombre o contraseña incorrectos </h1>";
@@ -16,10 +21,19 @@ class adminController{
         }
         
     }
+    
+    //muestra las acciones que puede hacer el administrador
     public function logAdmin(){
+        require_once "models/admin.php";
+        $admin = new Admin();
+        $edit  = $admin->logAdmin();
         require_once "views/admin/logAdmin.php";
     }
-    
+
+    public function showAdminPanel() {
+        require_once "views/general/menu.php";
+        require_once "views/admin/panelAdmin.php";
+    }
 }
 ?>
 

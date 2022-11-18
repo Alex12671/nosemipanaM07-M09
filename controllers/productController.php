@@ -3,13 +3,12 @@
 class productController{
 
     public function showProducts() {
-        require_once "views/products/ShowProducts.php";
-
         require_once "models/product.php"; 
         $product = new Product();
-
+        
         $show = $product->ShowProducts();
         
+        require_once "views/products/ShowProducts.php";
     }
 
     public function AddProduct(){
@@ -19,6 +18,7 @@ class productController{
         // $allCategories = $catgories->getAllGenres();
         
         $add= $product->AddProduct(
+            $_POST["Id"],
             $_POST["Nombre"],
             $_POST["Descripcion"],
             $_POST["Genero"],
@@ -31,7 +31,7 @@ class productController{
             $_POST["Cantidad"],
         );
 
-        require_once "views/products/AddProducts.php";
+        require_once "views/admin/panelAdmin.php";
     }
     
     public function getProductEdit(){
@@ -86,6 +86,28 @@ class productController{
         $desactivate= $product->Desactivate($_GET['id']);
 
         require_once "views/admin/panelAdmin.php";
+    }
+
+    //muestra todos los libros en principal
+    public function showMain(){
+        require_once "models/product.php";
+        $product = new Product();
+        $show= $product->showMain();
+        require_once "views/products/showMain.php";
+    }
+
+    public function SearchProductsByCategory() {
+        require_once "models/product.php";
+        $product = new Product();
+        $filter = $product->ShowProductsByCategory($_GET['id']);
+        require_once "views/products/productFilter.php";
+    }
+
+    public function SearchProductsByName() {
+        require_once "models/product.php";
+        $product = new Product();
+        $filter = $product->ShowProductsByName($_POST['bookFilter']);
+        require_once "views/products/productFilter.php";
     }
 }
 ?>

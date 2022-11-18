@@ -1,4 +1,6 @@
-<form action='index.php?controller=product&action=EditProduct' method='POST'>
+<form class="editProduct" action='index.php?controller=product&action=EditProduct' method='POST'>
+    <h2>Modificar Producto</h2>
+</br>
     <input type='number' name='ID' value="<?php echo ($_GET['id']) ?>" hidden>
     <label>Nombre</label>         <input type='text' name='Nombre' required value="<?php echo ($_GET['name']) ?>"><br>
     <label>Descripcion</label>    <input type='text' name='Descripcion' required value="<?php echo ($_GET['desc']) ?>"><br>

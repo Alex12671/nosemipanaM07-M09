@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,12 +7,18 @@
     <title>Login</title>
 </head>
 <body>
-    <form action='index.php?controller=admin&action=validateAdmin' method='POST'>
-        <label>Usuario</label>
-        <input type='text' name='nombre'>
-        <label>Password</label>
-        <input type='password' name='password'>
-        <input type='submit' name='enviar'>
-    </form>
+    <div class="container">
+        <form class= "logIn" action='index.php?controller=admin&action=validateAdmin' method='POST'>
+            <label>Conexión de adminiatrador</label>
+            </br>    
+            <label>Usuario</label>
+            <input type='text' name='nombre'>
+            </br>
+            <label>Password</label>
+            <input type='password' name='password'>
+            </br>
+            <input type='submit' name='enviar'>
+        </form>
+    </div>
 </body>
 </html>
