@@ -75,9 +75,15 @@ class userController {
     public function EditUserProfile() {
         require_once "models/user.php";
         $user = new User();
-        $result = $user->SelectUserProfile($_SESSION['id']);
-        $editProfileArray = $result->fetch(PDO::FETCH_ASSOC);
-        require_once "views/users/userProfile.php";
+        $rows = $user->EditUserProfile($_SESSION['id'],$_POST['Nombre'],$_POST['Apellidos1'],$_POST['Apellidos2'],$_POST['Password'],$_POST['DNI'],$_POST['Email'],$_POST['Telefono'],$_POST['Calle'],$_POST['Número'],$_POST['CP'],$_POST['Piso'],$_POST['Ciudad'],$_POST['Provincia']);
+        require_once "views/users/editProfile.php";
+    }
+
+    public function DeactivateUserProfile() {
+        require_once "models/user.php";
+        $user = new User();
+        $result = $user->DeactivateUserProfile($_SESSION['id']);
+        require_once "views/users/deactivateUser.php";
     }
 }
 ?>

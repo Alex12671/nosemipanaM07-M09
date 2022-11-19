@@ -332,5 +332,11 @@ class User extends Database {
         }
         
     }
+
+    public function DeactivateUserProfile($id) {
+            $sql = "UPDATE clientes  SET Activo = 0 WHERE IdCliente='$id'";
+            $result = $this->db->query($sql);
+        
+    }
 }
 ?>

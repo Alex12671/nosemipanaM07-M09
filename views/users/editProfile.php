@@ -1,4 +1,11 @@
-<form class="editForm" action='index.php?controller=user&action=EditUserProfile' method='POST' ENCTYPE="multipart/form-data">
+
+<?php 
+if(isset($_POST['Provincia'])) {
+    echo "Usuario editado correctamente";
+    ?> <meta http-equiv="refresh" content="2; url=index.php?controller=user&action=ShowUserProfile"> <?php
+}
+else {?>
+    <form class="editForm" action='index.php?controller=user&action=EditUserProfile' method='POST' ENCTYPE="multipart/form-data">
             <label>Nombre</label>             <input type='text' name='Nombre'  value="<?php echo $editProfileArray['Nombre']; ?>" ><br>
             <label>1r apellido</label>        <input type='text' name='Apellidos1' value="<?php echo $editProfileArray['Apellido1']; ?>" ><br>
             <label>2do apellido</label>       <input type='text' name='Apellidos2' value="<?php echo $editProfileArray['Apellido2']; ?>" ><br>
@@ -13,5 +20,8 @@
             <label>Ciudad</label>             <input type='text' name='Ciudad' value="<?php echo $editProfileArray['Ciudad']; ?>" ><br>
             <label>Provincia</label>          <input type='text' name='Provincia' value="<?php echo $editProfileArray['Provincia']; ?>" ><br>
             <input type='submit' name='enviar'>
-</form> 
+    </form> 
     <a href="index.php?controller=user&action=ShowUserProfile">Volver a datos de mi cuenta</a><br/>
+<?php
+}
+?>

@@ -8,7 +8,7 @@
             }
         }
         ?> <a href="index.php?controller=user&action=ModifyUserProfile">Modificar perfil</a><br/>
-        <a href="index.php?controller=user&action=DeactivateUserProfile">Darse de baja</a><br/> <?php
+        <a href="index.php?controller=user&action=DeactivateUserProfile"> Darse de baja</a><br/> <?php
     ?>
 
     
