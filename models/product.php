@@ -178,7 +178,6 @@ class Product extends Database {
     function ShowProducts() {
         $sql = "SELECT * FROM producto";
         $result = $this->db->query($sql);
-        var_dump($result);
         return $result;
         
     }

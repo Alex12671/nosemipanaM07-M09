@@ -59,7 +59,10 @@ class categoryController{
             $_POST["Nombre"]    
         );
 
-        require_once "views/admin/panelAdmin.php";
+        //vuelve a la tabla de categorías
+        $category2 = new Category();
+        $show= $category2->showCategories();
+        require_once "views/categories/ShowCategories.php";
     }
 
     public function Activate(){
@@ -67,7 +70,10 @@ class categoryController{
         $category = new Category();
         $activate= $category->Activate($_GET['id']);
 
-        require_once "views/admin/panelAdmin.php";
+        //vuelve a la tabla de categorías
+        $category2 = new Category();
+        $show= $category2->showCategories();
+        require_once "views/categories/ShowCategories.php";
     }
 
     public function Desactivate(){
@@ -75,7 +81,10 @@ class categoryController{
         $category = new Category();
         $desactivate= $category->Desactivate($_GET['id']);
 
-        require_once "views/admin/panelAdmin.php";
+        //vuelve a la tabla de categorías
+        $category2 = new Category();
+        $show= $category2->showCategories();
+        require_once "views/categories/ShowCategories.php";
     }
 
     

@@ -31,7 +31,10 @@ class productController{
             $_POST["Cantidad"],
         );
 
-        require_once "views/admin/panelAdmin.php";
+        //vuelve a la tabla de productos
+        $product2 = new Product();
+        $show = $product2->ShowProducts();
+        require_once "views/products/ShowProducts.php"
     }
     
     public function getProductEdit(){
@@ -54,8 +57,10 @@ class productController{
             $_POST["Fecha_Entrada"],
             $_POST["Cantidad"],
         );
-
-        require_once "views/admin/panelAdmin.php";
+        //vuelve a la tabla de productos
+        $product2 = new Product();
+        $show = $product2->ShowProducts();
+        require_once "views/products/ShowProducts.php";
     }
 
     public function getEditImgForm(){
@@ -68,7 +73,10 @@ class productController{
         
         $edit= $product->EditImg($_POST["ID"],$_FILES["Imagenlibro"]);
 
-        require_once "views/admin/panelAdmin.php";
+        //vuelve a la tabla de productos
+        $product2 = new Product();
+        $show = $product2->ShowProducts();
+        require_once "views/products/ShowProducts.php";
 
     }
 
@@ -77,7 +85,10 @@ class productController{
         $product = new Product();
         $activate= $product->Activate($_GET['id']);
 
-        require_once "views/admin/panelAdmin.php";
+        //vuelve a la tabla de productos
+        $product2 = new Product();
+        $show = $product2->ShowProducts();
+        require_once "views/products/ShowProducts.php";
     }
 
     public function Desactivate(){
@@ -85,7 +96,10 @@ class productController{
         $product = new Product();
         $desactivate= $product->Desactivate($_GET['id']);
 
-        require_once "views/admin/panelAdmin.php";
+        //vuelve a la tabla de productos
+        $product2 = new Product();
+        $show = $product2->ShowProducts();
+        require_once "views/products/ShowProducts.php";
     }
 
     //muestra todos los libros en principal
