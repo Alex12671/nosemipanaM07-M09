@@ -59,7 +59,7 @@ class Order extends Database {
             return $result;
         }
         else if(isset($filtro['userSearch'])) {
-            $sql = "SELECT pedidos.IdPedido, pedidos.Precio_sin_IVA, pedidos.Precio_IVA, pedidos.Estado_Pedido, clientes.DNI FROM (pedidos INNER JOIN linea_pedido ON pedidos.IdPedido = linea_pedido.IdPedido) INNER JOIN clientes ON clientes.IdCliente = linea_pedido.IdCliente WHERE clientes.DNI LIKE '".$filtro['userSearch']."'";
+            $sql = "SELECT pedidos.IdPedido, pedidos.Precio_sin_IVA, pedidos.Precio_IVA, pedidos.Estado_Pedido, clientes.DNI FROM (pedidos INNER JOIN linea_pedido ON pedidos.IdPedido = linea_pedido.IdPedido) INNER JOIN clientes ON clientes.IdCliente = linea_pedido.IdCliente WHERE clientes.DNI LIKE '%".$filtro['userSearch']."%'";
             $result = $this->db->query($sql);
             return $result;
         }
