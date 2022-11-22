@@ -1,0 +1,396 @@
+/*general*/
+*{
+
+    padding: 0px;
+
+    margin: 0px;
+
+}
+
+body{
+    background:#f8f4d5;
+}
+
+.container{
+    min-height: 600px;
+    margin-top: 5%;
+}
+
+
+/*Forumalios*/
+
+
+/*
+input[type="text"],
+input[type="mail"],
+select,
+input[type="password"]{
+    border: 1px solid #c9c9c9;
+    box-shadow: 0px 0xp 2px #ccc inset;
+    background-color: white;
+    padding: 1px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: gray;
+    transition: all 300ms;
+}
+
+input[type="text"]:focus,
+input[type="mail"]:focus,
+select:focus,
+input[type="password"]:focus{
+    border:1px solid #f00909;
+    color: black;
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+button{
+    display: block;
+    border-radius: 2px;
+    width: 60px;
+    padding: 3px;
+    background-color: #f00909;
+    border:1px solid red;
+    cursor:pointer;
+}
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+button:hover{
+    box-shadow: 0px 0px 2px grey;
+}
+
+input[type="button"]:active,
+input[type="submit"]:active,
+input[type="reset"]:active,
+button:hover{
+    box-shadow: 0px 0px 3px grey inset;
+    text-shadow: 0px 0px 1px #ccc;
+}
+
+*/
+
+/*h2 de encabezados*/
+
+.encabezado{
+    text-align: center;
+    font-size: x-large;
+    margin:1%;
+}
+
+/*Tablas*/
+
+table{
+    width: 90%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    text-align: center;
+    background: white;
+    
+}
+
+th, td, tr{
+    border:2px solid black;
+    min-width: 2em;
+    max-width: 60px;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+    overflow:hidden;
+}
+
+th{
+    background:#333333;
+    color:white;
+}
+
+tr:nth-child(odd){
+    background-color: #b6b6b4;
+}
+
+
+.imageTable{
+    width: 40px;
+    height: 60px;
+}
+
+
+.clearfix{
+    float:none;
+    clear:both;
+}
+
+/* Header*/
+
+
+header{
+
+    min-width: 1024px;
+
+    width: 100%;
+
+    height: 250px;
+
+    margin: 0px auto;
+
+    background:#62625f ;
+
+}
+
+header a{
+
+    text-decoration: none;
+
+}
+
+.logotipo{
+
+    width: 770px;
+
+    margin: 0px auto;
+
+    padding-top: 20px;
+
+}
+
+.logotipo img{
+
+    display: block;
+
+    text-align: center;
+
+    margin: 0px auto;
+
+    height: 150px;
+
+}
+
+header h1{
+
+    text-align: center;
+
+    font-size: 40px;
+
+    color: white;
+
+    font-family: "nevis";
+
+    text-transform: uppercase;
+
+    letter-spacing: 4px;
+
+    margin-top: 10px;
+
+    text-shadow: 0px 2px 1px #333333;
+
+    transition: all 300ms;
+
+}
+
+header h1:hover{
+
+    text-shadow: 0px 2px 1px #333333, 0px 0px 4px #f00909;
+
+}
+
+header h1 a{
+
+    color: white;
+
+} 
+
+
+/* navegador*/
+
+.navegador{
+    width: 100%;
+
+    background-color: #333333;
+
+    color:white;
+
+    height: 40px;
+
+    font-family: sans-serif, Arial, Helvetica;
+
+    font-size: 14px;
+
+    box-shadow: 0px 0px 2px gray;
+
+    position: sticky;
+
+    top: 0px;
+
+}
+
+.navegador ul{
+
+    list-style: none;
+
+    text-decoration: none;
+
+    margin: 0px auto;
+
+    width: 1130px;
+
+}
+
+.navegador > ul > li{
+
+    line-height: 40px;
+
+    float: left;
+
+    border-right: 1px solid grey;
+
+    border-left: 1px solid grey;
+
+}
+
+.navegador > ul > li{
+
+    line-height: 40px;
+
+    float: left;
+
+    border-right: 1px solid grey;
+
+}
+
+.navegador > ul > li a{
+
+    display: block;
+
+    padding-left: 20px;
+
+    padding-right: 20px;
+
+    text-decoration: none;
+
+    color: white;
+
+}
+
+.navegador > ul > li:hover{
+
+    background-color: #b23135;
+
+    box-shadow: 0px 0px 4px red inset;
+
+    transition: all 300ms;
+
+}
+
+/*submenu*/
+.navegador > ul > li > ul{
+    display: none;
+    position: absolute;
+    color:white;
+    text-align: left;
+    width: 170px;
+    box-shadow: 0px 2px 2px grey;
+    z-index: 1;
+}
+
+.navegador > ul > li:hover > ul{
+    display: block;
+}
+
+.navegador > ul > li:hover > ul >li{
+    background-color: #333333;
+    border-bottom: 1px solid #d6d6d6;
+    padding: 8px;
+    line-height: 25px;
+    font-size: 13px;
+    transform: all 300ms;
+}
+
+.navegador > ul > li:hover > ul > li{
+    color:#666666;
+}
+
+.navegador > ul > li:hover > ul >li:hover{
+    background-color: #b23135;
+    transition: all 300ms;
+}
+
+
+/*imagenes generales*/
+.productImage{
+    height: 550px;
+    width: 366px;
+}
+
+/*formularios */
+.logIn, .editProduct, .editImage, .categoryTable, .category, .perfil {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid red;
+    border-radius: 15px;
+    background: white;
+}
+
+.libros{
+    text-align: center;
+    width: 33%;
+    float: left;
+    background: white;
+}
+
+/*footer*/
+footer{
+    width: 100%;
+    margin:0px auto;
+    margin-top: 40px;
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: sans-serif;
+    font-size: 14px;
+    box-shadow: 0px 0px 2px grey;
+    text-decoration: none;
+    text-align: center;
+}
+
+/*registro*/
+
+.columnas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+    
+.columna1 { grid-area: 1 / 1 / 2 / 2;}
+.columna2 { grid-area: 1 / 2 / 2 / 3;
+    margin-left: 20%;
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 0px;
+}
+    
+    .div1 { grid-area: 1 / 1 / 2 / 2; }
+    .div2 { grid-area: 2 / 1 / 3 / 2; }
+    .div3 { grid-area: 3 / 1 / 4 / 2; }
+    .div4 { grid-area: 4 / 1 / 5 / 2; }
+    .div5 { grid-area: 5 / 1 / 6 / 2; }
+    .div6 { grid-area: 1 / 2 / 2 / 3; }
+    .div7 { grid-area: 2 / 2 / 3 / 3; }
+    .div8 { grid-area: 3 / 2 / 4 / 3; }
+    .div9 { grid-area: 4 / 2 / 5 / 3; }
+    .div10 { grid-area: 5 / 2 / 6 / 3; }
