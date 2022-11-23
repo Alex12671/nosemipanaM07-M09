@@ -207,6 +207,11 @@ class Product extends Database {
         $result = $this->db->query($sql);
         return $result;
     }
-}
 
+    function searchProducts($nombre){
+        $sql = "SELECT * FROM producto WHERE Nombre LIKE '%$nombre%'";
+        $result = $this->db->query($sql);
+        return $result;
+    }
+}
 ?>
