@@ -1,6 +1,9 @@
 <div class="container">
     <div class="encabezado">
-        <h2>Administrar productos</h2>
+        <h2>Administrar productos</h2><br/>
+        <form action="index.php?controller=product&action=searchProducts" method="POST" id="searchProducts">
+            Buscar: <input type="text" id="searchField" name="searchField" onchange="this.form.submit()">
+        </form>
     </div>
     <?php
 
