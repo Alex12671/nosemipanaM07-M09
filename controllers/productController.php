@@ -130,5 +130,12 @@ class productController{
         $details = $product->ShowSelectedProduct($_GET['idProduct']);
         require_once "views/products/productDetails.php";
     }
+
+    public function searchProducts() {
+        require_once "models/product.php";
+        $product = new Product();
+        $show = $product->searchProducts($_POST['searchField']);
+        require_once "views/products/ShowProducts.php";
+    }
 }
 ?>
