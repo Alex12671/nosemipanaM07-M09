@@ -20,6 +20,7 @@
     echo "<th> Fecha </th>";
     echo "<th> Cantidad </th>";
     echo "<th> Liquidación </th>";
+    echo "<th> Estado </th>";
     echo "<th> Ed.prod </th>";
     echo "<th> Ed.img </th>";
     echo "<th> Mod. Estado </th>";
@@ -34,6 +35,9 @@
                 else {
                     if($value!=$data['Activo']){
                         echo "<td>$value</td>";
+                    }if($value==$data['Liquidacion']){
+                        echo "<td>$value</td>";
+                    }
                 }
                 
             }

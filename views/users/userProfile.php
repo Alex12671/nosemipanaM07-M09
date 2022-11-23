@@ -10,9 +10,13 @@
                 }
                 $i=$i+1;
             }
-            ?> <a href="index.php?controller=user&action=ModifyUserProfile">Modificar perfil</a><br/>
-            <a href="index.php?controller=user&action=DeactivateUserProfile"> Darse de baja</a><br/> <?php
             echo "</div>";
+            ?> </br>
+            <div class="profileImg">
+                <a href="index.php?controller=user&action=ModifyUserProfile"><img src='views/img/lapiz.png' width='60'></a>
+                <a href="index.php?controller=user&action=DeactivateUserProfile"> <img src='views/img/trash.png' width='60'></a><br/>
+            </div>
+            <?php
         ?>
     </div>
     
