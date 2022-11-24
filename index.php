@@ -43,7 +43,6 @@ else if(isset($_POST['denyCookies'])) {
     setCookie('aceptado','0',time() + (60 * 60 * 24 * 365));
 }
 
-
 if (isset($_GET['controller'])){
     $nombreController = $_GET['controller']."Controller";
 }
