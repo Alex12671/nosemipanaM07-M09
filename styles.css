@@ -1,9 +1,26 @@
+/*FUENTES*/
+@font-face {
+    font-family: "Roboto";
+    src: url("Fonts/Roboto/Roboto-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("Fonts/Poppins/Poppins-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
 /*general*/
 *{
 
     padding: 0px;
 
     margin: 0px;
+
+    font-family:Poppins-Regular;
 
 }
 
@@ -66,6 +83,7 @@ input[type="password"]:focus{
     text-align: center;
     font-size: x-large;
     margin:1%;
+    font-family:Roboto-Regular;
 }
 
 /*Tablas*/
@@ -470,7 +488,10 @@ padding-left: 20%; }
 .imgDetail{
     display:block;
     margin:auto; 
-    border:solid 3px black;   
+    border:solid 3px red;  
+    width: 30%;
+    height: 60%; 
+    margin-bottom: 2%;
 }
 
 .titledetail{
