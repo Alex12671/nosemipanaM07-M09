@@ -454,3 +454,19 @@ padding-left: 20%; }
 .profile25{ grid-area: 13 / 1 / 14 / 2;
     padding-left: 20%; }
 .profile26{ grid-area: 13 / 2 / 14 / 3; }
+
+.cookies {
+    margin-left:2%;
+    margin-top:-78%;
+    position:sticky;
+    top:350px;
+    width:30%;
+    background-color: gray;
+    padding:1%;
+    border-radius: 15px;
+}
+
+.cookie-img {
+    width:25%;
+    height:25%;
+}
