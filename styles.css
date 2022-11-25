@@ -457,16 +457,16 @@ padding-left: 20%; }
 
 .cookies {
     margin-left:2%;
-    margin-top:-78%;
+    margin-top:-20%;
     position:sticky;
-    top:350px;
-    width:30%;
+    top:40%;
+    width:27%;
     background-color: gray;
     padding:1%;
     border-radius: 15px;
 }
 
 .cookie-img {
-    width:25%;
-    height:25%;
+    width:20%;
+    height:20%;
 }
