@@ -156,10 +156,10 @@ class Product extends Database {
         $rows = $result->rowCount();
     }
 
-    function EditProduct($id, $name, $decription, $category, $author, $editorial, $pages, $price, $startingDate, $quantity){
+    function EditProduct($id, $name, $decription, $category, $author, $editorial, $pages, $price, $startingDate, $quantity, $settlement){
         $sql = "UPDATE producto SET Nombre= '".$name."', Descripcion= '".$decription."',Genero= '".$category."',Autor= '".$author."',
         Editorial= '".$editorial."',Paginas= '".$pages."',Precio= '".$price."',Fecha_Entrada= '".$startingDate."', 
-        Cantidad= '".$quantity."', Liquidacion= '0' WHERE IdProducto= '".$id."'";
+        Cantidad= '".$quantity."', Liquidacion= '".$settlement."' WHERE IdProducto= '".$id."'";
         $result = $this->db->query($sql);
     }
 

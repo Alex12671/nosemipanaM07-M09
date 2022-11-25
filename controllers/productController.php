@@ -56,6 +56,7 @@ class productController{
             $_POST["Precio"],
             $_POST["Fecha_Entrada"],
             $_POST["Cantidad"],
+            $_POST["Liquidacion"],
         );
         //vuelve a la tabla de productos
         $product2 = new Product();
