@@ -16,6 +16,16 @@
 require_once "autoload.php";
 require_once "views/general/cabecera.html";
 
+// unset cookies, use only when needed for tests
+/*if (isset($_SERVER['HTTP_COOKIE'])) {
+    $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
+    foreach($cookies as $cookie) {
+        $parts = explode('=', $cookie);
+        $name = trim($parts[0]);
+        setcookie($name, '', time()-1000);
+        setcookie($name, '', time()-1000, '/');
+    }
+}*/
 
 if ( isset($_SESSION['rol']) && $_SESSION['rol'] == "admin"){
     require_once "views/admin/panelAdmin.php";

@@ -8,12 +8,45 @@ while ($array = $details->fetch(PDO::FETCH_ASSOC)) {
     if(isset($_COOKIE['aceptado'])) {
         if($_COOKIE['aceptado'] == 1) {
             if(!isset($_COOKIE['lastVisitedBooks'])) {
-                setCookie('lastVisitedBooks[idProducto'.$array['IdProducto'].']',''.$array['IdProducto'].'',time() + (60 * 60 * 24 * 365));
+                $lastVisited = array
+                (
+                    0 => $array['IdProducto'],
+                );
+                $json = json_encode($lastVisited);
+                setcookie('lastVisitedBooks', $json,time() + (60 * 60 * 24 * 365));
             }
             else {
-                var_dump($_COOKIE);
-                    setCookie('lastVisitedBooks[idProducto'.$array['IdProducto'].']',''.$array['IdProducto'].'',time() + (60 * 60 * 24 * 365));
-                
+                $length = count(json_decode($_COOKIE['lastVisitedBooks'],true));
+                if($length == 3){
+                   $lastVisited = json_decode($_COOKIE['lastVisitedBooks'],true);
+                    if(!in_array($array['IdProducto'],$lastVisited)) {
+                        array_shift($lastVisited);
+                        array_push($lastVisited,$array['IdProducto']);
+                    }
+                    else {
+                        $clave = array_search($array['IdProducto'],$lastVisited);
+                        array_splice($lastVisited,$clave,1);
+                        array_push($lastVisited,$array['IdProducto']);
+                    }
+                    $json = json_encode($lastVisited);
+                    setcookie('lastVisitedBooks', $json,time() + (60 * 60 * 24 * 365));
+                }
+                else if($length > 1) {
+                    $lastVisited = json_decode($_COOKIE['lastVisitedBooks'],true);
+                    if(!in_array($array['IdProducto'],$lastVisited)) {
+                        array_push($lastVisited,$array['IdProducto']);
+                    }
+                    $json = json_encode($lastVisited);
+                    setcookie('lastVisitedBooks', $json,time() + (60 * 60 * 24 * 365));
+                }
+                else {
+                    $lastVisited = json_decode($_COOKIE['lastVisitedBooks'],true);
+                    if(!in_array($array['IdProducto'],$lastVisited)) {
+                        array_push($lastVisited,$array['IdProducto']);
+                    }
+                    $json = json_encode($lastVisited);
+                    setcookie('lastVisitedBooks', $json,time() + (60 * 60 * 24 * 365));
+                }
             }
         }
     }
