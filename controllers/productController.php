@@ -108,6 +108,14 @@ class productController{
         require_once "models/product.php";
         $product = new Product();
         $show= $product->showMain();
+        if(isset($_COOKIE['lastVisitedBooks'])) {
+            $lastBooks = array();
+            $product2 = new Product();
+            $lastVisited = json_decode($_COOKIE['lastVisitedBooks'],true);
+            foreach($lastVisited as $data => $value) {
+                array_push($lastBooks,$product2->ShowSelectedProduct($value));
+            }
+        }
         require_once "views/products/showMain.php";
     }
 
