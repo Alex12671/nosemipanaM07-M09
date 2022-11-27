@@ -23,12 +23,14 @@
     }
 
     ?>
+
+<div class="clearfix"></div>
     <br/>
 
 <div class="container">
     <div class ="mainPage">
         <?php
-        
+        echo "<h2 class='lastVisitedSection' >Novedades</h2>";
         while ($array = $show->fetchAll(PDO::FETCH_ASSOC)) {
             foreach($array as $data) {
                 echo "<section class='libros'>";
