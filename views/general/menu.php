@@ -10,6 +10,7 @@
                             echo "<li><a href='index.php?controller=product&action=SearchProductsByCategory&id=".$value['IdGenero']."'>".$value['Nombre']."</a></li>";
                        }
                     }
+                    echo "<li><a href='index.php?controller=product&action=showSales'>Ofertas</a></li>";
                 ?>
             </ul>
         </li>

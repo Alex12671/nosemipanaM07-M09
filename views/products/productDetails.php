@@ -8,7 +8,15 @@
             echo "<h3>".$array['Descripcion']."</h3>";
             echo "</div>";
             echo "<div class='precio'>";
-            echo "<h2>".$array['Precio']."€</h2>";
+            if($array['Liquidacion']==0){
+                $precio = number_format($array['Precio'],2);
+                echo "<h2>$precio €</h2>";
+            }
+            else if($array['Liquidacion']==1){
+                $precio=$array['Precio']*0.90;
+                $precio=number_format($precio,2);
+                echo "<h2>$precio €</h2>";
+            }
             echo "<h2><a href='index.php?controller=product&action=AddProductToCart' >Añadir al carro</a></h2>";
             echo "</div>";
             if(isset($_COOKIE['aceptado'])) {
