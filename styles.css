@@ -357,11 +357,17 @@ header h1 a{
     background: white;
 }
 
+/*main*/
+
 .libros{
     text-align: center;
     width: 33%;
     float: left;
     background: white;
+}
+
+.internaMain{
+    padding-bottom: 5%;
 }
 
 /*footer*/

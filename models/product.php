@@ -185,7 +185,7 @@ class Product extends Database {
     }
 
     function showMain() {
-        $sql = "SELECT IdProducto, nombre, Imagenlibro, Precio FROM producto where Activo like 'a' ORDER BY Fecha_Entrada DESC LIMIT 12";
+        $sql = "SELECT IdProducto, nombre, Imagenlibro, Precio, Liquidacion FROM producto where Activo like 'a' ORDER BY Fecha_Entrada DESC LIMIT 12";
         $result = $this->db->query($sql);
         return $result;
     }
@@ -210,6 +210,12 @@ class Product extends Database {
 
     function searchProducts($nombre){
         $sql = "SELECT * FROM producto WHERE Nombre LIKE '%$nombre%'";
+        $result = $this->db->query($sql);
+        return $result;
+    }
+
+    function showSales() {
+        $sql = "SELECT * FROM producto WHERE Liquidacion = 1";
         $result = $this->db->query($sql);
         return $result;
     }

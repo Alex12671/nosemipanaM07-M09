@@ -146,5 +146,11 @@ class productController{
         $show = $product->searchProducts($_POST['searchField']);
         require_once "views/products/ShowProducts.php";
     }
+    public function showSales() {
+        require_once "models/product.php";
+        $product = new Product();
+        $filter = $product->showSales();
+        require_once "views/products/productFilter.php";
+    }
 }
 ?>
