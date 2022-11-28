@@ -2,7 +2,8 @@
     <div class="detail">
         <?php
         while ($array = $details->fetch(PDO::FETCH_ASSOC)) {
-            echo "<img class='imgDetail' src=".$array['Imagenlibro']."></img>";
+            echo "<div class='image'><img class='imgDetail' src=".$array['Imagenlibro']."></img></div>";
+            echo "<div class='rest'>";
             echo "<h2 class='encabezado titledetail'>".$array['Nombre']."</h2>";
             echo "<div class='descripcion'>";
             echo "<h3>".$array['Descripcion']."</h3>";
@@ -19,6 +20,8 @@
             }
             echo "<h2><a href='index.php?controller=product&action=AddProductToCart' >Añadir al carro</a></h2>";
             echo "</div>";
+            echo "</div>";
+           
             if(isset($_COOKIE['aceptado'])) {
                 if($_COOKIE['aceptado'] == 1) {
                     if(!isset($_COOKIE['lastVisitedBooks'])) {

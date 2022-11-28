@@ -503,13 +503,29 @@ padding-left: 20%; }
 
 /*ficha libro*/
 
+.detail {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 15px;
+    grid-row-gap: 0px;
+}
+
+.image { grid-area: 1 / 1 / 2 / 2; }
+
+.rest { 
+    grid-area: 1 / 2 / 2 / 3;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .imgDetail{
-    display:block;
     margin:auto; 
     border:solid 3px red;  
-    width: 30%;
-    height: 60%; 
-    margin-bottom: 2%;
+    width: 60%;
+    height: 100%;
 }
 
 .titledetail{
@@ -517,17 +533,16 @@ padding-left: 20%; }
 }
 .descripcion{
     text-align:center;
-    max-width: 1000px;
-    display:block;
+    max-width: 800px;
     margin:auto;
-    padding: 30px;
+    align-self: start;
     border:solid 3px red;
     background: white;
+    padding: 2%;
 }
 
 .precio{
     text-align:center;
-    margin-top: 2%;
 }
 
 /*cookies*/
