@@ -6,7 +6,7 @@
         </form>
     </div>
     <?php
-
+    echo "\'";
     echo "<table class='showProducts' cellspacing = 10>";
     echo "<th> ID </th>";
     echo "<th> Nombre </th>";
@@ -34,6 +34,7 @@
                 else {
                     if($value!=$data['Activo']){
                         echo "<td>$value</td>";
+                    }
                 }
                 
             }

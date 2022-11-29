@@ -23,7 +23,7 @@
         <label>Precio</label>         <input type='number' name='Precio' required value="<?php echo ($_GET['price']) ?>"><br>
         <label>Fecha_Entrada</label>  <input type='date' name='Fecha_Entrada' required value="<?php echo ($_GET['date']) ?>"><br>
         <label>Cantidad</label>       <input type='number' name='Cantidad' required value="<?php echo ($_GET['quantity']) ?>"><br>
-        <input type='submit' name='enviar'>
+        <input class="button" type='submit' name='enviar'>
     </form>
 </div>
 
