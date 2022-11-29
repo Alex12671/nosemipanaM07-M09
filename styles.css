@@ -57,14 +57,25 @@ input[type="password"]:focus{
     color: black;
 }
 
+.button{
+    display: block;
+    border-radius: 10px;
+    width: 60px;
+    padding: 3px;
+    cursor:pointer;
+    border:1px solid #ccc;
+}
+
 .button:hover{
     display: block;
-    border-radius: 2px;
+    border-radius: 10px;
     width: 60px;
     padding: 3px;
     background-color: #f00909;
     border:1px solid red;
     cursor:pointer;
+    transition: all 300ms;
+    color:white;
 }
 
 .button:hover{
@@ -84,6 +95,17 @@ input[type="password"]:focus{
     font-size: x-large;
     margin:1%;
     font-family:Roboto-Regular;
+}
+
+
+/*texto error login*/
+
+.loginFail {
+    color:white;
+    background-color:  #CE4B4B;
+    margin-top:5%;
+    padding:2%;
+    border-radius: 10px;;
 }
 
 /*encabezados en main page*/
@@ -355,16 +377,6 @@ header h1 a{
     border: 3px solid red;
     border-radius: 15px;
     background: white;
-}
-
-/*texto error login*/
-
-.loginFail {
-    color:white;
-    background-color:  #CE4B4B;
-    margin-top:5%;
-    padding:2%;
-    border-radius: 10px;;
 }
 
 /*main*/
