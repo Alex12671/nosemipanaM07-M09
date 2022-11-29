@@ -19,6 +19,6 @@
         <label>Precio</label>         <input step="any" type='number' name='Precio' required><br>
         <label>Fecha_Entrada</label>  <input type='date' name='Fecha_Entrada' required><br>
         <label>Cantidad</label>       <input type='number' name='Cantidad' required><br>
-        <input type='submit' name='enviar'>
+        <input class="button" type='submit' name='enviar'>
     </form>
 </div>

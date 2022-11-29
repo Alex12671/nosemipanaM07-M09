@@ -6,7 +6,7 @@
         </form>
     </div>
     <?php
-
+    echo "\'";
     echo "<table class='showProducts' cellspacing = 10>";
     echo "<th> ID </th>";
     echo "<th> Nombre </th>";
