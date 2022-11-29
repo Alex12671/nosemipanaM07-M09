@@ -34,6 +34,7 @@
                 else {
                     if($value!=$data['Activo']){
                         echo "<td>$value</td>";
+                    }
                 }
                 
             }
