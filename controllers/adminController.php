@@ -14,9 +14,8 @@ class adminController{
     
         }
         else{
-            echo "<h1> Nombre o contraseña incorrectos </h1>";
             ?>
-                <meta http-equiv="refresh" content="2; url=index.php?controller=admin&action=logAdmin">
+                <meta http-equiv="refresh" content="0; url=index.php?controller=admin&action=logAdmin&loginFailed=1">
             <?php
         }
         

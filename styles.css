@@ -357,6 +357,16 @@ header h1 a{
     background: white;
 }
 
+/*texto error login*/
+
+.loginFail {
+    color:white;
+    background-color:  #CE4B4B;
+    margin-top:5%;
+    padding:2%;
+    border-radius: 10px;;
+}
+
 /*main*/
 
 .libros{
