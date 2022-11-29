@@ -301,6 +301,22 @@ header h1 a{
 }
 
 /*submenu*/
+
+.cartIcon {
+    width:45px;
+    height:40px;
+    margin-left:3%;
+}
+
+.cartMenu {
+    line-height: 25px;
+    height:40px;
+}
+
+.cartMenu > a {
+    color:black;
+}
+
 .navegador > ul > li > ul{
     display: none;
     position: absolute;
@@ -355,6 +371,16 @@ header h1 a{
     border: 3px solid red;
     border-radius: 15px;
     background: white;
+}
+
+/*texto error login*/
+
+.loginFail {
+    color:white;
+    background-color:  #CE4B4B;
+    margin-top:5%;
+    padding:2%;
+    border-radius: 10px;;
 }
 
 /*main*/
@@ -543,6 +569,38 @@ padding-left: 20%; }
 
 .precio{
     text-align:center;
+    padding-bottom: 3%;
+}
+
+.addToCart {
+    padding: 10px 30px 10px 30px;
+    background-color: #FF81AE;
+    text-decoration: none;
+    color:white;
+    border-radius: 5px;
+}
+
+.addToCart:hover {
+    background-color:  #CC678B;
+}
+
+.noStock {
+    padding: 10px 30px 10px 30px;
+    background-color: #FF81AE;
+    text-decoration: none;
+    color:white;
+    border-radius: 5px;
+    cursor: not-allowed;
+}
+
+.noStock:hover {
+    background-color:  #CC678B;
+}
+
+.addCartIcon {
+    display: inline-block;
+    vertical-align: middle;
+    padding-bottom:2%;
 }
 
 /*cookies*/

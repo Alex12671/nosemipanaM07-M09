@@ -38,6 +38,7 @@
             <input type='submit' value='Buscar'/>
         </form>
     </li>
+    <li class="cartMenu" > <a href="uwu.php" > <img class="cartIcon" src="img/cart.png" > </a> </li>
     </ul>
 </nav>
 
