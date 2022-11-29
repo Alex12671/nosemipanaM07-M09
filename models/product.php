@@ -145,7 +145,7 @@ class Product extends Database {
             $nombreImg= str_replace(" ", "-", $_FILES['Imagenlibro']['name']);
             $nombreDirectorio = "views/img/";
             $idUnico = $id;
-            $nombreFichero = $idUnico . "-" .$nombreImg;
+            $nombreFichero = $idUnico . "-" . $nombreImg;
             $directorio= $nombreDirectorio . $nombreFichero;
             move_uploaded_file ($_FILES['Imagenlibro']['tmp_name'], $nombreDirectorio . $nombreFichero);
         }
@@ -167,10 +167,13 @@ class Product extends Database {
         if (is_uploaded_file ($_FILES['Imagenlibro']['tmp_name']))
         {
             $nombreImg= str_replace(" ", "-", $_FILES['Imagenlibro']['name']);
+            $nombreImg2= htmlspecialchars($nombreImg, ENT_QUOTES, "UTF-8");
+
             $nombreDirectorio = "views/img/";
             $idUnico = $id;
-            $nombreFichero = $idUnico . "-" .$nombreImg;
-            $directorio= $nombreDirectorio . $nombreFichero;
+            $nombreFichero = $idUnico . "-" . $nombreImg;
+            $nombreFichero2 = $idUnico . "-" . $nombreImg2;
+            $directorio= $nombreDirectorio . $nombreFichero2;
             move_uploaded_file ($_FILES['Imagenlibro']['tmp_name'], $nombreDirectorio . $nombreFichero);
         }
         $sql = "UPDATE producto SET Imagenlibro= '".$directorio."' WHERE IdProducto= '".$id."'";
