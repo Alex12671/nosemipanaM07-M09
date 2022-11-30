@@ -12,7 +12,7 @@ class userController {
         if(isset($_POST['Nombre'])) {
             if($rows == 1) {
                 echo "Usuario registrado correctamente";  
-                ?><meta http-equiv="refresh" content="0; url=http://localhost/nosemipanaM07-M09-reprueba"> <?php  
+                ?><meta http-equiv="refresh" content="2; url=http://localhost/nosemipanaM07-M09-reprueba"> <?php  
             }
             else {
                 echo "Jaja no funsiona";

@@ -8,12 +8,6 @@
         <label>Password</label>
         <input type='password' name='password' required>
         </br>
-        <input type='submit' name='enviar'>
-        <?php
-            if(isset($_GET['loginFailed']) && $_GET['loginFailed'] == 1) {
-                echo "<p class='loginFail'> El usuario o contraseña introducido son incorrectos</p>";
-            } 
-        
-        ?>
+        <input class='button' type='submit' name='enviar'>
     </form>
 </div>

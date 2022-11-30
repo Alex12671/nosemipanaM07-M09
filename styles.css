@@ -36,9 +36,12 @@ body{
 /*Forumalios*/
 
 input[type="text"],
+input[type="number"],
 input[type="mail"],
 select,
-input[type="password"]{
+input[type="password"],
+input[type="date"],
+input[type="file"]:focus{
     border: 1px solid #c9c9c9;
     box-shadow: 0px 0xp 2px #ccc inset;
     background-color: white;
@@ -47,24 +50,39 @@ input[type="password"]{
     padding-bottom: 2px;
     color: gray;
     transition: all 300ms;
+    border-radius: 10px;
 }
 
 input[type="text"]:focus,
 input[type="mail"]:focus,
+input[type="number"]:focus,
 select:focus,
-input[type="password"]:focus{
+input[type="password"]:focus,
+input[type="date"]:focus,
+input[type="file"]:focus{
     border:1px solid #f00909;
     color: black;
 }
 
+.button{
+    display: block;
+    border-radius: 10px;
+    width: 60px;
+    padding: 3px;
+    cursor:pointer;
+    border:1px solid #ccc;
+}
+
 .button:hover{
     display: block;
-    border-radius: 2px;
+    border-radius: 10px;
     width: 60px;
     padding: 3px;
     background-color: #f00909;
     border:1px solid red;
     cursor:pointer;
+    transition: all 300ms;
+    color:white;
 }
 
 .button:hover{
@@ -84,6 +102,17 @@ input[type="password"]:focus{
     font-size: x-large;
     margin:1%;
     font-family:Roboto-Regular;
+}
+
+
+/*texto error login*/
+
+.loginFail {
+    color:white;
+    background-color:  #CE4B4B;
+    margin-top:5%;
+    padding:2%;
+    border-radius: 10px;;
 }
 
 /*encabezados en main page*/
@@ -301,22 +330,6 @@ header h1 a{
 }
 
 /*submenu*/
-
-.cartIcon {
-    width:45px;
-    height:40px;
-    margin-left:3%;
-}
-
-.cartMenu {
-    line-height: 25px;
-    height:40px;
-}
-
-.cartMenu > a {
-    color:black;
-}
-
 .navegador > ul > li > ul{
     display: none;
     position: absolute;
@@ -371,16 +384,6 @@ header h1 a{
     border: 3px solid red;
     border-radius: 15px;
     background: white;
-}
-
-/*texto error login*/
-
-.loginFail {
-    color:white;
-    background-color:  #CE4B4B;
-    margin-top:5%;
-    padding:2%;
-    border-radius: 10px;;
 }
 
 /*main*/
@@ -524,8 +527,11 @@ padding-left: 20%; }
     padding-left: 20%; }
 .profile24{ grid-area: 12 / 2 / 13 / 3; }
 .profile25{ grid-area: 13 / 1 / 14 / 2;
-    padding-left: 20%; }
-.profile26{ grid-area: 13 / 2 / 14 / 3; }
+    padding-left: 20%;
+}
+.profile26{ grid-area: 13 / 2 / 14 / 3;
+    margin:0 auto; 
+}
 
 /*ficha libro*/
 
@@ -569,38 +575,6 @@ padding-left: 20%; }
 
 .precio{
     text-align:center;
-    padding-bottom: 3%;
-}
-
-.addToCart {
-    padding: 10px 30px 10px 30px;
-    background-color: #FF81AE;
-    text-decoration: none;
-    color:white;
-    border-radius: 5px;
-}
-
-.addToCart:hover {
-    background-color:  #CC678B;
-}
-
-.noStock {
-    padding: 10px 30px 10px 30px;
-    background-color: #FF81AE;
-    text-decoration: none;
-    color:white;
-    border-radius: 5px;
-    cursor: not-allowed;
-}
-
-.noStock:hover {
-    background-color:  #CC678B;
-}
-
-.addCartIcon {
-    display: inline-block;
-    vertical-align: middle;
-    padding-bottom:2%;
 }
 
 /*cookies*/

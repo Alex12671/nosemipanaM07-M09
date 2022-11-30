@@ -34,9 +34,9 @@
                     <div class="profile22"><input type='number' name='Piso' min="1" max="99" value="<?php echo $editProfileArray['Piso']; ?>" ></div>
                     <div class="profile23"><label>Ciudad</label></div>
                     <div class="profile24"><input type='text' name='Ciudad' value="<?php echo $editProfileArray['Ciudad']; ?>" ></div>
-                    <div class="profile23"><label>Provincia</label></div>
-                    <div class="profile24"> <input type='text' name='Provincia' value="<?php echo $editProfileArray['Provincia']; ?>" ></div>
-                    <input type='submit' name='enviar'>
+                    <div class="profile25"><label>Provincia</label></div>
+                    <div class="profile26"> <input type='text' name='Provincia' value="<?php echo $editProfileArray['Provincia']; ?>" ></div>
+                    <input class="button" type='submit' name='enviar'>
                     <a href="index.php?controller=user&action=ShowUserProfile"><img src='views/img/flecha.png' width='60'></a>
                 </div>
             </form> 

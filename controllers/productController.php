@@ -152,27 +152,5 @@ class productController{
         $filter = $product->showSales();
         require_once "views/products/productFilter.php";
     }
-
-    public function AddProductToCart() {
-        require_once "models/product.php";
-        $product = new Product();
-        $details = $product->ShowSelectedProduct($_GET['id']);
-        $array = $details->fetch(PDO::FETCH_ASSOC);
-        if(!isset($_SESSION['Cart'][$_GET['id']])) {
-            $_SESSION['Cart'][$_GET['id']] = array(
-                "Quantity" => 1,
-                "Price" => $array['Precio'],
-            );
-        }
-        else {
-            $_SESSION['Cart'][$_GET['id']]['Quantity']++;
-            $_SESSION['Cart'][$_GET['id']]['Price'] = $_SESSION['Cart'][$_GET['id']]['Price'] + $array['Precio'];
-        }
-        ?><meta http-equiv="refresh" content="0; url=index.php?controller=product&action=ShowProductDetails&idProduct=<?php echo $array['IdProducto']; ?>"> <?php  
-    }
-
-    public function ShowCart() {
-        require "views/products/showCart.php";
-    }
 }
 ?>
