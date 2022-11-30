@@ -12,7 +12,7 @@
             echo "<option value= 'Enviado'> Enviado </option>";
             echo "<option value= 'Entregado'> Entregado </option>";
             echo "</select></br>";
-            echo "</br><input class='button' type='submit' name='enviar'>";
+            echo "</br><input type='submit' name='enviar'>";
         echo "</form>";
     ?>
 </div>
