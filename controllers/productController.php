@@ -162,6 +162,7 @@ class productController{
             $_SESSION['Cart'][$_GET['id']] = array(
                 "Quantity" => 1,
                 "Price" => $array['Precio'],
+           
             );
         }
         else {
@@ -172,7 +173,20 @@ class productController{
     }
 
     public function ShowCart() {
-        require "views/products/showCart.php";
+        require_once "models/product.php";
+        $product = new Product();
+        $cart = array();
+        foreach($_SESSION['Cart'] as $data => $value) {
+
+            array_push($cart,$product->ShowSelectedProduct($data));
+        }
+        
+        require_once "views/products/showCart.php";
+    }
+
+    public function ConfirmOrder() {
+        require_once "models/order.php";
+        $pedido = new Order();
     }
 }
 ?>
