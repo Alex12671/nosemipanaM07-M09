@@ -1,6 +1,6 @@
 <?php
 //política de cookies
-if(!isset($_COOKIE['PHPSESSID'])) {
+if(!isset($_COOKIE['aceptado'])) {
     echo "<div class='cookies'>";
     echo "<img src='img/cookie.png' class='cookie-img'></img>";
     echo "<h2>Desea aceptar nuestra política de cookies?</h2><br>";

@@ -18,10 +18,19 @@
                 $precio=number_format($precio,2);
                 echo "<h2>$precio €</h2>";
             }
-            echo "<h2><a href='index.php?controller=product&action=AddProductToCart' >Añadir al carro</a></h2>";
+            echo "</div>";
+            echo "<div class='cart'>";
+            if($array['Cantidad'] > 0) {
+                echo "<h2><a class='addToCart' href='index.php?controller=product&action=AddProductToCart&id=".$array['IdProducto']."' ><img class='addCartIcon' src='img/cart.png' style=width:30px; height:30px; > AÑADIR AL CARRO</a></h2>";    
+            }
+            else {
+                echo "<h2><a class='noStock'  ><img src='img/cart.png' style=width:30px; height:30px; > AÑADIR AL CARRO</a></h2>";
+            }
             echo "</div>";
             echo "</div>";
            
+            //cookies//
+            
             if(isset($_COOKIE['aceptado'])) {
                 if($_COOKIE['aceptado'] == 1) {
                     if(!isset($_COOKIE['lastVisitedBooks'])) {
@@ -68,6 +77,7 @@
                 }
             }
         }
+        var_dump($_SESSION);
         ?>
     </div>
 </div>

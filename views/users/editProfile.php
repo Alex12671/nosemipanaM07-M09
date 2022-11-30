@@ -36,6 +36,7 @@
                     <div class="profile24"><input type='text' name='Ciudad' value="<?php echo $editProfileArray['Ciudad']; ?>" ></div>
                     <div class="profile25"><label>Provincia</label></div>
                     <div class="profile26"> <input type='text' name='Provincia' value="<?php echo $editProfileArray['Provincia']; ?>" ></div>
+                    
                     <input class="button" type='submit' name='enviar'>
                     <a href="index.php?controller=user&action=ShowUserProfile"><img src='views/img/flecha.png' width='60'></a>
                 </div>
