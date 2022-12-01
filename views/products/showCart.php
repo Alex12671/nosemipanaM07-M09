@@ -1,10 +1,16 @@
 <div class="container">
     <div class="cart">
         <?php 
+        if(isset($_SESSION['Cart']) || !empty($_SESSION['Cart'])) {
             if(isset($_POST['quantity'])) {
                 $precioUnitario = $_SESSION['Cart'][$_GET['id']]['Price'] / $_SESSION['Cart'][$_GET['id']]['Quantity'];
                 $_SESSION['Cart'][$_GET['id']]['Price'] = $precioUnitario * $_POST['quantity'];
                 $_SESSION['Cart'][$_GET['id']]['Quantity'] = $_POST['quantity'];
+                $_SESSION['TotalQuantity'] = 0;
+            foreach($_SESSION['Cart'] as $data) {
+                
+                $_SESSION['TotalQuantity'] += $data['Quantity']; 
+            }
             }
             foreach($cart as $data) {
                 $array = $data->fetch(PDO::FETCH_ASSOC);
@@ -16,7 +22,7 @@
                         echo "<p>".$array['Nombre']."</p>";
                         echo "<p>".$array['Autor']."</p>";
                         echo "<form method='POST' action='index.php?controller=product&action=ShowCart&id=".$array['IdProducto']."'>";
-                        echo "<input type='number' name='quantity' min=1 value=".$_SESSION['Cart'][$array['IdProducto']]['Quantity']." onchange='this.form.submit()'></p>";
+                        echo "<input type='number' name='quantity' min=1 value=".$_SESSION['Cart'][$array['IdProducto']]['Quantity']." onchange='this.form.submit();window.location.reload()'></p>";
                         echo "</form>";
                         echo "<p>".$_SESSION['Cart'][$array['IdProducto']]['Price']."€</p>";
                     echo "</div>";
@@ -41,11 +47,18 @@
                 echo "<hr/>";
                 echo "<p>Total: ".$total + 4.99."€ </p>";
             }
-
             ?>
             <form action="index.php?controller=product&action=ConfirmOrder" method="POST">
                 <button class="addToCart"> FINALIZAR COMPRA </button>
             </form>
         </div>
+        <?php
+        }
+        else {
+            echo "<p>The cart is fulln't</p>";
+        }
+        ?>
+
+            
     </div>
 </div>

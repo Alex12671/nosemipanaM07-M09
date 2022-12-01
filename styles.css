@@ -302,6 +302,21 @@ header h1 a{
 
 /*submenu*/
 
+.numberOfArticles {
+    display:inline-block;
+    border-radius:50%;
+    width:20px;
+    line-height: 22px;
+    height:20px;
+    padding:3px;
+    background: white;
+    text-align:center;
+    color:black;
+    font-weight: bold;
+    font-size:16px;
+
+}
+
 .cartIcon {
     width:45px;
     height:40px;

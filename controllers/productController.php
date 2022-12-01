@@ -159,16 +159,19 @@ class productController{
         $details = $product->ShowSelectedProduct($_GET['id']);
         $array = $details->fetch(PDO::FETCH_ASSOC);
         if(!isset($_SESSION['Cart'][$_GET['id']])) {
+            $_SESSION['TotalQuantity'] = 1;
             $_SESSION['Cart'][$_GET['id']] = array(
                 "Quantity" => 1,
                 "Price" => $array['Precio'],
-           
+                
             );
         }
         else {
             $_SESSION['Cart'][$_GET['id']]['Quantity']++;
             $_SESSION['Cart'][$_GET['id']]['Price'] = $_SESSION['Cart'][$_GET['id']]['Price'] + $array['Precio'];
+            $_SESSION['TotalQuantity']++;
         }
+       
         ?><meta http-equiv="refresh" content="0; url=index.php?controller=product&action=ShowProductDetails&idProduct=<?php echo $array['IdProducto']; ?>"> <?php  
     }
 
@@ -176,10 +179,12 @@ class productController{
         require_once "models/product.php";
         $product = new Product();
         $cart = array();
-        foreach($_SESSION['Cart'] as $data => $value) {
-
-            array_push($cart,$product->ShowSelectedProduct($data));
+        if(isset($_SESSION['Cart'])) {
+            foreach($_SESSION['Cart'] as $data => $value) {
+                array_push($cart,$product->ShowSelectedProduct($data));
+            }
         }
+        
         
         require_once "views/products/showCart.php";
     }
