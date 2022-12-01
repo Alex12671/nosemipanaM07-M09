@@ -398,6 +398,16 @@ header h1 a{
     border-radius: 10px;;
 }
 
+/*texto error usuario no validado al comprar*/
+
+.validateFail {
+    color:white;
+    background-color:  #CE4B4B;
+    margin-top:5%;
+    padding:2%;
+    border-radius: 10px;;
+}
+
 /*main*/
 
 .libros{
@@ -672,6 +682,57 @@ input[type=number]::-webkit-inner-spin-button {
     opacity: 1;
 }
 
+
+
+/*página de compra*/
+
 .orderLine {
-    width:20%;
+    width:25%;
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-row-gap: 0px;
+}
+
+.separator {
+    width:25%;
+    margin-bottom:1%;
+    margin-top:1%;
+}
+
+.summarySeparator {
+    width:50%;
+    margin-bottom:1%;
+    margin-top:1%;
+}
+
+.bookTitle {
+    font-weight:bolder;
+    text-transform: uppercase;
+}
+
+.bookAuthor {
+    color:gray;
+    text-transform: uppercase;
+}
+
+.linePrice {
+    margin-top:2%;
+    font-weight: bold;
+    font-size:20px;
+}
+
+.totalPrice {
+    font-weight: bold;
+}
+.emptyCart {
+    padding: 10px 30px 10px 30px;
+    background-color: #E50F00;
+    text-decoration: none;
+    color:white;
+    border-radius: 5px;
+}
+
+.emptyCart:hover {
+    background-color: #A00A00;
 }

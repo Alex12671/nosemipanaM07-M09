@@ -158,13 +158,16 @@ class productController{
         $product = new Product();
         $details = $product->ShowSelectedProduct($_GET['id']);
         $array = $details->fetch(PDO::FETCH_ASSOC);
+        if(!isset($_SESSION['TotalQuantity'])) {
+            $_SESSION['TotalQuantity'] = 0;
+        }
         if(!isset($_SESSION['Cart'][$_GET['id']])) {
-            $_SESSION['TotalQuantity'] = 1;
             $_SESSION['Cart'][$_GET['id']] = array(
                 "Quantity" => 1,
                 "Price" => $array['Precio'],
                 
             );
+            $_SESSION['TotalQuantity']++;
         }
         else {
             $_SESSION['Cart'][$_GET['id']]['Quantity']++;
@@ -191,7 +194,17 @@ class productController{
 
     public function ConfirmOrder() {
         require_once "models/order.php";
-        $pedido = new Order();
+        if(isset($_SESSION['rol']) && $_SESSION['rol'] == "comprador") {
+            $pedido = new Order();
+        }
+        else {
+            ?><meta http-equiv="refresh" content="0; url=index.php?controller=user&action=logUser&orderFailed=1"> <?php  
+        }
+    }
+    public function EmptyCart() {
+        unset($_SESSION['Cart']);
+        unset($_SESSION['TotalQuantity']);
+        ?><meta http-equiv="refresh" content="0; url=index.php?controller=product&action=ShowMain"> <?php  
     }
 }
 ?>

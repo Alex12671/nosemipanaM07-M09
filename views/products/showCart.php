@@ -19,15 +19,15 @@
                         echo "<img src='".$array['Imagenlibro']."' style=width:150px; height:150px; >";
                     echo "</div>";
                     echo "<div class='orderLineDetails'>";
-                        echo "<p>".$array['Nombre']."</p>";
-                        echo "<p>".$array['Autor']."</p>";
+                        echo "<p class='bookTitle'>".$array['Nombre']."</p>";
+                        echo "<p class='bookAuthor'>".$array['Autor']."</p>";
                         echo "<form method='POST' action='index.php?controller=product&action=ShowCart&id=".$array['IdProducto']."'>";
                         echo "<input type='number' name='quantity' min=1 value=".$_SESSION['Cart'][$array['IdProducto']]['Quantity']." onchange='this.form.submit();window.location.reload()'></p>";
                         echo "</form>";
-                        echo "<p>".$_SESSION['Cart'][$array['IdProducto']]['Price']."€</p>";
+                        echo "<p class='linePrice' >".$_SESSION['Cart'][$array['IdProducto']]['Price']."€</p>";
                     echo "</div>";
-                echo "<hr/>";
                 echo "</div>";
+                echo "<hr class='separator' >";
             }
         ?>
         <div class="orderSummary">
@@ -39,17 +39,20 @@
             echo "<p>Subtotal: ".$total."€</p>";
             if($total > 30) {
                 echo "<p>Gastos de envío: Gratis </p>";
-                echo "<hr/>";
-                echo "<p>Total: ".$total."€ </p>";
+                echo "<hr class='summarySeparator'>";
+                echo "<p>Total: <span class='totalPrice' >".$total."€ </span> </p>";
             }
             else {
                 echo "<p>Gastos de envío: 4.99€ </p>";
-                echo "<hr/>";
-                echo "<p>Total: ".$total + 4.99."€ </p>";
+                echo "<hr class='summarySeparator'>";
+                echo "<p>Total: <span class='totalPrice' >".$total + 4.99."€ </span> </p>";
             }
             ?>
             <form action="index.php?controller=product&action=ConfirmOrder" method="POST">
                 <button class="addToCart"> FINALIZAR COMPRA </button>
+            </form>
+            <form action="index.php?controller=product&action=EmptyCart" method="POST">
+                <button class="emptyCart"> VACIAR CARRITO </button>
             </form>
         </div>
         <?php
