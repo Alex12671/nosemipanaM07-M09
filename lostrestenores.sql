@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-11-2022 a las 08:40:05
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Tiempo de generación: 02-12-2022 a las 10:45:44
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -109,17 +109,21 @@ INSERT INTO `generos` (`IdGenero`, `Nombre`, `Activo`) VALUES
 CREATE TABLE `linea_pedido` (
   `ID_Linea_pedido` int(11) NOT NULL,
   `IdProducto` int(11) NOT NULL,
-  `IdCliente` int(11) NOT NULL,
   `IdPedido` int(11) NOT NULL,
-  `Cantidad` int(11) NOT NULL
+  `Cantidad` int(11) NOT NULL,
+  `Precio` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `linea_pedido`
 --
 
-INSERT INTO `linea_pedido` (`ID_Linea_pedido`, `IdProducto`, `IdCliente`, `IdPedido`, `Cantidad`) VALUES
-(3, 3, 3, 3, 3);
+INSERT INTO `linea_pedido` (`ID_Linea_pedido`, `IdProducto`, `IdPedido`, `Cantidad`, `Precio`) VALUES
+(3, 3, 3, 3, 0),
+(8, 48, 18, 1, 12.3),
+(9, 38, 18, 1, 11.35),
+(10, 48, 19, 2, 24.6),
+(11, 38, 19, 1, 11.35);
 
 -- --------------------------------------------------------
 
@@ -129,6 +133,7 @@ INSERT INTO `linea_pedido` (`ID_Linea_pedido`, `IdProducto`, `IdCliente`, `IdPed
 
 CREATE TABLE `pedidos` (
   `IdPedido` int(11) NOT NULL,
+  `IdCliente` int(11) NOT NULL,
   `Precio_sin_IVA` float NOT NULL,
   `Precio_IVA` float NOT NULL,
   `Estado_Pedido` enum('Pendiente','En trámite','Enviado','Entregado') NOT NULL
@@ -138,8 +143,10 @@ CREATE TABLE `pedidos` (
 -- Volcado de datos para la tabla `pedidos`
 --
 
-INSERT INTO `pedidos` (`IdPedido`, `Precio_sin_IVA`, `Precio_IVA`, `Estado_Pedido`) VALUES
-(3, 100, 123, 'En trámite');
+INSERT INTO `pedidos` (`IdPedido`, `IdCliente`, `Precio_sin_IVA`, `Precio_IVA`, `Estado_Pedido`) VALUES
+(3, 3, 100, 123, 'En trámite'),
+(18, 3, 28.64, 34.6544, 'Pendiente'),
+(19, 3, 35.95, 43.5, 'Pendiente');
 
 -- --------------------------------------------------------
 
@@ -235,7 +242,6 @@ ALTER TABLE `generos`
 --
 ALTER TABLE `linea_pedido`
   ADD PRIMARY KEY (`ID_Linea_pedido`),
-  ADD KEY `IdCliente` (`IdCliente`),
   ADD KEY `IdPedido` (`IdPedido`),
   ADD KEY `IdProducto` (`IdProducto`);
 
@@ -243,7 +249,8 @@ ALTER TABLE `linea_pedido`
 -- Indices de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  ADD PRIMARY KEY (`IdPedido`);
+  ADD PRIMARY KEY (`IdPedido`),
+  ADD KEY `IdCliente` (`IdCliente`);
 
 --
 -- Indices de la tabla `producto`
@@ -272,13 +279,13 @@ ALTER TABLE `clientes`
 -- AUTO_INCREMENT de la tabla `linea_pedido`
 --
 ALTER TABLE `linea_pedido`
-  MODIFY `ID_Linea_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_Linea_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `IdPedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `IdPedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
@@ -294,9 +301,14 @@ ALTER TABLE `producto`
 -- Filtros para la tabla `linea_pedido`
 --
 ALTER TABLE `linea_pedido`
-  ADD CONSTRAINT `IdCliente` FOREIGN KEY (`IdCliente`) REFERENCES `clientes` (`IdCliente`),
   ADD CONSTRAINT `IdPedido` FOREIGN KEY (`IdPedido`) REFERENCES `pedidos` (`IdPedido`),
   ADD CONSTRAINT `IdProducto` FOREIGN KEY (`IdProducto`) REFERENCES `producto` (`IdProducto`);
+
+--
+-- Filtros para la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`IdCliente`) REFERENCES `clientes` (`IdCliente`);
 
 --
 -- Filtros para la tabla `producto`
