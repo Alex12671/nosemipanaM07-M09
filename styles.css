@@ -845,6 +845,19 @@ input[type=number]::-webkit-inner-spin-button {
     background-color: #A00A00;
 }
 
+.deleteProduct {
+    padding: 10px 30px 10px 30px;
+    background-color: #E50F00;
+    text-decoration: none;
+    color:white;
+    border-radius: 5px;
+    margin-top: 43%;
+}
+
+.deleteProduct:hover {
+    background-color: #A00A00;
+}
+
 /*showmain*/
 .mainPrize{
     min-height: 40px;
