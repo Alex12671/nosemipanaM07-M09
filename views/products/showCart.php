@@ -25,6 +25,9 @@
                         echo "<input type='number' name='quantity' min=1 value=".$_SESSION['Cart'][$array['IdProducto']]['Quantity']." onchange='this.form.submit();window.location.reload()'></p>";
                         echo "</form>";
                         echo "<p class='linePrice' >".$_SESSION['Cart'][$array['IdProducto']]['Price']."€</p>";
+                        echo "<form action='index.php?controller=product&action=DeleteProductFromCart&id=".$array['IdProducto']."' method='POST'>";
+                        echo "<button class='deleteProduct'> ELIMINAR PRODUCTO </button>";
+                        echo "</form>";
                     echo "</div>";
                 echo "</div>";
                 echo "<hr class='separator' >";
@@ -40,15 +43,16 @@
             if($total > 30) {
                 echo "<p>Gastos de envío: Gratis </p>";
                 echo "<hr class='summarySeparator'>";
-                echo "<p>Total: <span class='totalPrice' >".$total."€ </span> </p>";
+                echo "<p>TOTAL: <span class='totalPrice' >".$total."€ </span> </p>";
             }
             else {
+                $total += 4.99;
                 echo "<p>Gastos de envío: 4.99€ </p>";
                 echo "<hr class='summarySeparator'>";
-                echo "<p>Total: <span class='totalPrice' >".$total + 4.99."€ </span> </p>";
+                echo "<p>TOTAL: <span class='totalPrice' >".$total."€ </span> </p>";
             }
             ?>
-            <form action="index.php?controller=product&action=ConfirmOrder" method="POST">
+            <form action="index.php?controller=order&action=AddOrder&total=<?php echo $total; ?>" method="POST">
                 <button class="addToCart"> FINALIZAR COMPRA </button>
             </form>
             <form action="index.php?controller=product&action=EmptyCart" method="POST">
