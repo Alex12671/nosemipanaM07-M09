@@ -30,6 +30,17 @@ class OrderController{
         $orderStatus = $order->searchOrders($_POST);
         require_once "views/orders/orderStatus.php";
     }
+
+    public function AddOrder() {
+        require_once "models/order.php";
+        $order = new Order();
+        $addOrder = $order->AddOrder($_SESSION['id'],$_GET['total']);
+        $order2 = new Order();
+        $addOrderLine = $order2->AddOrderLine($addOrder);
+        unset($_SESSION['Cart']);
+        unset($_SESSION['TotalQuantity']);
+        ?><meta http-equiv="refresh" content="0; url=index.php?controller=product&action=ShowMain"> <?php  
+    }
     
 }
 ?>

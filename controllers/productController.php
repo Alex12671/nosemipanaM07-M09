@@ -206,5 +206,15 @@ class productController{
         unset($_SESSION['TotalQuantity']);
         ?><meta http-equiv="refresh" content="0; url=index.php?controller=product&action=ShowMain"> <?php  
     }
+
+    public function DeleteProductFromCart() {
+        $_SESSION['TotalQuantity'] -= $_SESSION['Cart'][$_GET['id']]['Quantity'];
+        unset($_SESSION['Cart'][$_GET['id']]);
+        if($_SESSION['TotalQuantity'] == 0) {
+            unset($_SESSION['Cart']);
+        }
+        ?><meta http-equiv="refresh" content="0; url=index.php?controller=product&action=ShowCart"> <?php  
+    }
+    
 }
 ?>
