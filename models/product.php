@@ -188,7 +188,7 @@ class Product extends Database {
     }
 
     function showMain() {
-        $sql = "SELECT IdProducto, nombre, Imagenlibro, Precio, Liquidacion FROM producto where Activo like 'a' ORDER BY Fecha_Entrada DESC LIMIT 12";
+        $sql = "SELECT IdProducto, nombre, Imagenlibro, Precio, Liquidacion, Cantidad FROM producto where Activo like 'a' ORDER BY Fecha_Entrada DESC LIMIT 12";
         $result = $this->db->query($sql);
         return $result;
     }
