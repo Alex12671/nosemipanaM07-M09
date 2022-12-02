@@ -62,7 +62,9 @@
         <?php
         }
         else {
-            echo "<p>The cart is fulln't</p>";
+            echo "<div class='orderLine'>";
+            echo "<p class='cartIsEmpty' >The cart is fulln't</p>";
+            echo "</div>";
         }
         ?>
 

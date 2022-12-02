@@ -1,6 +1,12 @@
 <?php
 //política de cookies
-if(!isset($_COOKIE['aceptado'])) {
+if(isset($_POST['acceptCookies'])) {
+    setCookie('aceptado','1',time() + (60 * 60 * 24 * 365));
+}
+else if(isset($_POST['denyCookies'])) {
+    setCookie('aceptado','0',time() + (60 * 60 * 24 * 365));
+}
+else if(!isset($_COOKIE['aceptado'])) {
     echo "<div class='cookies'>";
     echo "<img src='img/cookie.png' class='cookie-img'></img>";
     echo "<h2>Desea aceptar nuestra política de cookies?</h2><br>";
@@ -10,10 +16,4 @@ if(!isset($_COOKIE['aceptado'])) {
     echo "<input type='submit' class='denyCookies' name='denyCookies' value='Aceptar solo cookies esenciales' ></input>";
     echo "</form>";
     echo "</div>";
-}
-if(isset($_POST['acceptCookies'])) {
-    setCookie('aceptado','1',time() + (60 * 60 * 24 * 365));
-}
-else if(isset($_POST['denyCookies'])) {
-    setCookie('aceptado','0',time() + (60 * 60 * 24 * 365));
 }
