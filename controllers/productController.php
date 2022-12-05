@@ -165,6 +165,9 @@ class productController{
             $_SESSION['Cart'][$_GET['id']] = array(
                 "Quantity" => 1,
                 "Price" => $array['Precio'],
+                "Nombre" => $array['Nombre'],
+                "Autor" => $array['Autor'],
+                "Imagen" => $array['Imagenlibro'],
                 
             );
             $_SESSION['TotalQuantity']++;
@@ -213,7 +216,7 @@ class productController{
         if($_SESSION['TotalQuantity'] == 0) {
             unset($_SESSION['Cart']);
         }
-        ?><meta http-equiv="refresh" content="0; url=index.php?controller=product&action=ShowCart"> <?php  
+        ?><meta http-equiv="refresh" content="0; url=index.php?controller=product&action=ShowMain"> <?php  
     }
     
 }

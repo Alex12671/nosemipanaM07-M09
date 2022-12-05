@@ -38,7 +38,7 @@
             <input type='submit' value='Buscar'/>
         </form>
     </li>
-    <li class="cartMenu" > <a href="index.php?controller=product&action=ShowCart" > <img class="cartIcon" src="img/cart.png" >
+    <li class="cartMenu" > <a href="Javascript:openSidebar()" > <img class="cartIcon" src="img/cart.png" >
     <?php
         if(isset($_SESSION['Cart'])) {
         echo "<p class='numberOfArticles'>".$_SESSION['TotalQuantity']."</p>";

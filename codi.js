@@ -30,3 +30,14 @@ function changePassword() {
         password.setAttribute("type","hidden");
     }
 }
+
+function openSidebar() {
+    var sidebar = document.getElementById("cartSidebar");
+    sidebar.style.width = "25%";
+
+}
+
+function closeSidebar () {
+    var sidebar = document.getElementById("cartSidebar");
+    sidebar.style.width = "0";
+}

@@ -516,6 +516,23 @@ header h1 a{
     border-radius: 10px;;
 }
 
+/*sidebar*/
+
+.cartSidebar {
+    position:fixed;
+    right:0;
+    top:10%;
+    width: 0%;
+    height: 80%;
+    background-color: white;
+    transition: 0.5s;
+}
+
+.closeSidebar {
+    width:9%;
+    height:6%;
+    cursor:pointer;
+}
 /*main*/
 
 .libros{
@@ -794,15 +811,32 @@ input[type=number]::-webkit-inner-spin-button {
 
 /*página de compra*/
 
+.showCart {
+    margin-left:36%;
+    background-color: white;
+    display:inline-block;
+    padding:1% 1% 1% 5%;
+}
+
+.cartIsEmpty {
+    font-weight: bold;
+    font-size:34px;
+}
+
 .orderLine {
-    width:25%;
+    margin:5% 0 0 5%;
+    width:40%;
     display:grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
-    grid-row-gap: 0px;
+}
+
+.orderLineDetails {
+    margin:15%;
 }
 
 .separator {
+    margin:5% 0 0 5%;
     width:25%;
     margin-bottom:1%;
     margin-top:1%;
@@ -812,6 +846,10 @@ input[type=number]::-webkit-inner-spin-button {
     width:50%;
     margin-bottom:1%;
     margin-top:1%;
+}
+
+.orderSummary {
+    margin:5% 0 0 5%;
 }
 
 .bookTitle {
