@@ -40,10 +40,28 @@ class categoryController{
         
         $add= $category->AddCategory(
             $_POST["ID"],
-            $_POST["Nombre"]    
+            $_POST["Nombre"],
+            $_FILES["ImagenGenero"]    
         );
 
         require_once "views/categories/AddCategory.php";
+    }
+
+    public function getEditCatImgForm(){
+        require_once "views/categories/EditCatImg.php";
+    }
+
+    public function EditCatImg(){
+        require_once "models/category.php";
+        $category = new Category();
+        
+        $edit= $category->EditCatImg($_POST["IdGenero"],$_FILES["ImagenGenero"]);
+
+        //vuelve a la tabla de productos
+        $category2 = new Category();
+        $show = $category2->ShowCategories();
+        require_once "views/categories/ShowCategories.php";
+
     }
 
     public function ShowEditCategoryForm(){        
