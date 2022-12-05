@@ -1,11 +1,9 @@
-<?php $img= $_SESSION['img'];?>
-
 <div class="slide">
             <div class="slide-inner">
                 <input class="slide-open" type="radio" id="slide-1" 
                       name="slide" aria-hidden="true" hidden="" checked="checked">
                 <div class="slide-item">
-                    <img src="<?php echo $img;?>"></img>
+                    <img src="views/img/ofertas.png"></img>
                 </div>
             </div>
 </div>

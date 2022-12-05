@@ -8,12 +8,12 @@
                 <input class="slide-open" type="radio" id="slide-2" 
                       name="slide" aria-hidden="true" hidden="">
                 <div class="slide-item">
-                    <img src="views/img/presentacion.jpg">
+                    <img src="views/img/presentacion.png">
                 </div>
                 <input class="slide-open" type="radio" id="slide-3" 
                       name="slide" aria-hidden="true" hidden="">
                 <div class="slide-item">
-                    <img src="views/img/retarded.png">
+                    <img src="views/img/novedades.png">
                 </div>
                 <label for="slide-3" class="slide-control prev control-1">‹</label>
                 <label for="slide-2" class="slide-control next control-1">›</label>
@@ -35,6 +35,7 @@
             </div>
 </div>
 <?php 
+    
     if(isset($lastVisited)) {
         echo "<div class='container'>";
             echo "<div class='mainPage'>";
@@ -46,31 +47,14 @@
                             echo "<h2>".$array['Nombre']."</h2>";
                             echo "</div>";
                             echo "<div>";
-                            echo "<a href='index.php?controller=product&action=ShowProductDetails&idProduct=".$array['IdProducto']."' ><img class='productImage' src=".$array['Imagenlibro']."></img></a>";
+                            echo "<img class='productImage' src=".$array['Imagenlibro']."></img>";
                             echo "</div>";
-                            echo "<div class='mainPrize'>";
-                            if($array['Liquidacion']==0){
-                                $precio = number_format($array['Precio'],2);
-                                echo "<h2>$precio €</h2>";
-                            }
-                            else if($array['Liquidacion']==1){
-                                $precio=$array['Precio']*0.90;
-                                $precio=number_format($precio,2);
-                                echo "<h2>$precio €</h2>";
-                            }
-                            echo "</div>";
-                            echo "<div class='cart'>";
-                            if($array['Cantidad'] > 0) {
-                                echo "<h2><a class='addToCart' href='index.php?controller=product&action=AddProductToCart&id=".$array['IdProducto']."' ><img class='addCartIcon' src='img/cart.png' style=width:30px; height:30px; > AÑADIR AL CARRO</a></h2>";    
-                            }
-                            else {
-                                echo "<h2><a class='noStock'  ><img src='img/cart.png' style=width:30px; height:30px; > AÑADIR AL CARRO</a></h2>";
-                            }
+                            echo "<div>";
+                            echo "<h2>".$array['Precio']."</h2>";
                             echo "</div>";
                             echo "<div class='moreInfo'>";
-                                echo "<div class='toInfo'>";
-                                    echo "<button class='mainButton'><a href='index.php?controller=product&action=ShowProductDetails&idProduct=".$array['IdProducto']."' >Más info</a></button>";
-                                echo "</div>";
+                            echo "<div class='toInfo'>";
+                            echo "<button class='mainButton'><a href='index.php?controller=product&action=ShowProductDetails&idProduct=".$array['IdProducto']."' >Más info</a></button>";
                             echo "</div>";
                         echo "</section>";
                     

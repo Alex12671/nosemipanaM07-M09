@@ -77,7 +77,7 @@
                 }
             }
         }
-
+        var_dump($_SESSION);
         ?>
     </div>
 </div>
