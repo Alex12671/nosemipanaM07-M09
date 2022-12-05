@@ -40,7 +40,7 @@ class Order extends Database {
     
     //para mostrar la tabla de pedidos, solicita a la BBDD los datos de la tabla
     Function orderStatus(){
-        $sql = "SELECT pedidos.IdPedido, pedidos.Precio_sin_IVA, pedidos.Precio_IVA, pedidos.Estado_Pedido, clientes.DNI FROM (pedidos INNER JOIN linea_pedido ON pedidos.IdPedido = linea_pedido.IdPedido) INNER JOIN clientes ON clientes.IdCliente = linea_pedido.IdCliente WHERE clientes.IdCliente like linea_pedido.IdCliente";
+        $sql = "SELECT pedidos.IdPedido, pedidos.Precio_sin_IVA, pedidos.Precio_IVA, pedidos.Estado_Pedido, clientes.DNI FROM (pedidos INNER JOIN linea_pedido ON pedidos.IdPedido = linea_pedido.IdPedido) INNER JOIN clientes ON clientes.IdCliente = pedidos.IdCliente ";
         //$sql = "SELECT * FROM pedidos";
         $result = $this->db->query($sql);
         return $result;
@@ -54,12 +54,12 @@ class Order extends Database {
 
     function searchOrders($filtro){
         if(isset($filtro['stateSearch'])) {
-            $sql = "SELECT pedidos.IdPedido, pedidos.Precio_sin_IVA, pedidos.Precio_IVA, pedidos.Estado_Pedido, clientes.DNI FROM (pedidos INNER JOIN linea_pedido ON pedidos.IdPedido = linea_pedido.IdPedido) INNER JOIN clientes ON clientes.IdCliente = linea_pedido.IdCliente WHERE Estado_Pedido = '".$filtro['stateSearch']."'";
+            $sql = "SELECT pedidos.IdPedido, pedidos.Precio_sin_IVA, pedidos.Precio_IVA, pedidos.Estado_Pedido, clientes.DNI FROM (pedidos INNER JOIN linea_pedido ON pedidos.IdPedido = linea_pedido.IdPedido) INNER JOIN clientes ON clientes.IdCliente = pedidos.IdCliente WHERE Estado_Pedido = '".$filtro['stateSearch']."'";
             $result = $this->db->query($sql);
             return $result;
         }
         else if(isset($filtro['userSearch'])) {
-            $sql = "SELECT pedidos.IdPedido, pedidos.Precio_sin_IVA, pedidos.Precio_IVA, pedidos.Estado_Pedido, clientes.DNI FROM (pedidos INNER JOIN linea_pedido ON pedidos.IdPedido = linea_pedido.IdPedido) INNER JOIN clientes ON clientes.IdCliente = linea_pedido.IdCliente WHERE clientes.DNI LIKE '%".$filtro['userSearch']."%'";
+            $sql = "SELECT pedidos.IdPedido, pedidos.Precio_sin_IVA, pedidos.Precio_IVA, pedidos.Estado_Pedido, clientes.DNI FROM (pedidos INNER JOIN linea_pedido ON pedidos.IdPedido = linea_pedido.IdPedido) INNER JOIN clientes ON clientes.IdCliente = pedidos.IdCliente WHERE clientes.DNI LIKE '%".$filtro['userSearch']."%'";
             $result = $this->db->query($sql);
             return $result;
         }
