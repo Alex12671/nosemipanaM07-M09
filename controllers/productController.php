@@ -37,7 +37,7 @@ class productController{
         require_once "views/products/ShowProducts.php";
     }
     
-    public function getProductEdit(){
+    public function getProductEdit($id){
         require_once "views/products/EditProducts.php";
     }
 
@@ -72,7 +72,7 @@ class productController{
         require_once "models/product.php";
         $product = new Product();
         
-        $edit= $product->EditImg($_POST["ID"],$_FILES["Imagenlibro"]);
+        $edit= $product->EditImg($_POST["id"],$_FILES["Imagenlibro"]);
 
         //vuelve a la tabla de productos
         $product2 = new Product();
@@ -123,6 +123,7 @@ class productController{
         require_once "models/product.php";
         $product = new Product();
         $filter = $product->ShowProductsByCategory($_GET['id']);
+
         require_once "views/products/productFilter.php";
     }
 
@@ -150,7 +151,7 @@ class productController{
         require_once "models/product.php";
         $product = new Product();
         $filter = $product->showSales();
-        require_once "views/products/productFilter.php";
+        require_once "views/products/sales.php";
     }
 
     public function AddProductToCart() {
@@ -158,9 +159,6 @@ class productController{
         $product = new Product();
         $details = $product->ShowSelectedProduct($_GET['id']);
         $array = $details->fetch(PDO::FETCH_ASSOC);
-        if(!isset($_SESSION['TotalQuantity'])) {
-            $_SESSION['TotalQuantity'] = 0;
-        }
         if(!isset($_SESSION['Cart'][$_GET['id']])) {
             $_SESSION['Cart'][$_GET['id']] = array(
                 "Quantity" => 1,
@@ -170,29 +168,16 @@ class productController{
                 "Imagen" => $array['Imagenlibro'],
                 
             );
-            $_SESSION['TotalQuantity']++;
         }
         else {
             $_SESSION['Cart'][$_GET['id']]['Quantity']++;
             $_SESSION['Cart'][$_GET['id']]['Price'] = $_SESSION['Cart'][$_GET['id']]['Price'] + $array['Precio'];
-            $_SESSION['TotalQuantity']++;
         }
-       
         ?><meta http-equiv="refresh" content="0; url=index.php?controller=product&action=ShowProductDetails&idProduct=<?php echo $array['IdProducto']; ?>"> <?php  
     }
 
     public function ShowCart() {
-        require_once "models/product.php";
-        $product = new Product();
-        $cart = array();
-        if(isset($_SESSION['Cart'])) {
-            foreach($_SESSION['Cart'] as $data => $value) {
-                array_push($cart,$product->ShowSelectedProduct($data));
-            }
-        }
-        
-        
-        require_once "views/products/showCart.php";
+        require "views/products/showCart.php";
     }
 
     public function ConfirmOrder() {

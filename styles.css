@@ -13,114 +13,6 @@
     font-style: normal;
 }
 
-/* carrousel*/
-
-.slide {
-    position: relative;
-    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.64);
-    margin-top: 26px;
-}
-.slide-inner {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    height: calc( 300px + 3em);
-}
-.slide-open:checked + .slide-item {
-    position: static;
-    opacity: 100;
-}
-.slide-item {
-    position: absolute;
-    opacity: 0;
-    -webkit-transition: opacity 0.6s ease-out;
-    transition: opacity 0.6s ease-out;
-}
-.slide-item img {
-    display: block;
-    height: auto;
-    max-width: 100%;
-}
-.slide-control {
-    background: rgba(0, 0, 0, 0.28);
-    border-radius: 50%;
-    color: #fff;
-    cursor: pointer;
-    display: none;
-    font-size: 40px;
-    height: 40px;
-    line-height: 35px;
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translate(0, -50%);
-    cursor: pointer;
-    -ms-transform: translate(0, -50%);
-    transform: translate(0, -50%);
-    text-align: center;
-    width: 40px;
-    z-index: 10;
-}
-.slide-control.prev {
-    left: 2%;
-}
-.slide-control.next {
-    right: 2%;
-}
-.slide-control:hover {
-    background: rgba(0, 0, 0, 0.8);
-    color: #aaaaaa;
-}
-#slide-1:checked ~ .control-1,
-#slide-2:checked ~ .control-2,
-#slide-3:checked ~ .control-3 {
-    display: block;
-}
-.slide-indicador {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    bottom: 2%;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 10;
-}
-.slide-indicador li {
-    display: inline-block;
-    margin: 0 5px;
-}
-.slide-circulo {
-    color: #828282;
-    cursor: pointer;
-    display: block;
-    font-size: 35px;
-}
-.slide-circulo:hover {
-    color: #aaaaaa;
-}
-#slide-1:checked ~ .control-1 ~ .slide-indicador 
-     li:nth-child(1) .slide-circulo,
-#slide-2:checked ~ .control-2 ~ .slide-indicador 
-      li:nth-child(2) .slide-circulo,
-#slide-3:checked ~ .control-3 ~ .slide-indicador 
-      li:nth-child(3) .slide-circulo {
-    color: #428bca;
-}
-#titulo {
-    width: 100%;
-    position: absolute;
-    padding: 0px;
-    margin: 0px auto;
-    text-align: center;
-    font-size: 27px;
-    color: rgba(255, 255, 255, 1);
-    font-family: 'Open Sans', sans-serif;
-    z-index: 9999;
-    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.33), 
-         -1px 0px 2px rgba(255, 255, 255, 0);
-}
-
 /*general*/
 *{
 
@@ -146,6 +38,8 @@ body{
 input[type="text"],
 input[type="mail"],
 select,
+input[type="number"],
+input[type="date"],
 input[type="password"]{
     border: 1px solid #c9c9c9;
     box-shadow: 0px 0xp 2px #ccc inset;
@@ -155,33 +49,38 @@ input[type="password"]{
     padding-bottom: 2px;
     color: gray;
     transition: all 300ms;
+    border-radius: 15px;
 }
 
 input[type="text"]:focus,
 input[type="mail"]:focus,
 select:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
 input[type="password"]:focus{
     border:1px solid #f00909;
     color: black;
+    border-radius: 15px;
+}
+
+.button{
+    display: block;
+    width: 60px;
+    padding: 3px;
+    box-shadow: 0px 0px 3px grey inset;
+    text-shadow: 0px 0px 1px #ccc;
+    border-radius: 15px;
+    cursor:pointer;
 }
 
 .button:hover{
     display: block;
-    border-radius: 2px;
     width: 60px;
     padding: 3px;
     background-color: #f00909;
     border:1px solid red;
     cursor:pointer;
-}
-
-.button:hover{
-    box-shadow: 0px 0px 2px grey;
-}
-
-.button:hover{
-    box-shadow: 0px 0px 3px grey inset;
-    text-shadow: 0px 0px 1px #ccc;
+    border-radius: 15px;
 }
 
 
@@ -237,6 +136,11 @@ tr:nth-child(odd){
 .imageTable{
     width: 40px;
     height: 60px;
+}
+
+.imageCat{
+    width: 60%;
+    height: 12%;
 }
 
 
@@ -344,6 +248,8 @@ header h1 a{
 
     top: 0px;
 
+    z-index: 10;
+
 }
 
 .navegador ul{
@@ -447,7 +353,7 @@ header h1 a{
     text-align: left;
     width: 170px;
     box-shadow: 0px 2px 2px grey;
-    z-index: 1;
+    z-index: 10;
 }
 
 .navegador > ul > li:hover > ul{
@@ -470,6 +376,101 @@ header h1 a{
 .navegador > ul > li:hover > ul >li:hover{
     background-color: #b23135;
     transition: all 300ms;
+}
+
+/* carrousel*/
+
+.slide {
+    position: relative;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.64);
+    margin-top: 26px;
+}
+.slide-inner {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: calc( 300px + 3em);
+}
+.slide-open:checked + .slide-item {
+    position: static;
+    opacity: 100;
+}
+.slide-item {
+    position: absolute;
+    opacity: 0;
+    -webkit-transition: opacity 0.6s ease-out;
+    transition: opacity 0.6s ease-out;
+}
+.slide-item img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+.slide-control {
+    background: rgba(0, 0, 0, 0.28);
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+    font-size: 40px;
+    height: 40px;
+    line-height: 35px;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+    cursor: pointer;
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    text-align: center;
+    width: 40px;
+    z-index: 9;
+}
+.slide-control.prev {
+    left: 2%;
+}
+.slide-control.next {
+    right: 2%;
+}
+.slide-control:hover {
+    background: rgba(0, 0, 0, 0.8);
+    color: #aaaaaa;
+}
+#slide-1:checked ~ .control-1,
+#slide-2:checked ~ .control-2,
+#slide-3:checked ~ .control-3 {
+    display: block;
+}
+.slide-indicador {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 2%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 9;
+}
+.slide-indicador li {
+    display: inline-block;
+    margin: 0 5px;
+}
+.slide-circulo {
+    color: #828282;
+    cursor: pointer;
+    display: block;
+    font-size: 35px;
+}
+.slide-circulo:hover {
+    color: #aaaaaa;
+}
+#slide-1:checked ~ .control-1 ~ .slide-indicador 
+     li:nth-child(1) .slide-circulo,
+#slide-2:checked ~ .control-2 ~ .slide-indicador 
+      li:nth-child(2) .slide-circulo,
+#slide-3:checked ~ .control-3 ~ .slide-indicador 
+      li:nth-child(3) .slide-circulo {
+    color: #428bca;
 }
 
 
@@ -832,7 +833,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .orderLineDetails {
-    margin:15%;
+    margin-left:15%;
 }
 
 .separator {

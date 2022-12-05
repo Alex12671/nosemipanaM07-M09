@@ -4,6 +4,7 @@ require_once("database.php");
 class Category extends Database {
     private $name;
     private $ID;
+    private $img;
 
     function getID() {
         return $this->ID;
@@ -40,14 +41,40 @@ class Category extends Database {
         return $genres;
     }
 
-    function AddCategory($ID, $name){
-        $sql = "INSERT INTO  generos (IdGenero, Nombre) VALUES ( '".$ID."', '".$name."') ";
+    function AddCategory($ID, $name, $img){
+        if (is_uploaded_file ($_FILES['ImagenGenero']['tmp_name']))
+        {
+            $nombreImg= str_replace(" ", "-", $_FILES['ImagenGenero']['name']);
+            $nombreDirectorio = "views/img/";
+            $idUnico = $ID;
+            $nombreFichero = $idUnico . "-" . $nombreImg;
+            $directorio= $nombreDirectorio . $nombreFichero;
+            move_uploaded_file ($_FILES['ImagenGenero']['tmp_name'], $nombreDirectorio . $nombreFichero);
+        }
+        $sql = "INSERT INTO  generos (IdGenero, Nombre, Imagen) VALUES ( '".$ID."', '".$name."', '".$img."') ";
         $result = $this->db->query($sql);
         $rows = $result->rowCount();
     }
 
     function EditCategory($ID, $name){
         $sql = "UPDATE generos SET IdGenero= '".$ID."', Nombre= '".$name."' WHERE IdGenero= '".$ID."'";
+        $result = $this->db->query($sql);
+    }
+
+    function EditCatImg($ID, $img){
+        if (is_uploaded_file ($_FILES['ImagenGenero']['tmp_name']))
+        {
+            $nombreImg= str_replace(" ", "-", $_FILES['ImagenGenero']['name']);
+            $nombreImg2= htmlspecialchars($nombreImg, ENT_QUOTES, "UTF-8");
+
+            $nombreDirectorio = "views/img/";
+            $idUnico = $ID;
+            $nombreFichero = $idUnico . "-" . $nombreImg;
+            $nombreFichero2 = $idUnico . "-" . $nombreImg2;
+            $directorio= $nombreDirectorio . $nombreFichero2;
+            move_uploaded_file ($_FILES['ImagenGenero']['tmp_name'], $nombreDirectorio . $nombreFichero);
+        }
+        $sql = "UPDATE generos SET Imagen= '".$directorio."' WHERE IdGenero= '".$ID."'";
         $result = $this->db->query($sql);
     }
 
@@ -59,11 +86,10 @@ class Category extends Database {
     }
 
     public function MenuCategories() {
-        $sql = "SELECT IdGenero,Nombre FROM generos";
+        $sql = "SELECT IdGenero,Nombre,Imagen FROM generos";
         $result = $this->db->query($sql);
         return $result;
     }
-    
 }
 
 ?>

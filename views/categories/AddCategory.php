@@ -3,6 +3,7 @@
         <h2>Añadir categoría</h2></br>
         <label>ID</label>        <input type='text' name='ID'><br>
         <label>Nombre</label>    <input type='text' name='Nombre'><br>
+        <label>ImagenGenero</label>    <input type="file" name="ImagenGenero" accept=".png, .jpg, .jpeg" required><br>
         <input class="button" type='submit' name='enviar'>
     </form>
 </div>
