@@ -125,7 +125,6 @@ class productController{
         $category = new Category();
         $_SESSION['img'] = $category->categoryImg($_GET['id']);
         $filter = $product->ShowProductsByCategory($_GET['id']);
-
         require_once "views/products/productFilter.php";
     }
 
@@ -165,10 +164,22 @@ class productController{
             $_SESSION['Cart'][$_GET['id']] = array(
                 "Quantity" => 1,
                 "Price" => $array['Precio'],
+                "Nombre" => $array['Nombre'],
+                "Autor" => $array['Autor'],
+                "Imagen" => $array['Imagenlibro'],
+                
             );
+            if(isset($_SESSION['TotalQuantity'])) {
+                $_SESSION['TotalQuantity']++;
+            }
+            else {
+                $_SESSION['TotalQuantity'] = 1;
+            }
+            
         }
         else {
             $_SESSION['Cart'][$_GET['id']]['Quantity']++;
+            $_SESSION['TotalQuantity']++;
             $_SESSION['Cart'][$_GET['id']]['Price'] = $_SESSION['Cart'][$_GET['id']]['Price'] + $array['Precio'];
         }
         ?><meta http-equiv="refresh" content="0; url=index.php?controller=product&action=ShowProductDetails&idProduct=<?php echo $array['IdProducto']; ?>"> <?php  
@@ -177,5 +188,30 @@ class productController{
     public function ShowCart() {
         require "views/products/showCart.php";
     }
+
+    public function ConfirmOrder() {
+        require_once "models/order.php";
+        if(isset($_SESSION['rol']) && $_SESSION['rol'] == "comprador") {
+            $pedido = new Order();
+        }
+        else {
+            ?><meta http-equiv="refresh" content="0; url=index.php?controller=user&action=logUser&orderFailed=1"> <?php  
+        }
+    }
+    public function EmptyCart() {
+        unset($_SESSION['Cart']);
+        unset($_SESSION['TotalQuantity']);
+        ?><meta http-equiv="refresh" content="0; url=index.php?controller=product&action=ShowMain"> <?php  
+    }
+
+    public function DeleteProductFromCart() {
+        $_SESSION['TotalQuantity'] -= $_SESSION['Cart'][$_GET['id']]['Quantity'];
+        unset($_SESSION['Cart'][$_GET['id']]);
+        if($_SESSION['TotalQuantity'] == 0) {
+            unset($_SESSION['Cart']);
+        }
+        ?><meta http-equiv="refresh" content="0; url=index.php?controller=product&action=ShowMain"> <?php  
+    }
+    
 }
 ?>

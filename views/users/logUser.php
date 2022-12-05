@@ -13,6 +13,9 @@
             if(isset($_GET['loginFailed']) && $_GET['loginFailed'] == 1) {
                 echo "<p class='loginFail'> El usuario o contraseña introducido son incorrectos</p>";
             } 
+            else if(isset($_GET['orderFailed']) && $_GET['orderFailed'] == 1) {
+                echo "<p class='validateFail'> Debes iniciar sesión para finalizar tu pedido</p>";
+            } 
         
         ?>
     </form>

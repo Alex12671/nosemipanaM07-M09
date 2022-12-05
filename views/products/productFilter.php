@@ -1,6 +1,5 @@
 <?php $img= $_SESSION['img']->fetchAll(PDO::FETCH_ASSOC);?>
 
-
 <div class="slide">
             <div class="slide-inner">
                 <input class="slide-open" type="radio" id="slide-1" 

@@ -36,7 +36,6 @@ else{
 }
 require_once "views/general/cookies.php";
 
-
 if (isset($_GET['controller'])){
     $nombreController = $_GET['controller']."Controller";
 }
@@ -57,12 +56,11 @@ if (class_exists($nombreController)){
 
     echo "No existe el controlador";
 }
-
-
+require "views/products/showCart.php";
 require_once "views/general/pie.html";
 
-
 ?>
+
 </body>
 </html>
 

@@ -45,20 +45,37 @@
             foreach($lastBooks as $data => $value) {
                 while ($array = $value->fetch(PDO::FETCH_ASSOC)) {
                         echo "<section class='libros'>";
-                            echo "<div class='internaMain'>";
-                            echo "<h2>".$array['Nombre']."</h2>";
-                            echo "</div>";
-                            echo "<div>";
-                            echo "<a href='index.php?controller=product&action=ShowProductDetails&idProduct=".$array['IdProducto']."' ><img class='productImage' src=".$array['Imagenlibro']."></img></a>";
-                            echo "</div>";
-                            echo "<div>";
-                            echo "<h2>".$array['Precio']."</h2>";
-                            echo "</div>";
-                            echo "<div class='moreInfo'>";
-                            echo "<div class='toInfo'>";
+                    echo "<div class='internaMain'>";
+                    echo "<h2>".$array['Nombre']."</h2>";
+                    echo "</div>";
+                    echo "<div>";
+                    echo "<a href='index.php?controller=product&action=ShowProductDetails&idProduct=".$array['IdProducto']."' ><img class='productImage' src=".$array['Imagenlibro']."></img></a>";
+                    echo "</div>";
+                    echo "<div class='mainPrize'>";
+                    if($array['Liquidacion']==0){
+                        $precio = number_format($array['Precio'],2);
+                        echo "<h2>$precio €</h2>";
+                    }
+                    else if($data['Liquidacion']==1){
+                        $precio=$array['Precio']*0.90;
+                        $precio=number_format($precio,2);
+                        echo "<h2>$precio €</h2>";
+                    }
+                    echo "</div>";
+                    echo "<div class='cart'>";
+                    if($array['Cantidad'] > 0) {
+                        echo "<h2><a class='addToCart' href='index.php?controller=product&action=AddProductToCart&id=".$array['IdProducto']."' ><img class='addCartIcon' src='img/cart.png' style=width:30px; height:30px; > AÑADIR AL CARRO</a></h2>";    
+                    }
+                    else {
+                        echo "<h2><a class='noStock'  ><img src='img/cart.png' style=width:30px; height:30px; > AÑADIR AL CARRO</a></h2>";
+                    }
+                    echo "</div>";
+                    echo "<div class='moreInfo'>";
+                        echo "<div class='toInfo'>";
                             echo "<button class='mainButton'><a href='index.php?controller=product&action=ShowProductDetails&idProduct=".$array['IdProducto']."' >Más info</a></button>";
-                            echo "</div>";
-                        echo "</section>";
+                        echo "</div>";
+                    echo "</div>";
+                echo "</section>";
                     
                 }
             }

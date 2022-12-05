@@ -65,6 +65,22 @@ class Order extends Database {
         }
         
     }
+
+    function AddOrder($idClient,$total) {
+        $totalIVA = number_format((float)$total * 1.21, 2, '.', '');
+        $sql = "INSERT INTO pedidos VALUES (DEFAULT,'".$idClient."','".$total."','".$totalIVA."','Pendiente')";
+        $this->db->query($sql);
+        $lastId = $this->db->lastInsertId();
+        return $lastId;
+    }
+
+    function AddOrderLine($orderId) {
+        foreach($_SESSION['Cart'] as $data => $value) {
+            $sql = "INSERT INTO linea_pedido VALUES (DEFAULT,'".$data."','".$orderId."','".$value['Quantity']."','".$value['Price']."')";
+            $this->db->query($sql);
+        }
+    }
+
 }
 
 ?>
