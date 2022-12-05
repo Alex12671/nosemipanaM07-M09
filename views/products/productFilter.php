@@ -1,5 +1,7 @@
-<?php $img= $_SESSION['img']->fetchAll(PDO::FETCH_ASSOC);?>
+<?php if(isset($_SESSION['img'])) {
+    $img= $_SESSION['img']->fetchAll(PDO::FETCH_ASSOC);
 
+?>
 <div class="slide">
             <div class="slide-inner">
                 <input class="slide-open" type="radio" id="slide-1" 
@@ -9,6 +11,7 @@
                 </div>
             </div>
 </div>
+<?php } ?>
 <div class="container">
     <div class ="mainPage">
         <?php 

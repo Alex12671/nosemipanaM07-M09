@@ -78,6 +78,8 @@ class Order extends Database {
         foreach($_SESSION['Cart'] as $data => $value) {
             $sql = "INSERT INTO linea_pedido VALUES (DEFAULT,'".$data."','".$orderId."','".$value['Quantity']."','".$value['Price']."')";
             $this->db->query($sql);
+            $sql2 = "UPDATE producto SET Cantidad = Cantidad - ".$value['Quantity']." WHERE IdProducto = '".$data."'";
+            $this->db->query($sql2);
         }
     }
 
