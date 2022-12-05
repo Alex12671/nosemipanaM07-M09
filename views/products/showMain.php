@@ -3,7 +3,9 @@
                 <input class="slide-open" type="radio" id="slide-1" 
                       name="slide" aria-hidden="true" hidden="" checked="checked">
                 <div class="slide-item">
-                    <img src="views/img/ofertas.png">
+                    <?php
+                        echo "<a href='index.php?controller=product&action=showSales'><img src='views/img/ofertas.png'></img></a>";
+                    ?>
                 </div>
                 <input class="slide-open" type="radio" id="slide-2" 
                       name="slide" aria-hidden="true" hidden="">
@@ -47,7 +49,7 @@
                             echo "<h2>".$array['Nombre']."</h2>";
                             echo "</div>";
                             echo "<div>";
-                            echo "<img class='productImage' src=".$array['Imagenlibro']."></img>";
+                            echo "<a href='index.php?controller=product&action=ShowProductDetails&idProduct=".$array['IdProducto']."' ><img class='productImage' src=".$array['Imagenlibro']."></img></a>";
                             echo "</div>";
                             echo "<div>";
                             echo "<h2>".$array['Precio']."</h2>";
