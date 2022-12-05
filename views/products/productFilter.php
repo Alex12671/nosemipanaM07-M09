@@ -1,11 +1,12 @@
-<?php $img= $_SESSION['img'];?>
+<?php $img= $_SESSION['img']->fetchAll(PDO::FETCH_ASSOC);?>
+
 
 <div class="slide">
             <div class="slide-inner">
                 <input class="slide-open" type="radio" id="slide-1" 
                       name="slide" aria-hidden="true" hidden="" checked="checked">
                 <div class="slide-item">
-                    <img src="<?php echo $img;?>"></img>
+                    <img src="<?php echo $img[0]['Imagen'];?>"></img>
                 </div>
             </div>
 </div>
