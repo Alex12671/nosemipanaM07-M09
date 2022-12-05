@@ -90,6 +90,12 @@ class Category extends Database {
         $result = $this->db->query($sql);
         return $result;
     }
+
+    public function categoryImg($ID) {
+        $sql = "SELECT Imagen FROM generos WHERE IdGenero like '$ID'";
+        $result = $this->db->query($sql);
+        return $result;
+    }
 }
 
 ?>
