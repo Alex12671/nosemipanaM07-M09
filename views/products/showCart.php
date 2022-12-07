@@ -1,5 +1,8 @@
 <div class="cartSidebar" id="cartSidebar" >
-<img class="closeSidebar" src="img/close-icon.png" onclick="closeSidebar()">
+<div class="closeSidebar">
+    <img class="closeSidebarImg" src="img/close-icon.png" onclick="closeSidebar()">
+</div>
+<div class="orders">
 <?php 
 if(isset($_SESSION['Cart']) || !empty($_SESSION['Cart'])) {
     if(isset($_POST['quantity'])) {
@@ -20,8 +23,8 @@ if(isset($_SESSION['Cart']) || !empty($_SESSION['Cart'])) {
             echo "<div class='orderLineDetails'>";
                 echo "<p class='bookTitle'>".$value['Nombre']."</p>";
                 echo "<p class='bookAuthor'>".$value['Autor']."</p>";
-                echo "<form method='POST' action='index.php?controller=product&action=ShowMain&id=".$data."'>";
-                echo "<input type='number' name='quantity' min=1 value=".$_SESSION['Cart'][$data]['Quantity']." onchange='this.form.submit();window.location.reload()'></p>";
+                echo "<form method='POST' action='index.php?controller=product&action=ShowMain&id=".$data."' id='quantityForm'>";
+                echo "<input type='number' name='quantity' id='quantity' min='1' value=".$_SESSION['Cart'][$data]['Quantity']." onchange='checkQuantityInput()'></p>";
                 echo "</form>";
                 echo "<p class='linePrice' >".$_SESSION['Cart'][$data]['Price']."€</p>";
                 echo "<form action='index.php?controller=product&action=DeleteProductFromCart&id=".$data."' method='POST'>";
@@ -32,6 +35,7 @@ if(isset($_SESSION['Cart']) || !empty($_SESSION['Cart'])) {
         echo "<hr class='separator' >";
     }
 ?>
+</div>
 <div class="orderSummary">
     <?php
     $total = 0;

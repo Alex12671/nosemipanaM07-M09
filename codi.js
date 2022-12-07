@@ -41,3 +41,17 @@ function closeSidebar () {
     var sidebar = document.getElementById("cartSidebar");
     sidebar.style.width = "0";
 }
+
+function checkQuantityInput() {
+    var form = document.getElementById("quantityForm");
+    var quantity = document.getElementById("quantity").value;
+    console.log(quantity);
+    if(quantity <= 0) {
+        alert("Elige un número mayor que 0, puto inútil retrasado de mierda, subnormal que no sabes leer, gilipollas.");
+    }
+    else {
+        form.submit();
+        window.location.reload();
+    }
+    
+}

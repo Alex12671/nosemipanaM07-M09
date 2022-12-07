@@ -528,10 +528,13 @@ header h1 a{
     height: 80%;
     background-color: white;
     transition: 0.5s;
-    overflow:scroll;
+    overflow-x:hidden;
+    overflow-y:scroll;
+    border:1px solid black;
+    border-right:none;
 }
 
-.closeSidebar {
+.closeSidebarImg {
     width:9%;
     height:6%;
     cursor:pointer;
@@ -821,6 +824,19 @@ input[type=number]::-webkit-inner-spin-button {
     padding:1% 1% 1% 5%;
 }
 
+.orders {
+    width:100%;
+    height:67%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.closeSidebar {
+    width:100%;
+    background-color: gray;
+    border-bottom:1px solid black;
+}
+
 .cartIsEmpty {
     font-weight: bold;
     font-size:34px;
@@ -840,19 +856,24 @@ input[type=number]::-webkit-inner-spin-button {
 
 .separator {
     margin:5% 0 0 5%;
-    width:25%;
-    margin-bottom:1%;
-    margin-top:1%;
-}
-
-.summarySeparator {
     width:50%;
     margin-bottom:1%;
     margin-top:1%;
 }
 
+.summarySeparator {
+    width:100%;
+    margin-bottom:1%;
+    margin-top:1%;
+}
+
 .orderSummary {
-    margin:5% 0 0 5%;
+    border-top:1px solid black;
+    background-color: gainsboro;
+    width:100%;
+    position:absolute;
+    bottom:0;
+    padding:1% 0 2% 4%;
 }
 
 .bookTitle {
