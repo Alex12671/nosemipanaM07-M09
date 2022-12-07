@@ -2,8 +2,8 @@
     <form class="editProduct" action='index.php?controller=product&action=AddProduct' method='POST' ENCTYPE="multipart/form-data">
         <h2>Añadir producto</h2></br>
         <input type='text' name='Id' hidden>
-        <label>Nombre</label>         <input type='text' name='Nombre'><br>
-        <label>Descripcion</label>    <input type='text' name='Descripcion'><br>
+        <label>Nombre</label>         <input required type='text' name='Nombre'><br>
+        <label>Descripcion</label>    <input required type='text' name='Descripcion'><br>
         <label>Genero</label>  
         <select name="Genero" class="generos" required>
             <?php
