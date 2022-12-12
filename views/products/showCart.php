@@ -26,6 +26,7 @@ if(isset($_SESSION['Cart']) || !empty($_SESSION['Cart'])) {
                 echo "<form method='POST' action='index.php?controller=product&action=ShowMain&id=".$data."' id='quantityForm'>";
                 echo "<input type='number' name='quantity' id='quantity' min='1' value=".$_SESSION['Cart'][$data]['Quantity']." onchange='checkQuantityInput()'></p>";
                 echo "</form>";
+                echo "<p class='originalPrice' >".$_SESSION['Cart'][$data]['OriginalPrice']."€</p>";
                 echo "<p class='linePrice' >".$_SESSION['Cart'][$data]['Price']."€</p>";
                 echo "<form action='index.php?controller=product&action=DeleteProductFromCart&id=".$data."' method='POST'>";
                 echo "<button class='deleteProduct'> ELIMINAR PRODUCTO </button>";
@@ -61,11 +62,11 @@ if(isset($_SESSION['Cart']) || !empty($_SESSION['Cart'])) {
     <form action="index.php?controller=product&action=EmptyCart" method="POST">
         <button class="emptyCart"> VACIAR CARRITO </button>
     </form>
-</div>
 <?php
 }
 else {
     echo "<p class='cartIsEmpty' >The cart is fulln't</p>";
 }
 ?>
+</div>
 </div>

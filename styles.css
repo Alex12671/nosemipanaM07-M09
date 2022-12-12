@@ -889,7 +889,18 @@ input[type=number]::-webkit-inner-spin-button {
 .linePrice {
     margin-top:2%;
     font-weight: bold;
-    font-size:20px;
+    font-size:30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.originalPrice {
+    display:inline-block;
+    margin-top:5%;
+    text-align: center;
+    font-size:18px;
+    padding:2%;
+    text-decoration: line-through;
+    color:gray;
 }
 
 .totalPrice {

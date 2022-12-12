@@ -161,9 +161,13 @@ class productController{
         $details = $product->ShowSelectedProduct($_GET['id']);
         $array = $details->fetch(PDO::FETCH_ASSOC);
         if(!isset($_SESSION['Cart'][$_GET['id']])) {
+            if($array['Liquidacion'] == 1) {
+                $precioLiquidación = $array['Precio'] * 0.8;
+            }
             $_SESSION['Cart'][$_GET['id']] = array(
                 "Quantity" => 1,
-                "Price" => $array['Precio'],
+                "Price" => $precioLiquidación,
+                "OriginalPrice" => $array['Precio'],
                 "Nombre" => $array['Nombre'],
                 "Autor" => $array['Autor'],
                 "Imagen" => $array['Imagenlibro'],
