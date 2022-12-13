@@ -12,7 +12,7 @@
         echo "</tr>";
             foreach($result as $data) { 
                 echo "<tr>";
-                foreach($data as $field_name => $value) {
+                foreach($data as $value) {
                     echo "<td>$value</td>";
                 }
                 echo "</tr>";
