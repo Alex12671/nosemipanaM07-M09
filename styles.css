@@ -1022,4 +1022,34 @@ footer a{
         margin: 0 auto;
         background: white;
     }
+    .numberOfArticles {
+        position: absolute;
+        display:inline-block;
+        border-radius:50%;
+        width:20px;
+        line-height: 22px;
+        height:20px;
+        padding:3px;
+        background: white;
+        text-align:center;
+        color:black;
+        font-weight: bold;
+        font-size:16px;
+
+    }
+
+    /*ficha libro*/
+    .detail {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .imgDetail{
+        margin-left:20%; 
+        border:solid 3px red;  
+        width: 60%;
+        height: 100%;
+    }
+
+
 }
