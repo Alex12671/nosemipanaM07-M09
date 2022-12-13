@@ -136,139 +136,107 @@ class productController{
 
     //muestra todos los libros en principal
     public function showMain(){
-        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
-            require_once "models/product.php";
-            $product = new Product();
-            $show= $product->showMain();
-            if(isset($_COOKIE['lastVisitedBooks'])) {
-                $lastBooks = array();
-                $product2 = new Product();
-                $lastVisited = json_decode($_COOKIE['lastVisitedBooks'],true);
-                foreach($lastVisited as $data => $value) {
-                    array_push($lastBooks,$product2->ShowSelectedProduct($value));
-                }
+        require_once "models/product.php";
+        $product = new Product();
+        $show= $product->showMain();
+        if(isset($_COOKIE['lastVisitedBooks'])) {
+            $lastBooks = array();
+            $product2 = new Product();
+            $lastVisited = json_decode($_COOKIE['lastVisitedBooks'],true);
+            foreach($lastVisited as $data => $value) {
+                array_push($lastBooks,$product2->ShowSelectedProduct($value));
             }
-            require_once "views/products/showMain.php";
-        }else{
-            print("Error, no estás validado como admin");
         }
+        require_once "views/products/showMain.php";
     }
 
     public function SearchProductsByCategory() {
-        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
-            require_once "models/product.php";
-            $product = new Product();
-            $category = new Category();
-            $_SESSION['img'] = $category->categoryImg($_GET['id']);
-            $filter = $product->ShowProductsByCategory($_GET['id']);
-            require_once "views/products/productFilter.php";
-        }else{
-            print("Error, no estás validado como admin");
-        }
+        require_once "models/product.php";
+        $product = new Product();
+        $category = new Category();
+        $_SESSION['img'] = $category->categoryImg($_GET['id']);
+        $filter = $product->ShowProductsByCategory($_GET['id']);
+        require_once "views/products/productFilter.php";
     }
 
     public function SearchProductsByName() {
-        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
-            require_once "models/product.php";
-            $product = new Product();
-            $filter = $product->ShowProductsByName($_POST['bookFilter']);
-            require_once "views/products/productFilter.php";
-        }else{
-            print("Error, no estás validado como admin");
-        }
+        require_once "models/product.php";
+        $product = new Product();
+        $filter = $product->ShowProductsByName($_POST['bookFilter']);
+        require_once "views/products/productFilter.php";
     }
 
     public function ShowProductDetails() {
-        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
-            require_once "models/product.php";
-            $product = new Product();
-            $details = $product->ShowSelectedProduct($_GET['idProduct']);
-            require_once "views/products/productDetails.php";
-        }else{
-            print("Error, no estás validado como admin");
-        }
+        require_once "models/product.php";
+        $product = new Product();
+        $details = $product->ShowSelectedProduct($_GET['idProduct']);
+        require_once "views/products/productDetails.php";
     }
 
     public function searchProducts() {
-        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
-            require_once "models/product.php";
-            $product = new Product();
-            $show = $product->searchProducts($_POST['searchField']);
-            require_once "views/products/ShowProducts.php";
-        }else{
-            print("Error, no estás validado como admin");
-        }
+        require_once "models/product.php";
+        $product = new Product();
+        $show = $product->searchProducts($_POST['searchField']);
+        require_once "views/products/ShowProducts.php";
     }
     public function showSales() {
-        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
-            require_once "models/product.php";
-            $product = new Product();
-            $filter = $product->showSales();
-            require_once "views/products/sales.php";
-        }else{
-            print("Error, no estás validado como admin");
-        }
+        require_once "models/product.php";
+        $product = new Product();
+        $filter = $product->showSales();
+        require_once "views/products/sales.php";
     }
 
     public function AddProductToCart() {
-        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
-            require_once "models/product.php";
-            $product = new Product();
-            $details = $product->ShowSelectedProduct($_GET['id']);
-            $array = $details->fetch(PDO::FETCH_ASSOC);
-            if(!isset($_SESSION['Cart'][$_GET['id']])) {
-                if($array['Liquidacion'] == 1) {
-                    $precioLiquidación = $array['Precio'] * 0.8;
-                    $_SESSION['Cart'][$_GET['id']] = array(
-                        "Quantity" => 1,
-                        "Price" => $precioLiquidación,
-                        "OriginalPrice" => $array['Precio'],
-                        "Nombre" => $array['Nombre'],
-                        "Autor" => $array['Autor'],
-                        "Imagen" => $array['Imagenlibro'],
-                        
-                    );
-                }
-                else {
-                    $_SESSION['Cart'][$_GET['id']] = array(
-                        "Quantity" => 1,
-                        "Price" => $array['Precio'],
-                        "Nombre" => $array['Nombre'],
-                        "Autor" => $array['Autor'],
-                        "Imagen" => $array['Imagenlibro'],
-                        
-                    );
-                }
-                
-                if(isset($_SESSION['TotalQuantity'])) {
-                    $_SESSION['TotalQuantity']++;
-                }
-                else {
-                    $_SESSION['TotalQuantity'] = 1;
-                }
-                
+        require_once "models/product.php";
+        $product = new Product();
+        $details = $product->ShowSelectedProduct($_GET['id']);
+        $array = $details->fetch(PDO::FETCH_ASSOC);
+        if(!isset($_SESSION['Cart'][$_GET['id']])) {
+            if($array['Liquidacion'] == 1) {
+                $precioLiquidación = $array['Precio'] * 0.8;
+                $_SESSION['Cart'][$_GET['id']] = array(
+                    "Quantity" => 1,
+                    "Price" => $precioLiquidación,
+                    "OriginalPrice" => $array['Precio'],
+                    "Nombre" => $array['Nombre'],
+                    "Autor" => $array['Autor'],
+                    "Imagen" => $array['Imagenlibro'],
+                    
+                );
             }
             else {
-                $_SESSION['Cart'][$_GET['id']]['Quantity']++;
-                $_SESSION['TotalQuantity']++;
-                $_SESSION['Cart'][$_GET['id']]['Price'] = $_SESSION['Cart'][$_GET['id']]['Price'] + $array['Precio'];
+                $_SESSION['Cart'][$_GET['id']] = array(
+                    "Quantity" => 1,
+                    "Price" => $array['Precio'],
+                    "Nombre" => $array['Nombre'],
+                    "Autor" => $array['Autor'],
+                    "Imagen" => $array['Imagenlibro'],
+                    
+                );
             }
-            ?><meta http-equiv="refresh" content="0; url=index.php?controller=product&action=ShowProductDetails&idProduct=<?php echo $array['IdProducto']; ?>"> <?php  
-        }else{
-            print("Error, no estás validado como admin");
+            
+            if(isset($_SESSION['TotalQuantity'])) {
+                $_SESSION['TotalQuantity']++;
+            }
+            else {
+                $_SESSION['TotalQuantity'] = 1;
+            }
+            
         }
+        else {
+            $_SESSION['Cart'][$_GET['id']]['Quantity']++;
+            $_SESSION['TotalQuantity']++;
+            $_SESSION['Cart'][$_GET['id']]['Price'] = $_SESSION['Cart'][$_GET['id']]['Price'] + $array['Precio'];
+        }
+        ?><meta http-equiv="refresh" content="0; url=index.php?controller=product&action=ShowProductDetails&idProduct=<?php echo $array['IdProducto']; ?>"> <?php
     }
 
     public function ShowCart() {
-        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
-            require "views/products/showCart.php";
-        }else{
-            print("Error, no estás validado como admin");
-        }
+        require "views/products/showCart.php";
     }
 
     public function ConfirmOrder() {
-        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='comprador'){
             require_once "models/order.php";
             if(isset($_SESSION['rol']) && $_SESSION['rol'] == "comprador") {
                 $pedido = new Order();
@@ -282,26 +250,18 @@ class productController{
     }
 
     public function EmptyCart() {
-        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
-            unset($_SESSION['Cart']);
-            unset($_SESSION['TotalQuantity']);
-            ?><meta http-equiv="refresh" content="0; url=index.php?controller=product&action=ShowMain"> <?php  
-        }else{
-            print("Error, no estás validado como admin");
-        }
+        unset($_SESSION['Cart']);
+        unset($_SESSION['TotalQuantity']);
+        ?><meta http-equiv="refresh" content="0; url=index.php?controller=product&action=ShowMain"> <?php  
     }
 
     public function DeleteProductFromCart() {
-        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
-            $_SESSION['TotalQuantity'] -= $_SESSION['Cart'][$_GET['id']]['Quantity'];
-            unset($_SESSION['Cart'][$_GET['id']]);
-            if($_SESSION['TotalQuantity'] == 0) {
-                unset($_SESSION['Cart']);
-            }
-            ?><meta http-equiv="refresh" content="0; url=index.php?controller=product&action=ShowMain"> <?php  
-        }else{
-            print("Error, no estás validado como admin");
+        $_SESSION['TotalQuantity'] -= $_SESSION['Cart'][$_GET['id']]['Quantity'];
+        unset($_SESSION['Cart'][$_GET['id']]);
+        if($_SESSION['TotalQuantity'] == 0) {
+            unset($_SESSION['Cart']);
         }
+        ?><meta http-equiv="refresh" content="0; url=index.php?controller=product&action=ShowMain"> <?php
     }  
 }
 ?>

@@ -26,42 +26,34 @@ class userController {
     }
 
     public function showRegisterForm() {
-        if(isset($_SESSION['rol']) && $_SESSION['rol']=='comprador'){
-            require_once "views/users/userRegistration.php";
-        }else{
-            print("Error, no estás validado como comprador");
-        }
+        require_once "views/users/userRegistration.php";
     }
 
     public function AddUser() {
-        if(isset($_SESSION['rol']) && $_SESSION['rol']=='comprador'){
-            require_once "models/user.php";
-            $user = new User();
-            $rows = $user->RegisterClient($_POST['Nombre'],
-                $_POST['Apellidos1'],
-                $_POST['Apellidos2'],
-                $_POST['Password'],
-                $_POST['DNI'],
-                $_POST['Email'],
-                $_POST['Telefono'],
-                $_POST['Calle'],
-                $_POST['Número'],
-                $_POST['CP'],
-                $_POST['Piso'],
-                $_POST['Ciudad'],
-                $_POST['Provincia']
-            );
-            if(isset($_POST['Nombre'])) {
-                if($rows == 1) {
-                    echo "Usuario registrado correctamente";  
-                    ?><meta http-equiv="refresh" content="0; url=http://localhost/nosemipanaM07-M09-reprueba"> <?php  
-                }
-                else {
-                    echo "Jaja no funsiona";
-                }
+        require_once "models/user.php";
+        $user = new User();
+        $rows = $user->RegisterClient($_POST['Nombre'],
+            $_POST['Apellidos1'],
+            $_POST['Apellidos2'],
+            $_POST['Password'],
+            $_POST['DNI'],
+            $_POST['Email'],
+            $_POST['Telefono'],
+            $_POST['Calle'],
+            $_POST['Número'],
+            $_POST['CP'],
+            $_POST['Piso'],
+            $_POST['Ciudad'],
+            $_POST['Provincia']
+        );
+        if(isset($_POST['Nombre'])) {
+            if($rows == 1) {
+                echo "Usuario registrado correctamente";  
+                ?><meta http-equiv="refresh" content="0; url=http://localhost/nosemipanaM07-M09-reprueba"> <?php  
             }
-        }else{
-            print("Error, no estás validado como comprador");
+            else {
+                echo "Jaja no funsiona";
+            }
         }
     }
 
@@ -101,7 +93,6 @@ class userController {
         }
     }
 
-    //ToDo: claramente esta función no está terminada XD
     public function EditUserProfile() {
         if(isset($_SESSION['rol']) && $_SESSION['rol']=='comprador'){
             require_once "models/user.php";
