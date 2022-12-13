@@ -26,7 +26,7 @@ class userController {
     }
 
     public function showRegisterForm() {
-        if($_SESSION['rol']=='comprador'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='comprador'){
             require_once "views/users/userRegistration.php";
         }else{
             print("Error, no estás validado como comprador");
@@ -34,7 +34,7 @@ class userController {
     }
 
     public function AddUser() {
-        if($_SESSION['rol']=='comprador'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='comprador'){
             require_once "models/user.php";
             $user = new User();
             $rows = $user->RegisterClient($_POST['Nombre'],
@@ -66,7 +66,7 @@ class userController {
     }
 
     public function ShowUserOrders(){
-        if($_SESSION['rol']=='comprador'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='comprador'){
             require_once "models/user.php";
             $user = new User();
             $result = $user->ShowUserOrders($_SESSION['id']);
@@ -77,7 +77,7 @@ class userController {
     }
 
     public function ShowUserProfile() {
-        if($_SESSION['rol']=='comprador'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='comprador'){
             require_once "models/user.php";
             $user = new User();
             $result = $user->SelectUserProfile($_SESSION['id']);
@@ -90,7 +90,7 @@ class userController {
 
 
     public function ModifyUserProfile() {
-        if($_SESSION['rol']=='comprador'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='comprador'){
             require_once "models/user.php";
             $user = new User();
             $result = $user->SelectUserProfile($_SESSION['id']);
@@ -103,7 +103,7 @@ class userController {
 
     //ToDo: claramente esta función no está terminada XD
     public function EditUserProfile() {
-        if($_SESSION['rol']=='comprador'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='comprador'){
             require_once "models/user.php";
             $user = new User();
             $rows = $user->EditUserProfile($_SESSION['id'],
@@ -128,7 +128,7 @@ class userController {
     }
 
     public function DeactivateUserProfile() {
-        if($_SESSION['rol']=='comprador'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='comprador'){
             require_once "models/user.php";
             $user = new User();
             $result = $user->DeactivateUserProfile($_SESSION['id']);

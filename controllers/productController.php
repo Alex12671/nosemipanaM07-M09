@@ -3,7 +3,7 @@
 class productController{
 
     public function showProducts() {
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/product.php"; 
             $product = new Product();
             
@@ -16,7 +16,7 @@ class productController{
     }
 
     public function AddProduct(){
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/product.php";
             $product = new Product();
             // $catgories = new Category();
@@ -46,7 +46,7 @@ class productController{
     }
     
     public function getProductEdit($id){
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "views/products/EditProducts.php";
         }else{
             print("Error, no estás validado como admin");
@@ -54,7 +54,7 @@ class productController{
     }
 
     public function EditProduct(){
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/product.php";
             $product = new Product();
             
@@ -81,7 +81,7 @@ class productController{
     }
 
     public function getEditImgForm(){
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "views/products/EditImg.php";
         }else{
             print("Error, no estás validado como admin");
@@ -89,7 +89,7 @@ class productController{
     }
 
     public function EditImg(){
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/product.php";
             $product = new Product();
             
@@ -105,7 +105,7 @@ class productController{
     }
 
     public function Activate(){
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/product.php";
             $product = new Product();
             $activate= $product->Activate($_GET['id']);
@@ -120,7 +120,7 @@ class productController{
     }
 
     public function Desactivate(){
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/product.php";
             $product = new Product();
             $desactivate= $product->Desactivate($_GET['id']);
@@ -136,7 +136,7 @@ class productController{
 
     //muestra todos los libros en principal
     public function showMain(){
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/product.php";
             $product = new Product();
             $show= $product->showMain();
@@ -155,7 +155,7 @@ class productController{
     }
 
     public function SearchProductsByCategory() {
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/product.php";
             $product = new Product();
             $category = new Category();
@@ -168,7 +168,7 @@ class productController{
     }
 
     public function SearchProductsByName() {
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/product.php";
             $product = new Product();
             $filter = $product->ShowProductsByName($_POST['bookFilter']);
@@ -179,7 +179,7 @@ class productController{
     }
 
     public function ShowProductDetails() {
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/product.php";
             $product = new Product();
             $details = $product->ShowSelectedProduct($_GET['idProduct']);
@@ -190,7 +190,7 @@ class productController{
     }
 
     public function searchProducts() {
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/product.php";
             $product = new Product();
             $show = $product->searchProducts($_POST['searchField']);
@@ -200,7 +200,7 @@ class productController{
         }
     }
     public function showSales() {
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/product.php";
             $product = new Product();
             $filter = $product->showSales();
@@ -211,7 +211,7 @@ class productController{
     }
 
     public function AddProductToCart() {
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/product.php";
             $product = new Product();
             $details = $product->ShowSelectedProduct($_GET['id']);
@@ -260,7 +260,7 @@ class productController{
     }
 
     public function ShowCart() {
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require "views/products/showCart.php";
         }else{
             print("Error, no estás validado como admin");
@@ -268,7 +268,7 @@ class productController{
     }
 
     public function ConfirmOrder() {
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/order.php";
             if(isset($_SESSION['rol']) && $_SESSION['rol'] == "comprador") {
                 $pedido = new Order();
@@ -282,7 +282,7 @@ class productController{
     }
 
     public function EmptyCart() {
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             unset($_SESSION['Cart']);
             unset($_SESSION['TotalQuantity']);
             ?><meta http-equiv="refresh" content="0; url=index.php?controller=product&action=ShowMain"> <?php  
@@ -292,7 +292,7 @@ class productController{
     }
 
     public function DeleteProductFromCart() {
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             $_SESSION['TotalQuantity'] -= $_SESSION['Cart'][$_GET['id']]['Quantity'];
             unset($_SESSION['Cart'][$_GET['id']]);
             if($_SESSION['TotalQuantity'] == 0) {

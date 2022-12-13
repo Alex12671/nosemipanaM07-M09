@@ -3,7 +3,7 @@
 class categoryController{
 
     public function showCategories() {
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/category.php";       
             $category = new Category();
 
@@ -16,7 +16,7 @@ class categoryController{
     }
 
     public function getCategoriesAdd(){
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/category.php";
             $category = new Category();
             
@@ -29,7 +29,7 @@ class categoryController{
     }
 
     public function getCategoriesEdit(){
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/category.php";
             $category = new Category();
             
@@ -43,7 +43,7 @@ class categoryController{
 
     //TODO: Creo que esta funcion es una chapuza pero no sé como arreglarla
     public function AddCategoryForm(){
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "views/categories/AddCategory.php";
         }else{
             print("Error, no estás validado como admin");
@@ -51,7 +51,7 @@ class categoryController{
     }
 
     public function AddCategory(){
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/category.php";
             $category = new Category();
             
@@ -68,7 +68,7 @@ class categoryController{
     }
 
     public function getEditCatImgForm(){
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "views/categories/EditCatImg.php";
         }else{
             print("Error, no estás validado como admin");
@@ -76,7 +76,7 @@ class categoryController{
     }
 
     public function EditCatImg(){
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/category.php";
             $category = new Category();
             
@@ -92,7 +92,7 @@ class categoryController{
     }
 
     public function ShowEditCategoryForm(){        
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "views/categories/EditCategory.php";
         }else{
             print("Error, no estás validado como admin");
@@ -100,7 +100,7 @@ class categoryController{
     }
 
     public function EditCategory(){
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/category.php";
             $category = new Category();
             
@@ -119,7 +119,7 @@ class categoryController{
     }
 
     public function Activate(){
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/category.php";
             $category = new Category();
             $activate= $category->Activate($_GET['id']);
@@ -134,7 +134,7 @@ class categoryController{
     }
 
     public function Desactivate(){
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/category.php";
             $category = new Category();
             $desactivate= $category->Desactivate($_GET['id']);

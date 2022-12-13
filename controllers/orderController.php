@@ -2,7 +2,7 @@
 class OrderController{
     //Esta función es para mostrar los pedidos al administrador
     public function orderStatus(){
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/order.php";
             $order = new Order();
             $orderStatus = $order->orderStatus();
@@ -14,7 +14,7 @@ class OrderController{
 
     //esta función llama al formulario para modificar el estado del pedido
     public function statusProcess(){
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "views/orders/statusProcess.php";
         }else{
             print("Error, no estás validado como admin");
@@ -23,7 +23,7 @@ class OrderController{
 
     //Esta función modifica el estado del pedido 
     public function statusModification(){
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/order.php";
             $order = new Order();
             $edit = $order->statusModification($_POST['ID'], $_POST['Estado_Pedido']);
@@ -37,7 +37,7 @@ class OrderController{
     }
 
     public function searchOrders() {
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/order.php";
             $order = new Order();
             $orderStatus = $order->searchOrders($_POST);
@@ -48,7 +48,7 @@ class OrderController{
     }
 
     public function AddOrder() {
-        if($_SESSION['rol']=='admin'){
+        if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/order.php";
             if(isset($_SESSION['rol']) && $_SESSION ['rol'] == 'comprador') {
                 $order = new Order();
