@@ -27,12 +27,13 @@
                     echo "<div class='mainPrize'>";
                     if($data['Liquidacion']==0){
                         $precio = number_format($data['Precio'],2);
-                        echo "<h2>$precio €</h2>";
+                        echo "<h2> $precio €</h2>";
                     }
                     else if($data['Liquidacion']==1){
-                        $precio=$data['Precio']*0.90;
-                        $precio=number_format($precio,2);
-                        echo "<h2>$precio €</h2>";
+                        $precio=number_format($data['Precio'],2);
+                        $sale = $precio*0.90;
+                        $sale=number_format($sale,2);
+                        echo "<h2> ANTES $precio € AHORA $sale €</h2>";
                     }
                     echo "</div>";
                     echo "<div class='cart'>";

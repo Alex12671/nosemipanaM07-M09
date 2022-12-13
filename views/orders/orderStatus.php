@@ -1,5 +1,5 @@
 <div class="container">
-    <h2>Estado de los pedidos</h2></br>
+    <h2 class='encabezado'>Estado de los pedidos</h2></br>
     <?php
         echo "<table class='orderTable'>";
         echo "<th> Núm. pedido </th>";

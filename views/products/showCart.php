@@ -6,20 +6,10 @@
 <?php 
 if(isset($_SESSION['Cart']) || !empty($_SESSION['Cart'])) {
     if(isset($_POST['quantity'])) {
-        if(!isset($_SESSION['Cart'][$_GET['id']]['OriginalPrice'])) {
-            $precioUnitario = $_SESSION['Cart'][$_GET['id']]['Price'] / $_SESSION['Cart'][$_GET['id']]['Quantity'];
-            $_SESSION['Cart'][$_GET['id']]['Price'] = $precioUnitario * $_POST['quantity'];
-            $_SESSION['Cart'][$_GET['id']]['Quantity'] = $_POST['quantity'];
-            $_SESSION['TotalQuantity'] = 0;
-        }
-        else {
-            $precioUnitario = $_SESSION['Cart'][$_GET['id']]['Price'] / $_SESSION['Cart'][$_GET['id']]['Quantity'];
-            $_SESSION['Cart'][$_GET['id']]['Price'] = $precioUnitario * $_POST['quantity'];
-            $_SESSION['Cart'][$_GET['id']]['OriginalPrice'] = $_SESSION['Cart'][$_GET['id']]['OriginalPrice'] * $_POST['quantity'];
-            $_SESSION['Cart'][$_GET['id']]['Quantity'] = $_POST['quantity'];
-            $_SESSION['TotalQuantity'] = 0;
-        }
-        
+        $precioUnitario = $_SESSION['Cart'][$_GET['id']]['Price'] / $_SESSION['Cart'][$_GET['id']]['Quantity'];
+        $_SESSION['Cart'][$_GET['id']]['Price'] = $precioUnitario * $_POST['quantity'];
+        $_SESSION['Cart'][$_GET['id']]['Quantity'] = $_POST['quantity'];
+        $_SESSION['TotalQuantity'] = 0;
     foreach($_SESSION['Cart'] as $data) {
         
         $_SESSION['TotalQuantity'] += $data['Quantity']; 
@@ -36,11 +26,13 @@ if(isset($_SESSION['Cart']) || !empty($_SESSION['Cart'])) {
                 echo "<form method='POST' action='index.php?controller=product&action=ShowMain&id=".$data."' id='quantityForm'>";
                 echo "<input type='number' name='quantity' id='quantity' min='1' value=".$_SESSION['Cart'][$data]['Quantity']." onchange='checkQuantityInput()'></p>";
                 echo "</form>";
-                if(isset($_SESSION['Cart'][$data]['OriginalPrice'])) {
-                    echo "<p class='originalPrice' >".$_SESSION['Cart'][$data]['OriginalPrice']."€</p>";
+                if($_SESSION['Cart'][$data]['Liquidacion']==0){
+                    $_SESSION['Cart'][$data]['Price'] = number_format($_SESSION['Cart'][$data]['Price'],2);
                     echo "<p class='linePrice' >".$_SESSION['Cart'][$data]['Price']."€</p>";
                 }
-                else {
+                else if($_SESSION['Cart'][$data]['Liquidacion']==1){
+                    $_SESSION['Cart'][$data]['Price']=$_SESSION['Cart'][$data]['Price']*0.90;
+                    $_SESSION['Cart'][$data]['Price'] = number_format($_SESSION['Cart'][$data]['Price'],2);
                     echo "<p class='linePrice' >".$_SESSION['Cart'][$data]['Price']."€</p>";
                 }
                 echo "<form action='index.php?controller=product&action=DeleteProductFromCart&id=".$data."' method='POST'>";
@@ -77,11 +69,11 @@ if(isset($_SESSION['Cart']) || !empty($_SESSION['Cart'])) {
     <form action="index.php?controller=product&action=EmptyCart" method="POST">
         <button class="emptyCart"> VACIAR CARRITO </button>
     </form>
+</div>
 <?php
 }
 else {
     echo "<p class='cartIsEmpty' >The cart is fulln't</p>";
 }
 ?>
-</div>
 </div>

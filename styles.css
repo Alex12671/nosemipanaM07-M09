@@ -36,7 +36,7 @@ body{
 /*Forumalios*/
 
 input[type="text"],
-input[type="mail"],
+input[type="email"],
 select,
 input[type="number"],
 input[type="date"],
@@ -53,7 +53,7 @@ input[type="password"]{
 }
 
 input[type="text"]:focus,
-input[type="mail"]:focus,
+input[type="email"]:focus,
 select:focus,
 input[type="number"]:focus,
 input[type="date"]:focus,
@@ -64,6 +64,7 @@ input[type="password"]:focus{
 }
 
 .button{
+    margin:auto;
     display: block;
     width: 60px;
     padding: 3px;
@@ -81,6 +82,7 @@ input[type="password"]:focus{
     border:1px solid red;
     cursor:pointer;
     border-radius: 15px;
+    color:white;
 }
 
 
@@ -230,6 +232,11 @@ header h1 a{
 
 
 /* navegador*/
+
+.control-menu{
+    height: 0;
+    overflow: hidden;
+}
 
 .navegador{
     width: 100%;
@@ -889,18 +896,7 @@ input[type=number]::-webkit-inner-spin-button {
 .linePrice {
     margin-top:2%;
     font-weight: bold;
-    font-size:30px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-
-.originalPrice {
-    display:inline-block;
-    margin-top:5%;
-    text-align: center;
-    font-size:18px;
-    padding:2%;
-    text-decoration: line-through;
-    color:gray;
+    font-size:20px;
 }
 
 .totalPrice {
@@ -991,4 +987,74 @@ input[type=number]::-webkit-inner-spin-button {
 .mainButton:hover{
     box-shadow: 0px 0px 3px grey inset;
     text-shadow: 0px 0px 1px #ccc;
+}
+
+@media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 600px) { 
+
+    /* navegador*/
+
+    .navegador{
+        width: 100%;
+
+        background-color: #333333;
+
+        color:white;
+
+        height: 40px;
+
+        font-size: 8px;
+
+        box-shadow: 0px 0px 2px gray;
+
+        position: sticky;
+
+        top: 0px;
+
+        z-index: 9;
+
+    }
+
+    .navegador ul{
+
+        list-style: none;
+
+        text-decoration: none;
+
+        margin: 0px auto;
+
+        width: 100%;
+        
+        text-align: center;
+
+    }
+
+    .navegador > ul > li{
+
+        line-height: 40px;
+
+        float: left;
+
+        border-right: 1px solid grey;
+
+        border-left: 1px solid grey;
+
+        min-width: 11.5%;
+
+    }
+
+    .navegador > ul > li a{
+
+        display: block;
+
+        padding-left: 10%;
+
+        padding-right: 10%;
+
+        text-decoration: none;
+
+        color: white;
+
+    }
 }
