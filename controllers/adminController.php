@@ -30,12 +30,8 @@ class adminController{
     }
 
     public function showAdminPanel() {
-        if($_SESSION['rol']=='admin'){
-            require_once "views/general/menu.php";
-            require_once "views/admin/panelAdmin.php";
-        }else{
-            print("Error, no estás validado como admin");
-        }
+        require_once "views/general/menu.php";
+        require_once "views/admin/panelAdmin.php";
     }
 }
 ?>
