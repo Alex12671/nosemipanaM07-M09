@@ -163,16 +163,27 @@ class productController{
         if(!isset($_SESSION['Cart'][$_GET['id']])) {
             if($array['Liquidacion'] == 1) {
                 $precioLiquidación = $array['Precio'] * 0.8;
+                $_SESSION['Cart'][$_GET['id']] = array(
+                    "Quantity" => 1,
+                    "Price" => $precioLiquidación,
+                    "OriginalPrice" => $array['Precio'],
+                    "Nombre" => $array['Nombre'],
+                    "Autor" => $array['Autor'],
+                    "Imagen" => $array['Imagenlibro'],
+                    
+                );
             }
-            $_SESSION['Cart'][$_GET['id']] = array(
-                "Quantity" => 1,
-                "Price" => $precioLiquidación,
-                "OriginalPrice" => $array['Precio'],
-                "Nombre" => $array['Nombre'],
-                "Autor" => $array['Autor'],
-                "Imagen" => $array['Imagenlibro'],
-                
-            );
+            else {
+                $_SESSION['Cart'][$_GET['id']] = array(
+                    "Quantity" => 1,
+                    "Price" => $array['Precio'],
+                    "Nombre" => $array['Nombre'],
+                    "Autor" => $array['Autor'],
+                    "Imagen" => $array['Imagenlibro'],
+                    
+                );
+            }
+            
             if(isset($_SESSION['TotalQuantity'])) {
                 $_SESSION['TotalQuantity']++;
             }
