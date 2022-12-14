@@ -1,5 +1,7 @@
 <div class="container">
-    <h2 class="encabezado">Administrar categorias</h2>
+    <div class="encabezado">
+        <h2>Administrar categorías</h2><br/>
+    </div>
     <?php
         echo "<table cellspacing = 10>";
             echo "<th> Abreviatura </th>";
