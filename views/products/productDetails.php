@@ -17,7 +17,7 @@
                 $precio=number_format($array['Precio'],2);
                 $sale = $precio*0.90;
                 $sale=number_format($sale,2);
-                echo "<h2> ANTES $precio € AHORA $sale €</h2>";
+                echo "<h2> <span class='before'> $precio € </span> &nbsp $sale €</h2>";
             }
             echo "</div>";
             echo "<div class='cart'>";

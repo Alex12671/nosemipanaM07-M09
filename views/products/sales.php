@@ -28,7 +28,7 @@
                         $precio=number_format($data['Precio'],2);
                         $sale = $precio*0.90;
                         $sale=number_format($sale,2);
-                        echo "<h2> ANTES $precio € AHORA $sale €</h2>";
+                        echo "<h2> <span class='before'> $precio € </span> &nbsp $sale €</h2>";
                     }
                     echo "</div>";
                     echo "<div class='cart'>";
@@ -41,7 +41,7 @@
                     echo "</div>";
                     echo "<div class='moreInfo'>";
                         echo "<div class='toInfo'>";
-                            echo "<button class='mainButton'><a href='index.php?controller=product&action=ShowProductDetails&idProduct=".$data['IdProducto']."' >Más info</a></button>";
+                            echo "<button class='mainButton'><a class='morInfo' href='index.php?controller=product&action=ShowProductDetails&idProduct=".$data['IdProducto']."' >Más info</a></button>";
                         echo "</div>";
                     echo "</div>";
                 echo "</section>";
