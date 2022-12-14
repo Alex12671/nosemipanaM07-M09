@@ -885,6 +885,11 @@ input[type=number]::-webkit-inner-spin-button {
     transition: 300ms;
 }
 
+.before{
+    color: grey;
+    text-decoration:line-through;
+}
+
 /* más info en main*/
 
 .toInfo{
@@ -892,6 +897,17 @@ input[type=number]::-webkit-inner-spin-button {
     padding-top: 3%;
     padding-bottom: 3%;
 }
+
+.morInfo{
+    text-decoration: none !important;
+    color: black;
+}
+
+.morInfo:hover{
+    text-decoration: none !important;
+    color: white;
+}
+
 .mainButton{
     display: inline;
     border-radius: 10px;
@@ -900,8 +916,6 @@ input[type=number]::-webkit-inner-spin-button {
     padding: 3px;
     cursor:pointer;
     border:1px solid #62625f;
-    text-decoration: none !important;
-    color: black;
 }
 
 .mainButton:hover{
@@ -914,8 +928,6 @@ input[type=number]::-webkit-inner-spin-button {
     border:1px solid gray;
     cursor:pointer;
     transition: all 300ms;
-    text-decoration: none !important;
-    color:white;
 }
 
 .mainButton:hover{
