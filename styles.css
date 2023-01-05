@@ -208,12 +208,17 @@ header h1 a{
 
 /* navegador*/
 
-.control-menu{
-    height: 0;
-    overflow: hidden;
+.navegador{
+    position: sticky;
+    top: 0px;
+    z-index: 9;
 }
 
-.navegador{
+.mobileMenu{
+   display:none;
+}
+
+.pc{
     width: 100%;
 
     background-color: #333333;
@@ -226,15 +231,9 @@ header h1 a{
 
     box-shadow: 0px 0px 2px gray;
 
-    position: sticky;
-
-    top: 0px;
-
-    z-index: 9;
-
 }
 
-.navegador ul{
+.pc ul{
 
     list-style: none;
 
@@ -248,7 +247,7 @@ header h1 a{
 
 }
 
-.navegador > ul > li{
+.pc > ul > li{
 
     line-height: 40px;
 
@@ -262,7 +261,7 @@ header h1 a{
 
 }
 
-.navegador > ul > li{
+.pc > ul > li{
 
     line-height: 40px;
 
@@ -272,7 +271,7 @@ header h1 a{
 
 }
 
-.navegador > ul > li a{
+.pc > ul > li a{
 
     display: block;
 
@@ -286,7 +285,7 @@ header h1 a{
 
 }
 
-.navegador > ul > li:hover{
+.pc > ul > li:hover{
 
     background-color: #b23135;
 
@@ -328,7 +327,7 @@ header h1 a{
     color:black;
 }
 
-.navegador > ul > li > ul{
+.pc > ul > li > ul{
     display: none;
     position: absolute;
     color:white;
@@ -338,11 +337,11 @@ header h1 a{
     z-index: 10;
 }
 
-.navegador > ul > li:hover > ul{
+.pc > ul > li:hover > ul{
     display: block;
 }
 
-.navegador > ul > li:hover > ul >li{
+.pc > ul > li:hover > ul >li{
     background-color: #333333;
     border-bottom: 1px solid #d6d6d6;
     padding: 8px;
@@ -351,11 +350,11 @@ header h1 a{
     transform: all 300ms;
 }
 
-.navegador > ul > li:hover > ul > li{
+.pc > ul > li:hover > ul > li{
     color:#666666;
 }
 
-.navegador > ul > li:hover > ul >li:hover{
+.pc > ul > li:hover > ul >li:hover{
     background-color: #b23135;
     transition: all 300ms;
 }
@@ -533,9 +532,10 @@ header h1 a{
     text-align: center;
     width: 33%;
     float: left;
-    background: white;
+    background-color: white;
 }
 .internaMain{
+    padding-top: 5%;
     padding-bottom: 5%;
 }
 
@@ -976,6 +976,13 @@ footer{
 footer h2{
     padding-bottom: 5%;
 }
+/*h2 de encabezados*/
+.foot{
+    text-align: center;
+    font-size: x-large;
+    margin:1%;
+    font-family:Roboto-Regular;
+}
 
 footer a{
     color:white;
@@ -992,8 +999,22 @@ footer a{
 
 
 @media only screen
-  and (min-device-width : 320px)
+  and (min-device-width : 300px)
   and (max-device-width : 600px) { 
+    /*encabezados en main page*/
+    .lastVisitedSection {
+        font-size:25px;
+        margin-left:1%;
+        text-align: center;
+        font-family:Roboto-Regular;
+        margin-bottom: 5%;
+    }
+
+    /*imagenes generales*/
+    .productImage{
+        height: 450px;
+        width: 300px;
+    }
 
      /*header*/
 
@@ -1015,34 +1036,88 @@ footer a{
     }
     
     /* navegador*/
-    .navegador{
-        width: 100%;
-        height: 40px;
-        font-size: 8px;
+
+    .pc{
+        display:none;
+     }
+
+    .mobileMenu{
+        display:block;
+        z-index: 9;
     }
 
-    .navegador ul{
-        width: 100%;
+    .mobileMenu ul{
+        width: 10em;
+        overflow: hidden;
+        position: sticky;
+        top: 0px;
+        z-index: 9;
+    }
+    .mobileMenu ul li{
+        list-style: none;
+        padding: 0.6em 1em;
+        background-color: #fff;
+    }
+        
+    .mobileMenu > ul > li a{
+        text-decoration: none !important;
+        color: black !important;
     }
 
-    .navegador > ul > li{
-        min-width: 12%;
+    a:hover{
+        text-decoration: none;
+        color: white !important;
+    }
+    
+    .menu > li:hover{
+        background-color: #f20256;
+        box-shadow: 0px 0px 4px red inset;
+        color: white !important;
+        transition: all 300ms;
+    }
+    .open-hide{
+        width: 50px;
+        height: 50px;
+        display: block;
+        background-image: url(views/img/menu.png);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 25px;
+        text-indent: -9999em;
+    }
+      
+    .menu{
+        height: 0;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
     }
 
-    .navegador > ul > li a{
-        padding-left: 10%;
-        padding-right: 10%;
+    .menu:hover{
+        height: 400px;
+        padding-top: 1em;
+    }
+      
+    .open-hide:hover + .menu{
+        height: 400px;
+        padding-top: 1em;
+    }
+    
+    
+    /*submenu*/
 
+    nav ul ul{
+        height: auto !important;
+        overflow: hidden;
+        transition:400ms;
     }
-    /*imagenes generales*/
-    .libros{
-        text-align: center;
-        width: 80%;
-        margin: 0 auto;
-        background: white;
+
+    nav ul li:hover ul{
+        height: 200px;
     }
+    
     .numberOfArticles {
-        position: absolute;
         display:inline-block;
         border-radius:50%;
         width:20px;
@@ -1054,7 +1129,38 @@ footer a{
         color:black;
         font-weight: bold;
         font-size:16px;
+    
+    }
+    
+    .cartIcon {
+        width:45px;
+        height:40px;
+        margin-left:3%;
+    }
+    
+    .cartMenu {
+        line-height: 25px;
+        height:40px;
+    }
+    
+    .cartMenu > a {
+        color:black;
+    }
+    
+   
 
+    /*main*/
+
+    .libros{
+        text-align: center;
+        width: 100%;
+        float: left;
+    }
+
+    /*imagenes generales*/
+    .libros{
+        width: 95%;
+        background: white;
     }
 
     /*ficha libro*/
@@ -1070,5 +1176,67 @@ footer a{
         height: 100%;
     }
 
+    /*cookies*/
+    .cookies {
+        width:95%;
+    }
+
+    .acceptCookies {
+        font-size: 15px;
+    }
+
+    .denyCookies {
+        font-size: 15px;
+    }
+
+    /*registro*/
+
+    .columnas {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
+        
+    .columna1 { grid-area: 1 / 1 / 2 / 2;
+        max-width: 40%;
+        margin-left: 1%;
+    }
+    .columna2 { grid-area: 1 / 2 / 2 / 3;
+        margin-left: 10%;
+        max-width: 40%;
+    }
+    .sigin{
+        margin:0 auto;
+    }
+
+    input[type="text"]:not([size]),
+    input[type="email"]:not([size]),
+    select,
+    input[type="number"]:not([size]),
+    input[type="date"]:not([size]),
+    input[type="password"]:not([size]){
+        width: 10em;
+    }
+
+    /*User profile */
+    .parent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 0px;
+    font-size: 12px;
+    }
+
+    /*Footer*/
+
+    .foot{
+        text-align: center;
+        font-size: medium;
+        margin:1%;
+        font-family:Roboto-Regular;
+    }
 
 }
