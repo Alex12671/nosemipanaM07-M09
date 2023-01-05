@@ -15,12 +15,12 @@
         </div>
         <div class="columna2">
         <label>Calle</label><br>            <input type='text' name='Calle' required><br><br>
-        <label>Número</label><br>           <input type='number' name='Número' required><br><br>
+        <label>Número</label><br>           <input type='number' name='Número' min="1" max="2000" required><br><br>
         <label>CP</label><br>               <input type='text' name='CP' pattern="[0-9]{5}" required><br><br>
         <label>Piso</label><br>             <input type='number' name='Piso' min="1" max="99" required><br><br>
         <label>Ciudad</label><br>           <input type='text' name='Ciudad' required><br><br>
         <label>Provincia</label><br>       <input type='text' name='Provincia' required><br></br><br>
-        <input class="button" type='submit' name='enviar'>
+        <input class="button sigin" type='submit' name='enviar'>
         </div>
         </div>
         
