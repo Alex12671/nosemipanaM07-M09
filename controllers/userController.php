@@ -3,12 +3,12 @@ class userController {
     public function ValidateUserCredentials(){
         require_once "models/user.php";
         $user = new User();
-        $resultado= $user->validateUser($_POST["nombre"], $_POST["password"]);
+        $resultado= $user->validateUser($_POST["email"], $_POST["password"]);
         $result= $resultado[0]->fetchAll(PDO::FETCH_ASSOC);
         if ($resultado[1]){
             if ($user){
                 $_SESSION['rol']  = "comprador";
-                $_SESSION['name'] = $_POST['nombre'];
+                $_SESSION['name'] = $_POST['email'];
                 $_SESSION['id'] = $result[0]['IdCliente'];
                 ?> <meta http-equiv="refresh" content="0; url=index.php"> <?php
             }
@@ -31,30 +31,30 @@ class userController {
 
     public function AddUser() {
         require_once "models/user.php";
-        $user = new User();
-        $rows = $user->RegisterClient($_POST['Nombre'],
-            $_POST['Apellidos1'],
-            $_POST['Apellidos2'],
-            $_POST['Password'],
-            $_POST['DNI'],
-            $_POST['Email'],
-            $_POST['Telefono'],
-            $_POST['Calle'],
-            $_POST['Número'],
-            $_POST['CP'],
-            $_POST['Piso'],
-            $_POST['Ciudad'],
-            $_POST['Provincia']
-        );
-        if(isset($_POST['Nombre'])) {
-            if($rows == 1) {
-                echo "Usuario registrado correctamente";  
-                ?><meta http-equiv="refresh" content="0; url=index.php"> <?php  
-            }
-            else {
-                echo "Jaja no funsiona";
-            }
+        $check= new User();
+        $rows = $check->SelectUser($_POST['email']);
+        if($rows > 0) {
+            echo "Usuario ya registrado";  
+            ?><meta http-equiv="refresh" content="0; url=index.php"> <?php  
         }
+        else {
+            $user = new User();
+            $rows = $user->RegisterClient($_POST['Nombre'],
+                $_POST['Apellidos1'],
+                $_POST['Apellidos2'],
+                $_POST['Password'],
+                $_POST['DNI'],
+                $_POST['Email'],
+                $_POST['Telefono'],
+                $_POST['Calle'],
+                $_POST['Número'],
+                $_POST['CP'],
+                $_POST['Piso'],
+                $_POST['Ciudad'],
+                $_POST['Provincia']
+            );
+        }
+        
     }
 
     public function ShowUserOrders(){
