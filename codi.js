@@ -33,7 +33,12 @@ function changePassword() {
 
 function openSidebar() {
     var sidebar = document.getElementById("cartSidebar");
-    sidebar.style.width = "25%";
+    if(window.screen.width >= 300 && window.screen.width <= 600){
+        sidebar.style.width = "100%";
+    }
+    else{
+        sidebar.style.width = "25%";
+    }
 
 }
 
