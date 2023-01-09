@@ -286,7 +286,7 @@ class User extends Database {
     }
 
     public function validateUser($username, $password){
-        $sql = "SELECT IdCliente FROM clientes where Nombre='$username' and Password= '".md5($password)."'";
+        $sql = "SELECT IdCliente FROM clientes where Email='$username' and Password= '".md5($password)."'";
         $result = $this->db->query($sql);
         $rows = $result->rowCount();
         $array= [$result];
@@ -312,6 +312,12 @@ class User extends Database {
 
     public function SelectUserProfile($id) {
         $sql = "SELECT * FROM clientes where IdCliente='$id'";
+        $result = $this->db->query($sql);
+        return $result;
+    }
+
+    public function SelectUser($id) {
+        $sql = "SELECT * FROM clientes where Email='$id'";
         $result = $this->db->query($sql);
         return $result;
     }
