@@ -1095,12 +1095,12 @@ footer a{
     }
 
     .menu:hover{
-        height: 400px;
+        height: 700px;
         padding-top: 1em;
     }
       
     .open-hide:hover + .menu{
-        height: 400px;
+        height: 700px;
         padding-top: 1em;
     }
     
@@ -1114,7 +1114,8 @@ footer a{
     }
 
     nav ul li:hover ul{
-        height: 200px;
+        height: 400px;
+
     }
     
     .numberOfArticles {
