@@ -39,7 +39,7 @@
                 </form>
             </li>
             <li class="cartMenu" >
-                <a href="Javascript:openSidebar()" > <img class="cartIcon" src="img/cart.png" >
+                <a href="Javascript:openSidebar()" > <img id="ImgChange" class="cartIcon" src="img/cart.png">
                     <?php
                         if(isset($_SESSION['Cart'])) {
                         echo "<p class='numberOfArticles'>".$_SESSION['TotalQuantity']."</p>";
@@ -65,6 +65,9 @@
             
             let ul= document.getElementById('ul');
             div.insertBefore(newA, ul);
+
+            let img= document.getElementById('ImgChange');
+            img.src= 'views/img/blackchart.png';
         };
     };
 </script>
