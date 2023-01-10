@@ -76,7 +76,7 @@
     <?php
     }
     else {
-        echo "<p class='cartIsEmpty' >The cart is fulln't</p>";
+        echo "<p class='cartIsEmpty' >The cart is empty</p>";
     }
     ?>
     </div>
