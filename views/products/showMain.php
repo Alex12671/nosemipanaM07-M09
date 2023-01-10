@@ -4,18 +4,18 @@
                       name="slide" aria-hidden="true" hidden="" checked="checked">
                 <div class="slide-item">
                     <?php
-                        echo "<a href='index.php?controller=product&action=showSales'><img src='views/img/ofertas.png'></img></a>";
+                        echo "<a href='index.php?controller=product&action=showSales'><img id='img1' src='views/img/ofertas.png'></img></a>";
                     ?>
                 </div>
                 <input class="slide-open" type="radio" id="slide-2" 
                       name="slide" aria-hidden="true" hidden="">
                 <div class="slide-item">
-                    <img src="views/img/presentacion.png">
+                    <img id='img2' src="views/img/presentacion.png">
                 </div>
                 <input class="slide-open" type="radio" id="slide-3" 
                       name="slide" aria-hidden="true" hidden="">
                 <div class="slide-item">
-                    <img src="views/img/novedades.png">
+                    <img id='img3' src="views/img/novedades.png">
                 </div>
                 <label for="slide-3" class="slide-control prev control-1">‹</label>
                 <label for="slide-2" class="slide-control next control-1">›</label>
@@ -134,3 +134,45 @@
         ?>
     </div>
 </div>
+
+
+<script>
+    window.onload = (event) => {
+        if(window.screen.width >= 300 && window.screen.width <= 600){
+            let img1= document.getElementById('img1');
+            let img2= document.getElementById('img2');
+            let img3= document.getElementById('img3');
+
+            img1.style.height= '350px';
+            img1.style.width= '500px';
+            img1.style.objectFit= 'cover';
+
+            img2.style.height= '350px';
+            img2.style.width= '500px';
+            img2.style.objectFit= 'cover';
+
+            img3.style.height= '350px';
+            img3.style.width= '500px';
+            img3.style.objectFit= 'cover';
+
+                        
+            let div= document.getElementById('div');
+
+            // if(div!=undefined)
+            // {
+            div.className = 'mobileMenu';
+        
+            let newA = document.createElement("a");
+            let newContent = document.createTextNode("Menu");
+            newA.className = 'open-hide';
+            newA.appendChild(newContent);
+            
+            let ul= document.getElementById('ul');
+            div.insertBefore(newA, ul);
+
+            let img= document.getElementById('ImgChange');
+            img.src= 'views/img/blackchart.png';
+            // }
+        };
+    };
+</script>

@@ -3,7 +3,7 @@
                 <input class="slide-open" type="radio" id="slide-1" 
                       name="slide" aria-hidden="true" hidden="" checked="checked">
                 <div class="slide-item">
-                    <img src="views/img/ofertas.png"></img>
+                    <img id='img' src="views/img/ofertas.png"></img>
                 </div>
             </div>
 </div>
@@ -50,3 +50,33 @@
         ?>
     </div>
 </div>
+
+<script>
+    window.onload = (event) => {
+        if(window.screen.width >= 300 && window.screen.width <= 600){
+            let img1= document.getElementById('img');
+
+            img1.style.height= '350px';
+            img1.style.width= '500px';
+            img1.style.objectFit= 'cover';
+
+            let div= document.getElementById('div');
+
+            // if(div!=undefined)
+            // {
+            div.className = 'mobileMenu';
+
+            let newA = document.createElement("a");
+            let newContent = document.createTextNode("Menu");
+            newA.className = 'open-hide';
+            newA.appendChild(newContent);
+            
+            let ul= document.getElementById('ul');
+            div.insertBefore(newA, ul);
+
+            let img= document.getElementById('ImgChange');
+            img.src= 'views/img/blackchart.png';
+            // }
+        };
+    };
+</script>
