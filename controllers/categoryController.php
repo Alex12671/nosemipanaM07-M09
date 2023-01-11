@@ -61,7 +61,8 @@ class categoryController{
                 $_FILES["ImagenGenero"]    
             );
 
-            require_once "views/categories/AddCategory.php";
+            $show= $category->showCategories();
+            require_once "views/categories/ShowCategories.php";
         }else{
             print("Error, no estás validado como admin");
         }
@@ -103,15 +104,17 @@ class categoryController{
         if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/category.php";
             $category = new Category();
-            
-            $add= $category->EditCategory(
+
+            $update= $category->EditCategory(
                 $_POST["ID"],
-                $_POST["Nombre"]    
+                $_POST["Nombre"],
             );
 
             //vuelve a la tabla de categorías
-            $category2 = new Category();
-            $show= $category2->showCategories();
+            // $category2 = new Category();
+            // $show= $category2->showCategories();
+
+            $show= $category->showCategories();
             require_once "views/categories/ShowCategories.php";
         }else{
             print("Error, no estás validado como admin");
