@@ -202,6 +202,7 @@ class productController{
                     "Autor" => $array['Autor'],
                     "Imagen" => $array['Imagenlibro'],
                     "Liquidacion" => $array['Liquidacion'],
+                    "Stock" => $array['Cantidad'],
                 );
             }
             else {
@@ -212,6 +213,7 @@ class productController{
                     "Autor" => $array['Autor'],
                     "Imagen" => $array['Imagenlibro'],
                     "Liquidacion" => $array['Liquidacion'],
+                    "Stock" => $array['Cantidad'],
                 );
             }
             
