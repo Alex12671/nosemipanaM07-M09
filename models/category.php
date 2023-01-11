@@ -42,22 +42,25 @@ class Category extends Database {
     }
 
     function AddCategory($ID, $name, $img){
+        $realID= str_replace(" ", "-", $ID);
         if (is_uploaded_file ($_FILES['ImagenGenero']['tmp_name']))
         {
             $nombreImg= str_replace(" ", "-", $_FILES['ImagenGenero']['name']);
             $nombreDirectorio = "views/img/";
-            $idUnico = $ID;
+            $idUnico = $realID;
             $nombreFichero = $idUnico . "-" . $nombreImg;
             $directorio= $nombreDirectorio . $nombreFichero;
             move_uploaded_file ($_FILES['ImagenGenero']['tmp_name'], $nombreDirectorio . $nombreFichero);
         }
-        $sql = "INSERT INTO  generos (IdGenero, Nombre, Imagen) VALUES ( '".$ID."', '".$name."', '".$img."') ";
+
+
+        $sql = "INSERT INTO  generos (IdGenero, Nombre, Imagen) VALUES ( '".$realID."', '".$name."', '".$directorio."') ";
         $result = $this->db->query($sql);
         $rows = $result->rowCount();
     }
 
     function EditCategory($ID, $name){
-        $sql = "UPDATE generos SET IdGenero= '".$ID."', Nombre= '".$name."' WHERE IdGenero= '".$ID."'";
+        $sql = "UPDATE generos SET Nombre= '".$name."' WHERE IdGenero LIKE '".$ID."'";
         $result = $this->db->query($sql);
     }
 
