@@ -485,7 +485,7 @@ header h1 a{
     background-color:  #CE4B4B;
     margin-top:5%;
     padding:2%;
-    border-radius: 10px;;
+    border-radius: 10px;
 }
 
 /*texto error usuario no validado al comprar*/
@@ -1163,6 +1163,15 @@ footer a{
         text-align: center;
         width: 100%;
         float: left;
+    }
+    
+    .orderFail {
+        color:white;
+        background-color:  #CE4B4B;
+        width:50%;
+        margin-top:5%;
+        padding:2%;
+        border-radius: 10px;
     }
 
     /*imagenes generales*/

@@ -50,13 +50,24 @@ class OrderController{
     public function AddOrder() {
         require_once "models/order.php";
         if(isset($_SESSION['rol']) && $_SESSION ['rol'] == 'comprador') {
-            $order = new Order();
-            $addOrder = $order->AddOrder($_SESSION['id'],$_GET['total']);
-            $order2 = new Order();
-            $addOrderLine = $order2->AddOrderLine($addOrder);
-            unset($_SESSION['Cart']);
-            unset($_SESSION['TotalQuantity']);
-            ?><meta http-equiv="refresh" content="0; url=index.php?controller=product&action=ShowMain"> <?php  
+            $flag = 0;
+            foreach($_SESSION['Cart'] as $data => $value) {
+                if($value['Quantity'] > $value['Stock']) {
+                    $flag = 1;
+                }
+            }
+            if($flag == 1) {
+                ?><meta http-equiv="refresh" content="0; url=index.php?controller=product&action=ShowMain&orderFail=1"> <?php
+            }
+            else {
+                $order = new Order();
+                $addOrder = $order->AddOrder($_SESSION['id'],$_GET['total']);
+                $order2 = new Order();
+                $addOrderLine = $order2->AddOrderLine($addOrder);
+                unset($_SESSION['Cart']);
+                unset($_SESSION['TotalQuantity']);
+                ?><meta http-equiv="refresh" content="0; url=index.php?controller=product&action=ShowMain"> <?php  
+            }
         }
         else {
             ?><meta http-equiv="refresh" content="0; url=index.php?controller=user&action=logUser&orderFailed=1"> <?php  
