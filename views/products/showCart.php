@@ -27,9 +27,18 @@
                 echo "<div class='orderLineDetails'>";
                     echo "<p class='bookTitle'>".$value['Nombre']."</p>";
                     echo "<p class='bookAuthor'>".$value['Autor']."</p>";
-                    echo "<form method='POST' action='index.php?controller=product&action=ShowMain&id=".$data."' id='quantityForm'>";
-                    echo "<input type='number' name='quantity' id='quantity' min='1' max='".$_SESSION['Cart'][$data]['Stock']."' value=".$_SESSION['Cart'][$data]['Quantity']." onchange='checkQuantityInput()'></p>";
-                    echo "</form>";
+                    
+                    if($_SESSION['Cart'][$data]['Stock'] < $_SESSION['Cart'][$data]['Quantity']) {        
+                        echo "<form method='POST' action='index.php?controller=product&action=ShowMain&id=".$data."' id='quantityForm'>";
+                        echo "<input type='number' name='quantity' id='quantity' min='1' max='".$_SESSION['Cart'][$data]['Stock']."' value=".$_SESSION['Cart'][$data]['Quantity']." onchange='checkQuantityInput()'></p>";
+                        echo "</form>";
+                        echo "<p class='maxStock'>Stock disponible: 100 \n</p>";
+                    }
+                    else {
+                        echo "<form method='POST' action='index.php?controller=product&action=ShowMain&id=".$data."' id='quantityForm'>";
+                        echo "<input type='number' name='quantity' id='quantity' min='1' max='".$_SESSION['Cart'][$data]['Stock']."' value=".$_SESSION['Cart'][$data]['Quantity']." onchange='checkQuantityInput()'></p>";
+                        echo "</form>";
+                    }
                     if($_SESSION['Cart'][$data]['Liquidacion']==0){
                         echo "<p class='linePrice' >".number_format( (float) $_SESSION['Cart'][$data]['Price'],2)."€</p>";
                     }

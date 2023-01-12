@@ -42,7 +42,7 @@
         echo "<div class='container'>";
             echo "<div class='mainPage'>";
             if(isset($_GET['orderFail'])) {
-                echo "<p class='orderFail'> La cantidad seleccionada es superior al stock. Revise el carrito.</p>";
+                echo "<p class='orderFail'> Ha habido un error al realizar la compra. Revise el carrito.</p>";
             }
             echo "<h2 class='lastVisitedSection' >Últimos libros visitados</h2>";
             foreach($lastBooks as $data => $value) {

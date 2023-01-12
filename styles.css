@@ -488,6 +488,29 @@ header h1 a{
     border-radius: 10px;
 }
 
+/*texto error compra*/
+
+.orderFail {
+    color:white;
+    background-color:  #CE4B4B;
+    width:25%;
+    margin-top:2%;
+    margin-bottom:2%;
+    margin-left:36.5%;
+    padding:1%;
+    border-radius: 10px;
+}
+
+.maxStock {
+    color:white;
+    background-color:  #CE4B4B;
+    width:110%;
+    margin-top:2%;
+    margin-bottom:2%;
+    padding:2%;
+    border-radius: 5px;
+}
+
 /*texto error usuario no validado al comprar*/
 
 .validateFail {
@@ -1163,15 +1186,6 @@ footer a{
         text-align: center;
         width: 100%;
         float: left;
-    }
-    
-    .orderFail {
-        color:white;
-        background-color:  #CE4B4B;
-        width:50%;
-        margin-top:5%;
-        padding:2%;
-        border-radius: 10px;
     }
 
     /*imagenes generales*/

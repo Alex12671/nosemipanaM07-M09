@@ -50,13 +50,21 @@ function closeSidebar () {
 function checkQuantityInput() {
     var form = document.getElementById("quantityForm");
     var quantity = document.getElementById("quantity").value;
-    console.log(quantity);
+    var maxValue = document.getElementById("quantity").max;
     if(quantity <= 0) {
         alert("Elige un número mayor que 0, puto inútil retrasado de mierda, subnormal que no sabes leer, gilipollas.");
     }
     else {
-        form.submit();
-        window.location.reload();
+        if(quantity <= maxValue) {
+            form.submit();
+            window.location.reload();
+        }
+        else {
+            quantity = maxValue;
+            form.submit();
+            window.location.reload();
+        }
+        
     }
     
 }
