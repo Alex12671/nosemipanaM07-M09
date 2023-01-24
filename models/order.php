@@ -40,7 +40,9 @@ class Order extends Database {
     
     //para mostrar la tabla de pedidos, solicita a la BBDD los datos de la tabla
     Function orderStatus(){
-        $sql = "SELECT pedidos.IdPedido, pedidos.Precio_sin_IVA, pedidos.Precio_IVA, pedidos.Estado_Pedido, clientes.DNI FROM (pedidos INNER JOIN linea_pedido ON pedidos.IdPedido = linea_pedido.IdPedido) INNER JOIN clientes ON clientes.IdCliente = pedidos.IdCliente ";
+        // $sql = "SELECT pedidos.IdPedido, pedidos.Precio_sin_IVA, pedidos.Precio_IVA, pedidos.Estado_Pedido, clientes.DNI FROM (pedidos INNER JOIN linea_pedido ON pedidos.IdPedido = linea_pedido.IdPedido) INNER JOIN clientes ON clientes.IdCliente = pedidos.IdCliente ";
+        $sql = "SELECT * FROM ((pedidos INNER JOIN linea_pedido ON pedidos.IdPedido = linea_pedido.IdPedido) INNER JOIN clientes ON clientes.IdCliente = pedidos.IdCliente) 
+        INNER JOIN producto ON linea_pedido.IdProducto = producto.IdProducto";
         //$sql = "SELECT * FROM pedidos";
         $result = $this->db->query($sql);
         return $result;
@@ -62,8 +64,16 @@ class Order extends Database {
             $sql = "SELECT pedidos.IdPedido, pedidos.Precio_sin_IVA, pedidos.Precio_IVA, pedidos.Estado_Pedido, clientes.DNI FROM (pedidos INNER JOIN linea_pedido ON pedidos.IdPedido = linea_pedido.IdPedido) INNER JOIN clientes ON clientes.IdCliente = pedidos.IdCliente WHERE clientes.DNI LIKE '%".$filtro['userSearch']."%'";
             $result = $this->db->query($sql);
             return $result;
-        }
-        
+        }        
+    }
+
+    function searchOrder($filtro){
+        $sql = "SELECT *
+        FROM ((pedidos INNER JOIN linea_pedido ON pedidos.IdPedido = linea_pedido.IdPedido)
+        INNER JOIN clientes ON clientes.IdCliente = pedidos.IdCliente) INNER JOIN producto ON linea_pedido.IdProducto = producto.IdProducto
+        WHERE linea_pedido.IdPedido = '".$filtro."'";
+        $result = $this->db->query($sql);
+        return $result;
     }
 
     function AddOrder($idClient,$total) {

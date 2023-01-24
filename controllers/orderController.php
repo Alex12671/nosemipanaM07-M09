@@ -40,8 +40,19 @@ class OrderController{
         if(isset($_SESSION['rol']) && $_SESSION['rol']=='admin'){
             require_once "models/order.php";
             $order = new Order();
-            $orderStatus = $order->searchOrders($_POST);
+            $orderStatus= $order->searchOrders($_POST);
             require_once "views/orders/orderStatus.php";
+        }else{
+            print("Error, no estás validado como admin");
+        }
+    }
+
+    public function searchOrder() {
+        if(isset($_SESSION['rol']) && ($_SESSION['rol']=='admin' || $_SESSION['rol']=='comprador')){
+            require_once "models/order.php";
+            $order = new Order();
+            $orderStatus= $order->searchOrder($_GET['id']);
+            require_once "views/orders/Linea-Pedido.php";
         }else{
             print("Error, no estás validado como admin");
         }

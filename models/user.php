@@ -301,7 +301,7 @@ class User extends Database {
     }
 
     public function ShowUserOrders($id){
-        $sql = "SELECT producto.Nombre, producto.Precio, pedidos.Precio_sin_IVA, pedidos.Precio_IVA, linea_pedido.Cantidad, pedidos.Estado_Pedido
+        $sql = "SELECT producto.Nombre, producto.Precio, pedidos.Precio_sin_IVA, pedidos.Precio_IVA, linea_pedido.Cantidad, pedidos.Estado_Pedido, linea_pedido.IdPedido
         FROM linea_pedido INNER JOIN pedidos ON linea_pedido.IdPedido = pedidos.IdPedido 
         INNER JOIN producto ON linea_pedido.IdProducto = producto.IdProducto WHERE IdCliente=$id
         ORDER BY linea_pedido.Id_Linea_Pedido DESC";
