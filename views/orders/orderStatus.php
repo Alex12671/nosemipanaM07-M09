@@ -9,15 +9,17 @@
         echo "<th> Precio IVA</th>";
         echo "<th> Estado </th>";
         echo "<th> DNI cliente </th>";
+        echo "<th> Detalle pedido </th>";
         echo "<th> Editar estado </th>";
-        foreach ($orderStatus as $pedido) {
+        foreach ($orderStatus as $pedidos) {
             echo "<tr>";
-            echo "<td>". $pedido['IdPedido'] . "</td>";
-            echo "<td>".$pedido['Precio_sin_IVA'] . "</td>";
-            echo "<td>".$pedido['Precio_IVA'] . "</td>";
-            echo "<td>".$pedido['Estado_Pedido'] . "</td>";
-            echo "<td>".$pedido['DNI'] . "</td>";
-            echo "<td> <a href= 'index.php?controller=order&action=statusProcess&id=".$pedido['IdPedido']."''> <img src='views/img/lapiz.png' width='30'></a> </td>";
+            echo "<td>". $pedidos['IdPedido'] . "</td>";
+            echo "<td>". $pedidos['Precio_sin_IVA'] . "</td>";
+            echo "<td>". $pedidos['Precio_IVA'] . "</td>";
+            echo "<td>". $pedidos['Estado_Pedido'] . "</td>";
+            echo "<td>". $pedidos['DNI'] . "</td>";
+            echo "<td> <a href= 'index.php?controller=order&action=searchOrder&id=".$pedidos['IdPedido']."''> Pedido </a></td>";
+            echo "<td> <a href= 'index.php?controller=order&action=statusProcess&id=".$pedidos['IdPedido']."''> <img src='views/img/lapiz.png' width='30'></a> </td>";
             echo "</tr>";
         }
         echo "</table>";
